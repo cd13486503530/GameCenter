@@ -15,7 +15,7 @@ namespace GameCenter.Web.Controllers
             return View();
         }
 
-        public ActionResult List()
+        public ActionResult Lists()
         {     
 
             return View();
