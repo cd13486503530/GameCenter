@@ -22,7 +22,7 @@ namespace GameCenter.Entity.Data
 
         [MaxLength(128)]
         [Column(TypeName = "varchar")]
-        public int Url { get; set; }
+        public string Url { get; set; }
 
         public int GameId { get; set; }
     }

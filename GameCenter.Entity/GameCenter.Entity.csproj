@@ -50,13 +50,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Game.cs" />
+    <Compile Include="Data\GameImages.cs" />
+    <Compile Include="Data\GameInfo.cs" />
     <Compile Include="Data\Menu.cs" />
     <Compile Include="Data\MenuInformation.cs" />
+    <Compile Include="Data\News.cs" />
+    <Compile Include="Data\NewsType.cs" />
+    <Compile Include="Data\Partner.cs" />
+    <Compile Include="Dto\DtoGame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Dto\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
