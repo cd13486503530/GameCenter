@@ -11,7 +11,15 @@ namespace GameCenter.Web.Controllers
         // GET: Default
         public ActionResult Index()
         {
+
             return View();
         }
+
+        public ActionResult Lists()
+        {     
+
+            return View();
+        }
+
     }
 }
