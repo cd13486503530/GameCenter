@@ -13,5 +13,10 @@ namespace GameCenter.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult INFO()
+        {
+            return View();
+        }
     }
 }
