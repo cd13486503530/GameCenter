@@ -17,8 +17,6 @@ namespace GameCenter.Core.Service
                 db.News.Add(news);
                 var a = db.SaveChanges();
             }
-
-
         }
 
         public static void Info(int id)
