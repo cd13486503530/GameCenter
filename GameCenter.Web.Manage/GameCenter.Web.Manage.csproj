@@ -120,14 +120,105 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\images\users\no-image.jpg" />
+    <Content Include="Content\css\animate\animate.css" />
+    <Content Include="Content\css\animate\animate.min.css" />
+    <Content Include="Content\css\blueimp\blueimp-gallery.min.css" />
+    <Content Include="Content\css\bootstrap\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap\bootstrap_3.3.1.min.css" />
+    <Content Include="Content\css\codemirror\codemirror.css" />
+    <Content Include="Content\css\codemirror\theme\3024-day.css" />
+    <Content Include="Content\css\codemirror\theme\3024-night.css" />
+    <Content Include="Content\css\codemirror\theme\ambiance-mobile.css" />
+    <Content Include="Content\css\codemirror\theme\ambiance.css" />
+    <Content Include="Content\css\codemirror\theme\base16-dark.css" />
+    <Content Include="Content\css\codemirror\theme\base16-light.css" />
+    <Content Include="Content\css\codemirror\theme\blackboard.css" />
+    <Content Include="Content\css\codemirror\theme\cobalt.css" />
+    <Content Include="Content\css\codemirror\theme\eclipse.css" />
+    <Content Include="Content\css\codemirror\theme\elegant.css" />
+    <Content Include="Content\css\codemirror\theme\erlang-dark.css" />
+    <Content Include="Content\css\codemirror\theme\lesser-dark.css" />
+    <Content Include="Content\css\codemirror\theme\mbo.css" />
+    <Content Include="Content\css\codemirror\theme\mdn-like.css" />
+    <Content Include="Content\css\codemirror\theme\midnight.css" />
+    <Content Include="Content\css\codemirror\theme\monokai.css" />
+    <Content Include="Content\css\codemirror\theme\neat.css" />
+    <Content Include="Content\css\codemirror\theme\neo.css" />
+    <Content Include="Content\css\codemirror\theme\night.css" />
+    <Content Include="Content\css\codemirror\theme\paraiso-dark.css" />
+    <Content Include="Content\css\codemirror\theme\paraiso-light.css" />
+    <Content Include="Content\css\codemirror\theme\pastel-on-dark.css" />
+    <Content Include="Content\css\codemirror\theme\rubyblue.css" />
+    <Content Include="Content\css\codemirror\theme\solarized.css" />
+    <Content Include="Content\css\codemirror\theme\the-matrix.css" />
+    <Content Include="Content\css\codemirror\theme\tomorrow-night-eighties.css" />
+    <Content Include="Content\css\codemirror\theme\twilight.css" />
+    <Content Include="Content\css\codemirror\theme\vibrant-ink.css" />
+    <Content Include="Content\css\codemirror\theme\xq-dark.css" />
+    <Content Include="Content\css\codemirror\theme\xq-light.css" />
+    <Content Include="Content\css\cropper\cropper.min.css" />
+    <Content Include="Content\css\dropzone\dropzone.css" />
+    <Content Include="Content\css\fontawesome\font-awesome.min.css" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\css\fullcalendar\fullcalendar.css" />
+    <Content Include="Content\css\introjs\introjs.min.css" />
+    <Content Include="Content\css\ion\ion.rangeSlider.css" />
+    <Content Include="Content\css\ion\ion.rangeSlider.skinFlat.css" />
+    <Content Include="Content\css\ion\ion.rangeSlider.skinHTML5.css" />
+    <Content Include="Content\css\ion\ion.rangeSlider.skinModern.css" />
+    <Content Include="Content\css\ion\ion.rangeSlider.skinNice.css" />
+    <Content Include="Content\css\ion\ion.rangeSlider.skinSimple.css" />
+    <Content Include="Content\css\jquery\jquery-ui.min.css" />
+    <Content Include="Content\css\jstree\jstree.min.css" />
+    <Content Include="Content\css\mcustomscrollbar\jquery.mCustomScrollbar.css" />
+    <Content Include="Content\css\nvd3\nv.d3.css" />
+    <Content Include="Content\css\rickshaw\rickshaw.css" />
+    <Content Include="Content\css\summernote\summernote.css" />
+    <Content Include="Content\css\theme-default.css" />
+    <Content Include="Content\img\backgrounds\wall_1.jpg" />
+    <Content Include="Content\img\backgrounds\wall_10.jpg" />
+    <Content Include="Content\img\backgrounds\wall_2.jpg" />
+    <Content Include="Content\img\backgrounds\wall_3.jpg" />
+    <Content Include="Content\img\backgrounds\wall_4.jpg" />
+    <Content Include="Content\img\backgrounds\wall_5.jpg" />
+    <Content Include="Content\img\backgrounds\wall_6.jpg" />
+    <Content Include="Content\img\backgrounds\wall_7.jpg" />
+    <Content Include="Content\img\backgrounds\wall_8.jpg" />
+    <Content Include="Content\img\backgrounds\wall_9.jpg" />
+    <Content Include="Content\img\bg.png" />
+    <Content Include="Content\img\icheck\grey%402x.png" />
+    <Content Include="Content\img\icheck\grey.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\themes\dark-head-light.jpg" />
+    <Content Include="Content\img\themes\dark.jpg" />
+    <Content Include="Content\img\themes\default-head-light.jpg" />
+    <Content Include="Content\img\themes\default.jpg" />
+    <Content Include="Content\img\themes\forest-head-light.jpg" />
+    <Content Include="Content\img\themes\forest.jpg" />
+    <Content Include="Content\img\themes\light.jpg" />
+    <Content Include="Content\img\themes\night-head-light.jpg" />
+    <Content Include="Content\img\themes\night.jpg" />
+    <Content Include="Content\img\themes\serenity-head-light.jpg" />
+    <Content Include="Content\img\themes\serenity.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\actions.js" />
+    <Content Include="Scripts\plugins\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\plugins\icheck\icheck.min.js" />
+    <Content Include="Scripts\plugins\jquery\jquery-ui.min.js" />
+    <Content Include="Scripts\plugins\jquery\jquery.min.js" />
+    <Content Include="Scripts\plugins\mcustomscrollbar\jquery.mCustomScrollbar.min.js" />
+    <Content Include="Scripts\plugins.js" />
+    <Content Include="Scripts\settings.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -142,13 +233,26 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Default\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\bootstrap\bootstrap.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\css\fonts\FontAwesome.otf" />
+    <Content Include="Content\css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\css\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
