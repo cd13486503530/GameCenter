@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache\ICache.cs" />
+    <Compile Include="Common\AutoMapperHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\GameService.cs" />
   </ItemGroup>
