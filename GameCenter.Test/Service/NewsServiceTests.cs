@@ -29,7 +29,30 @@ namespace GameCenter.Test
             news.NewsType = 2;
             news.Tag = "这是一个标签";
             news.Author = "二爷";
+            news.Status = 0;
             NewsService.AddNews(news);
+        }
+
+        [TestMethod()]
+        public void ListTest()
+        {
+
+            NewsService.List();
+        }
+
+        [TestMethod()]
+        public void UpdateTest()
+        {
+            News news = new News();
+            news.Id = 2;
+            news.Title = "标题";
+            news.Contents = "这是改变的内容内容";
+            news.CreateTime = DateTime.Now;
+            news.NewsType = 2;
+            news.Tag = "这是一个标签";
+            news.Author = "二爷";
+            news.Status = 0;
+            NewsService.Update(news);
         }
     }
 }

@@ -24,17 +24,24 @@ namespace GameCenter.Entity.Data
         public DateTime CreateTime { get; set; }
 
         public int NewsType { get; set; }
+
         /// <summary>
         /// 标签
         /// </summary>
         [MaxLength(64)]
         [Column(TypeName = "varchar")]
         public string Tag { get; set; }
+
         /// <summary>
         /// 创建者
         /// </summary>
         [MaxLength(64)]
         [Column(TypeName = "varchar")]
         public string Author { get; set; }
+
+        /// <summary>
+        /// 删除状态，0是未删除，1是删除
+        /// </summary>
+        public int Status { get; set; }
     }
 }

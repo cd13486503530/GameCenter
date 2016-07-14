@@ -27,5 +27,24 @@ namespace GameCenter.Core.Service
             }
         }
 
+        public static void List()
+        {
+            using (var db = new PortalContext())
+            {
+                var list = db.News.Take(20).ToList();
+            }
+        }
+
+
+        public static void Update(News news)
+        {
+            using (var db = new PortalContext())
+            {
+                var info = db.News.Where(a => a.Id == news.Id).First();
+                info.Contents = news.Contents;
+                db.SaveChanges();
+
+            }
+        }
     }
 }
