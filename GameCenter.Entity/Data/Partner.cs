@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace GameCenter.Entity.Data
 {
     [Table("t_Partner", Schema = "dbo")]
-   public  class Partner
+    public class Partner
     {
         [Key]
         public int Id { get; set; }
@@ -25,5 +25,7 @@ namespace GameCenter.Entity.Data
         [MaxLength(256)]
         [Required, Column(TypeName = "varchar")]
         public string ImagePath { get; set; }
+
+        public int Status { get; set; }
     }
 }

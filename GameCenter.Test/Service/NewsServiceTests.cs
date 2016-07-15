@@ -13,10 +13,10 @@ namespace GameCenter.Test
     public class NewsServiceTests
     {
         [TestMethod()]
-        public void InfoTest()
+        public void GetInfoByIdTest()
         {
             int id = 2;
-            NewsService.Info(id);
+            NewsService.GetInfoById(id);
         }
 
         [TestMethod()]
@@ -34,10 +34,10 @@ namespace GameCenter.Test
         }
 
         [TestMethod()]
-        public void ListTest()
+        public void GetListTest()
         {
 
-            NewsService.List();
+            NewsService.GetList();
         }
 
         [TestMethod()]
@@ -53,6 +53,20 @@ namespace GameCenter.Test
             news.Author = "二爷";
             news.Status = 0;
             NewsService.Update(news);
+        }
+
+        [TestMethod()]
+        public void DeleteTest()
+        {
+            int id = 1;
+            NewsService.Delete(id);
+        }
+
+        [TestMethod()]
+        public void GetInfoByKeyTest()
+        {
+            string key = "标";
+            NewsService.GetInfoByKey(key);
         }
     }
 }
