@@ -1,6 +1,6 @@
-﻿@model GameCenter.Entity.Data.Game
+﻿
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">是否置顶:</label>
                             <div class="col-md-9">
-                                <input type="checkbox" name="top" value="true" @(Model.Top ? "checked" : "" )  />
+                                <input type="checkbox" name="top" value="true" @(Model.Top ? "checked" : "" ) />
                             </div>
                         </div>
                         <div class="form-group">

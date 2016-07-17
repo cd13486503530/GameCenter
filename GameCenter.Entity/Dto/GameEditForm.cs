@@ -8,6 +8,7 @@ namespace GameCenter.Entity.Dto
 {
     public class GameEditForm
     {
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
