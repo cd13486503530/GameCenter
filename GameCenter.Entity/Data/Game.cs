@@ -33,10 +33,7 @@ namespace GameCenter.Entity.Data
 
         public bool Disable { get; set; }
 
-        public bool Top { get; set; }
-
-
-
+        public bool Top { get; set; } 
 
     }
 }

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\AdminUser.cs" />
     <Compile Include="Data\Game.cs" />
     <Compile Include="Data\GameImages.cs" />
     <Compile Include="Data\GameInfo.cs" />
@@ -57,7 +58,11 @@
     <Compile Include="Data\News.cs" />
     <Compile Include="Data\NewsType.cs" />
     <Compile Include="Data\Partner.cs" />
+    <Compile Include="Data\PrivatePage.cs" />
     <Compile Include="Dto\DtoGame.cs" />
+    <Compile Include="Dto\GameEditForm.cs" />
+    <Compile Include="Dto\GameForm.cs" />
+    <Compile Include="Dto\GameListForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

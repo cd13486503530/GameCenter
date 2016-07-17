@@ -43,6 +43,10 @@ namespace GameCenter.Data
 
         public virtual DbSet<Partner> Partners { get; set; }
 
+        public virtual DbSet<AdminUser> AdminUsers { get; set; }
+
+        public virtual DbSet<PrivatePage> PrivatePages { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
