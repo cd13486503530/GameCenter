@@ -31,5 +31,10 @@ namespace GameCenter.Entity.Data
         [MaxLength(256)]
         [Column(TypeName = "varchar")]
         public string Url { get; set; }
+
+        /// <summary>
+        /// 游戏图片类型，GameImageType指定
+        /// </summary>
+        public int Type { get; set; }
     }
 }

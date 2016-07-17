@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Configuration;
 using System.Linq.Expressions;
+using System.Data.Entity.SqlServer;
 
 namespace GameCenter.Core.Service
 {
@@ -27,7 +28,13 @@ namespace GameCenter.Core.Service
             }
         }
 
-        public static List<DtoGame> GetPageList(GameListForm form,out int outConut)
+        /// <summary>
+        /// 分页
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="outConut"></param>
+        /// <returns></returns>
+        public static List<DtoGame> GetPageList(GameListForm form, out int outConut)
         {
             outConut = 0;
             IQueryable<Game> list = null;
@@ -40,13 +47,14 @@ namespace GameCenter.Core.Service
                 ParameterExpression param = Expression.Parameter(typeof(Game), "c");
                 Expression filter = null;
                 if (!string.IsNullOrEmpty(form.Name))
-                { 
-                    filter =ExpressionExtension<Game>.GenExpre(param, "Name", form.Name);
+                {
+                    filter = ExpressionExtension<Game>.GenExpre(param, "Name", form.Name);
                     listexpre.Add(filter);
                 }
 
                 if (!string.IsNullOrEmpty(form.Code))
                 {
+                    //list.Where(a=> SqlFunctions.PatIndex("%"+form.Code+"%", a.Code) > 0); 
                     filter = ExpressionExtension<Game>.GenExpre(param, "Code", form.Code);
                     listexpre.Add(filter);
                 }
@@ -68,7 +76,7 @@ namespace GameCenter.Core.Service
                 if (andFilter != null)
                 {
                     list = db.Games.Where(Expression.Lambda<Func<Game, bool>>(andFilter, param));
-                    
+
                 }
                 else
                 {
@@ -76,14 +84,18 @@ namespace GameCenter.Core.Service
                 }
                 outConut = list.Count();
 
-                list = list.OrderByDescending(a=>a.Id).Skip((form.PageIndex - 1) * form.PageSize).Take(form.PageSize);
-               
+                list = list.OrderByDescending(a => a.Id).Skip((form.PageIndex - 1) * form.PageSize).Take(form.PageSize);
+
                 return Mapper.Map<List<DtoGame>>(list.ToList());
             }
         }
 
-       
 
+        /// <summary>
+        /// 包含重复游戏名称
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static int ContainsGameName(string name)
         {
             using (var db = new PortalContext())
@@ -92,16 +104,40 @@ namespace GameCenter.Core.Service
             }
         }
 
+        /// <summary>
+        /// 不包含除本身外的游戏名称
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static int ContainsGameNameNotSelf(string name, int id)
+        {
+            using (var db = new PortalContext())
+            {
+                return db.Games.Count(a => a.Name == name && a.Id != id);
+            }
+        }
 
+        /// <summary>
+        /// 根据Id获取游戏数据
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Game GetGameOne(int id)
         {
             using (var db = new PortalContext())
             {
-                return db.Games.FirstOrDefault(a=>a.Id == id);
+                return db.Games.FirstOrDefault(a => a.Id == id);
             }
         }
 
-
+        /// <summary>
+        /// 增加游戏
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="file"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
         public static bool Add(GameForm req, HttpPostedFileBase file, out string msg)
         {
             msg = string.Empty;
@@ -112,7 +148,7 @@ namespace GameCenter.Core.Service
             var imagePath = UploadFile.SaveFile(file);
             if (string.IsNullOrEmpty(imagePath))
             {
-                msg = "删除失败";
+                msg = "上传失败";
                 return false;
             }
 
@@ -125,25 +161,46 @@ namespace GameCenter.Core.Service
             }
         }
 
-
-        public static bool Edit(GameEditForm req,HttpPostedFileBase file,out string msg)
+        /// <summary>
+        /// 编辑游戏
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="file"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public static bool Edit(GameEditForm req, Game source, HttpPostedFileBase file, out string msg)
         {
             msg = string.Empty;
-            return true;
+            var check = CheckEditForm(req, file, out msg);
+            if (!check)
+                return false;
+            using (var db = new PortalContext())
+            {
+                var game = Mapper.Map<Game>(req);
+
+                if (file != null)
+                {
+                    var newFile = UploadFile.SaveFile(file);
+                    game.ImagePath = newFile;
+                }
+
+                db.Set<Game>().Attach(game);
+                db.Entry<Game>(game).State = System.Data.Entity.EntityState.Modified;
+                return db.SaveChanges() > 0;
+            }
         }
 
-
+        /// <summary>
+        /// 添加游戏时验证参数
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="file"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
         private static bool CheckAddForm(GameForm req, HttpPostedFileBase file, out string msg)
         {
-            msg = string.Empty;
-            if (string.IsNullOrWhiteSpace(req.Name) || req.Name.Length > 32)
+            if (!CheckForm(req, file, out msg))
             {
-                msg = "游戏名称为空或者长度超过32位";
-                return false;
-            }
-            if (string.IsNullOrWhiteSpace(req.Name) || req.Name.Length > 32)
-            {
-                msg = "游戏缩写为空或者长度超过32位";
                 return false;
             }
 
@@ -157,6 +214,41 @@ namespace GameCenter.Core.Service
             if (count > 0)
             {
                 msg = "游戏名称已存在";
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool CheckEditForm(GameEditForm req, HttpPostedFileBase file, out string msg)
+        {
+            var gameForm = Mapper.Map<GameForm>(req);
+            if (!CheckForm(gameForm, file, out msg))
+            {
+                return false;
+            }
+
+            var count = ContainsGameNameNotSelf(req.Name, req.Id);
+            if (count > 0)
+            {
+                msg = "游戏名称已存在";
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool CheckForm(GameForm req, HttpPostedFileBase file, out string msg)
+        {
+            msg = string.Empty;
+            if (string.IsNullOrWhiteSpace(req.Name) || req.Name.Length > 32)
+            {
+                msg = "游戏名称为空或者长度超过32位";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(req.Name) || req.Name.Length > 32)
+            {
+                msg = "游戏缩写为空或者长度超过32位";
                 return false;
             }
 

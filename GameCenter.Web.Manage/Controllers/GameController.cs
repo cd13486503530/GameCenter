@@ -46,7 +46,15 @@ namespace GameCenter.Web.Manage.Controllers
 
         public ActionResult EditForm(GameEditForm req)
         {
-            return View();
+            var error = string.Empty;
+            HttpPostedFileBase file = Request.Files["Filedata"];
+            var sourceInfo = GameService.GetGameOne(req.Id);
+            if(sourceInfo == null)
+                return Json(new { status = false, msg = "参数错误" });
+
+            var r = GameService.Edit(req, sourceInfo, file, out error);
+            return Json(new { status = r, msg = error });
+             
         }
     }
 }

@@ -17,6 +17,8 @@ namespace GameCenter.Core.Common
             {
                 cfg.CreateMap<Game, DtoGame>();
                 cfg.CreateMap<GameForm, Game>();
+                cfg.CreateMap<GameEditForm,GameForm> ();
+                cfg.CreateMap<GameEditForm, Game>();
             });
         }
     }
