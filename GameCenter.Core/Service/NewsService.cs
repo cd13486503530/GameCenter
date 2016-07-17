@@ -1,5 +1,7 @@
-﻿using GameCenter.Data;
+﻿using AutoMapper;
+using GameCenter.Data;
 using GameCenter.Entity.Data;
+using GameCenter.Entity.Dto;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
@@ -11,86 +13,105 @@ namespace GameCenter.Core.Service
 {
     public class NewsService
     {
-        public static bool AddNews(News news)
+        public static bool AddNews(DtoNews dNews, out string msg)
         {
-            int i = 0;
-            using (var db = new PortalContext())
+            msg = string.Empty;
+            if (string.IsNullOrEmpty(dNews.Title))
             {
-                db.News.Add(news);
-                i = db.SaveChanges();
-            }
-            if (i == 0)
-            {
+                msg = "新闻标题不能空";
                 return false;
             }
-            return true;
-        }
-
-        public static News GetInfoById(int id)
-        {
-            var news = new News();
+            if (string.IsNullOrEmpty(dNews.Contents))
+            {
+                msg = "新闻内容不能为空";
+                return false;
+            }
             using (var db = new PortalContext())
             {
+                Mapper.Initialize(cfg =>
+                {
+                    cfg.CreateMap<DtoNews, News>();
+                });
+                News n = Mapper.Map<News>(dNews);
+                n.CreateTime = DateTime.Now;
+                n.Status = 0;
+                db.News.Add(n);
+                return db.SaveChanges() > 0;
+            }
+
+        }
+
+        public static DtoNews GetOneById(int id)
+        {
+            using (var db = new PortalContext())
+            {
+                Mapper.Initialize(cfg =>
+                {
+                    cfg.CreateMap<News, DtoNews>();
+                });
                 var info = db.News.First(a => a.Id == id);
-                news = info ?? new News();
-            }
-            return news;
-        }
-
-        public static List<News> GetList(int indexPage, int pageSize, int type)
-        {
-            var list = new List<News>();
-            using (var db = new PortalContext())
-            {
-                //var list = db.News.Take(20).Where(a => a.Status == 0).ToList();
-                list = db.News.Skip((indexPage - 1) * pageSize).Take(pageSize).Where(a => a.NewsType == type).ToList();
-            }
-            return list;
-        }
-
-
-        public static bool Update(News news)
-        {
-            var i = 0;
-            using (var db = new PortalContext())
-            {
-                var info = db.News.First(a => a.Id == news.Id);
                 if (info == null)
                 {
-                    return false;
+                    return new DtoNews();
                 }
-                info.Title = news.Title;
-                info.Contents = news.Contents;
-                info.NewsType = news.NewsType;
-                info.Tag = news.Tag;
-                info.Author = news.Author;
-                i = db.SaveChanges();
+                return Mapper.Map<DtoNews>(info);
             }
-            if (i == 0)
-            {
-                return false;
-            }
-            return true;
         }
 
-        public static bool Delete(int id)
+        public static List<DtoNews> GetList(DtoNews dNews)
         {
-            var i = 0;
+            using (var db = new PortalContext())
+            {
+                Mapper.Initialize(cfg =>
+                {
+                    cfg.CreateMap<News, DtoNews>();
+                });
+                var list = db.News.Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize).Where(a => a.NewsType == dNews.NewsType && a.Status == 0).ToList();
+                return Mapper.Map<List<DtoNews>>(list);
+            }
+
+        }
+
+
+        public static bool Update(DtoNews dNews, out string msg)
+        {
+            msg = string.Empty;
+            if (string.IsNullOrEmpty(dNews.Title))
+            {
+                msg = "新闻标题不能空";
+                return false;
+            }
+            if (string.IsNullOrEmpty(dNews.Contents))
+            {
+                msg = "新闻内容不能为空";
+                return false;
+            }
+            using (var db = new PortalContext())
+            {
+                Mapper.Initialize(cfg =>
+                {
+                    cfg.CreateMap<DtoNews, News>();
+                });
+                Mapper.Map<News>(dNews);
+                return db.SaveChanges() > 0;
+            }
+        }
+
+        public static bool Delete(int id, out string msg)
+        {
+            msg = string.Empty;
             using (var db = new PortalContext())
             {
                 var info = db.News.First(a => a.Id == id);
                 if (info == null)
                 {
+                    msg = "删除失败";
                     return false;
                 }
                 info.Status = 1;
-                i = db.SaveChanges();
+                return db.SaveChanges() > 0;
             }
-            if (i == 0)
-            {
-                return false;
-            }
-            return true;
+
         }
 
         /// <summary>
@@ -105,14 +126,25 @@ namespace GameCenter.Core.Service
         //    }
         //}
 
-        public static List<News> GetInfoByKey(string key)
+        public static List<DtoNews> GetInfoByKey(string key)
         {
-            var list = new List<News>();
             using (var db = new PortalContext())
             {
-                list = db.News.Where(a => a.Title.Contains(key)).ToList();
+                Mapper.Initialize(cfg =>
+                {
+                    cfg.CreateMap<News, DtoNews>();
+                });
+                var list = db.News.Where(a => a.Title.Contains(key)).ToList();
+                return Mapper.Map<List<DtoNews>>(list);
             }
-            return list;
+        }
+
+        public static int ContainsNewName(string Title)
+        {
+            using (var db = new PortalContext())
+            {
+                return db.News.Count(a => a.Title == Title);
+            }
         }
     }
 }

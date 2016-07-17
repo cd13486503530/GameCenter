@@ -52,7 +52,7 @@ var site_settings = '<div class="ts-button">'
                 +'<a href="#" data-wall="wall_4"><img src="/Content/img/backgrounds/wall_4.jpg"/></a>'    
                 +'<a href="#" data-wall="wall_5"><img src="/Content/img/backgrounds/wall_5.jpg"/></a>'
 
-                +'<a href="#" data-wall="wall_6"><img src="/Content/img/backgrounds/wall_6.jpg"/></a>'
+                +'<a href="#" data-wall="wall_6"><img src="/Content/img/backgrounds/wall_5.jpg"/></a>'
                 +'<a href="#" data-wall="wall_7"><img src="/Content/img/backgrounds/wall_7.jpg"/></a>'
                 +'<a href="#" data-wall="wall_8"><img src="/Content/img/backgrounds/wall_8.jpg"/></a>'
                 +'<a href="#" data-wall="wall_9"><img src="/Content/img/backgrounds/wall_9.jpg"/></a>'    

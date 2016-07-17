@@ -1,0 +1,82 @@
+﻿@model List<GameCenter.Entity.Dto.DtoGame>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="panel-heading">
+            <h3 class="panel-title">游戏列表</h3>
+        </div>   
+     <div class="row">
+        
+             <div class="panel panel-default">
+                 <div class="panel-body">
+                     <form class="form-horizontal" role="form" method="get" action="?"> 
+                         <div class="form-group">
+                             <div class="col-md-2">
+                                 <div class="input-group">
+                                     <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                                     <input type="text" class="form-control" placeholder="游戏名" name="Name" value="@ViewBag.FormReq.Name"/>
+                                 </div>
+                             </div>
+                             <div class="col-md-2">
+                                 <div class="input-group">
+                                     <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                                     <input type="text" class="form-control" placeholder="游戏缩写" name="Code" value="@ViewBag.FormReq.Code"/>
+                                 </div>
+                             </div>
+                             <div class="col-md-1">
+                                 <label class="check"><input type="checkbox" class="icheckbox" name="Top" value="true"  @(ViewBag.FormReq.Top!=null?"checked":"")/> 置顶</label>
+                             </div>
+                             <div class="col-md-4">
+                                 <div class="pull-right">
+                                     <button type="submit" class="btn btn-success"><span class="fa fa-refresh"></span> 查询</button>
+                                 </div>
+                             </div>
+                         </div>
+
+                     </form>
+                 </div>
+             </div>
+          
+     </div>
+        <div class="panel-body"> 
+          
+            <div class="table-responsive"> 
+                <table class="table table-hover" id="DataTables_Table_0">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>游戏名称</th>
+                            <th>游戏缩写</th>
+                            <th>是否置顶</th>
+                            <th>设置</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Code</td>
+                                <td>@(item.Top?"置顶":"未置顶")</td>
+                                <td><a href="/Game/Edit?id=@item.Id">修改</a></td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+            @Html.Raw(ViewBag.PageHtml)
+        </div>
+
+    </div>
+
+</div>
+@section scripts{
+<script type="text/javascript" src="/scripts/plugins/icheck/icheck.min.js"></script>
+}

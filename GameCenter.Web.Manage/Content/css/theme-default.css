@@ -251,7 +251,7 @@ body {
   min-height: 100%;
 }
 body.page-container-boxed {
-  background: url("..//Content/img/backgrounds/wall_1.jpg") left top no-repeat fixed;
+  background: url("../Content/img/backgrounds/wall_1.jpg") left top no-repeat fixed;
   padding: 20px 0px;
 }
 body.page-container-boxed .page-container {
@@ -286,7 +286,7 @@ body.page-container-boxed.wall_5 {
   background-image: url("/Content/img/backgrounds/wall_5.jpg");
 }
 body.page-container-boxed.wall_6 {
-  background-image: url("/Content/img/backgrounds/wall_6.jpg");
+  background-image: url("/Content/img/backgrounds/wall_5.jpg");
 }
 body.page-container-boxed.wall_7 {
   background-image: url("/Content/img/backgrounds/wall_7.jpg");

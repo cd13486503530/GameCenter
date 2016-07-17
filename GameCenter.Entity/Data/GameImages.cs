@@ -16,7 +16,7 @@ namespace GameCenter.Entity.Data
 
         public int GameId { get; set; }
 
-        public int MenuId { get; set; }
+        public string Name { get; set; }
 
         [MaxLength(128)]
         [Required, Column(TypeName = "varchar")]

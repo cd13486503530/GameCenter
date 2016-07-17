@@ -49,6 +49,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NeedIndex.Utility">
+      <HintPath>..\Dependency\NeedIndex.Utility.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -117,10 +120,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BaseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\NewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,6 +201,7 @@
     <Content Include="Content\img\backgrounds\wall_8.jpg" />
     <Content Include="Content\img\backgrounds\wall_9.jpg" />
     <Content Include="Content\img\bg.png" />
+    <Content Include="Content\img\flags\bg.png" />
     <Content Include="Content\img\icheck\grey%402x.png" />
     <Content Include="Content\img\icheck\grey.png" />
     <Content Include="Content\img\logo.png" />
@@ -212,12 +219,20 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\actions.js" />
+    <Content Include="Scripts\plugins\bootstrap\bootstrap-file-input.js" />
+    <Content Include="Scripts\plugins\bootstrap\bootstrap-select.js" />
     <Content Include="Scripts\plugins\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\plugins\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\plugins\fileinput\fileinput.min.js" />
     <Content Include="Scripts\plugins\icheck\icheck.min.js" />
+    <Content Include="Scripts\plugins\jquery-validation\jquery.validate.js" />
+    <Content Include="Scripts\plugins\jqueryform\jquery.form.js" />
     <Content Include="Scripts\plugins\jquery\jquery-ui.min.js" />
     <Content Include="Scripts\plugins\jquery\jquery.min.js" />
     <Content Include="Scripts\plugins\mcustomscrollbar\jquery.mCustomScrollbar.min.js" />
     <Content Include="Scripts\plugins.js" />
+    <Content Include="Scripts\plugins\validationengine\jquery.validationEngine.js" />
+    <Content Include="Scripts\plugins\validationengine\languages\jquery.validationEngine-zh_CN.js" />
     <Content Include="Scripts\settings.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -234,6 +249,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\plugins\fileinput\fileinput\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\New\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -253,6 +271,25 @@
     <Content Include="Content\css\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\css\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\css\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Game\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameCenter.Core\GameCenter.Core.csproj">
+      <Project>{8dea4e60-eb42-4a99-a758-b88819da4344}</Project>
+      <Name>GameCenter.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameCenter.Entity\GameCenter.Entity.csproj">
+      <Project>{5501d844-3389-43f3-b5e2-ea44eb934428}</Project>
+      <Name>GameCenter.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Game\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Game\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

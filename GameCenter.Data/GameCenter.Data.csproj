@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameCenter.Entity\GameCenter.Entity.csproj">
-      <Project>{5501d844-3389-43f3-b5e2-ea44eb934428}</Project>
+      <Project>{5501D844-3389-43F3-B5E2-EA44EB934428}</Project>
       <Name>GameCenter.Entity</Name>
     </ProjectReference>
   </ItemGroup>
