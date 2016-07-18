@@ -47,7 +47,8 @@ namespace GameCenter.Core.Service
 
         public static bool AddPartner(DtoPartner dPartner, HttpPostedFileBase file, out string msg)
         {
-            msg = string.Empty;
+            string tag = "Partner";
+            ; msg = string.Empty;
             if (string.IsNullOrEmpty(dPartner.Name))
             {
                 msg = "合作者名称不能为空";
@@ -58,7 +59,7 @@ namespace GameCenter.Core.Service
                 msg = "合作者链接不能为空";
                 return false;
             }
-            var imagePath = UploadFile.SaveFile(file);
+            var imagePath = UploadFile.SaveFile(file, tag);
             if (imagePath == null)
             {
                 msg = "上传失败";
@@ -95,6 +96,7 @@ namespace GameCenter.Core.Service
 
         public static bool Update(DtoPartner dPartner, HttpPostedFileBase file, out string msg)
         {
+            string tag = "Partner";
             msg = string.Empty;
             if (string.IsNullOrEmpty(dPartner.Name))
             {
@@ -118,7 +120,7 @@ namespace GameCenter.Core.Service
                     cfg.CreateMap<DtoPartner, Partner>();
                 });
                 var p = Mapper.Map<Partner>(dPartner);
-                p.ImagePath = UploadFile.SaveFile(file);
+                p.ImagePath = UploadFile.SaveFile(file, tag);
                 return db.SaveChanges() > 0;
             }
         }

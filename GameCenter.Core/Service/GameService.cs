@@ -19,6 +19,10 @@ namespace GameCenter.Core.Service
 {
     public class GameService
     {
+        private static string UPLAOD_TAG = "Cover"; //游戏封面
+        private static int ThumbnailImage_Width = 430;
+        private static int ThumbnailImage_Heigth = 270;
+
         public static List<DtoGame> GetGames()
         {
             using (var db = new PortalContext())
@@ -145,7 +149,7 @@ namespace GameCenter.Core.Service
             if (!check)
                 return false;
 
-            var imagePath = UploadFile.SaveFile(file);
+            var imagePath = UploadFile.SaveImage(file, UPLAOD_TAG, ThumbnailImage_Width,ThumbnailImage_Heigth);
             if (string.IsNullOrEmpty(imagePath))
             {
                 msg = "上传失败";
@@ -180,12 +184,12 @@ namespace GameCenter.Core.Service
 
                 if (file != null)
                 {
-                    var newFile = UploadFile.SaveFile(file);
+                    var newFile = UploadFile.SaveImage(file, UPLAOD_TAG, ThumbnailImage_Width, ThumbnailImage_Heigth);
                     game.ImagePath = newFile;
                 }
 
                 db.Set<Game>().Attach(game);
-                db.Entry<Game>(game).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(game).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges() > 0;
             }
         }

@@ -12,7 +12,7 @@ namespace GameCenter.Data
     public class PortalContext : DbContext
     {
         static PortalContext()
-        {
+        { 
             //在很多时候，我们希望即使在Entity Framework Code First与数据库不匹配时，宁可Entity Framework Code First报出数据库连接错误，而不希望对数据库进行任何的删除创建操作。Entity Framework Code First提供关闭数据库初始化操作：
             Database.SetInitializer<PortalContext>(null);
             //Database.SetInitializer(new CreateDatabaseIfNotExists<PortalContext>()); //数据库的默认方式，用于当数据库不存在时，自动创建数据库。由于该方式是默认方式，所以可以不需要任何代码进行指定，当然也可以使用代码来明确的指定。
