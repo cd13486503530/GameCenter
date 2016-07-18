@@ -50,6 +50,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -60,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache\ICache.cs" />
+    <Compile Include="Cache\LocalCache.cs" />
     <Compile Include="Common\AutoMapperHelper.cs" />
     <Compile Include="Common\ExpressionExtension.cs" />
     <Compile Include="Common\MapperEntity.cs" />
