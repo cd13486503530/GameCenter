@@ -66,6 +66,7 @@
     <Compile Include="Common\PageHelper.cs" />
     <Compile Include="Common\UploadFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\GameInfoService.cs" />
     <Compile Include="Service\GameService.cs" />
     <Compile Include="Service\NewsService.cs" />
     <Compile Include="Service\PartnerService.cs" />

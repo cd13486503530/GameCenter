@@ -1,4 +1,4 @@
-﻿
+﻿@model GameCenter.Entity.Data.GameInfo
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,47 +17,65 @@
                     <form id="validate" method="post" class="form-horizontal" action="/Game/EditForm" enctype="multipart/form-data">
                         <input type="hidden" name="Id" value="@Model.Id" />
                         <div class="form-group">
-                            <label class="col-md-2 control-label">游戏名称:</label>
+                            <label class="col-md-2 control-label">安卓下载地址:</label>
                             <div class="col-md-9">
-                                <input type="text" name="Name" value="@Model.Name" class="validate[required] form-control" id="form-validation-field-0">
-                                <span class="help-block">不能为空,最大不能超过16个汉子</span>
+                                <input type="text" name="AndriodDl" value="@Model.AndriodDl" class="validate[required] form-control" id="form-validation-field-0">
+                                <span class="help-block">安卓下载地址不能为空,下载地址带上http://</span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">游戏缩写:</label>
+                            <label class="col-md-2 control-label">App Store地址:</label>
                             <div class="col-md-9">
-                                <input type="text" name="Code" value="@Model.Code" class="validate[required] form-control" id="form-validation-field-1">
-                                <span class="help-block">不能为空,最大不能超过16个汉子</span>
+                                <input type="text" name="IosDl" value="@Model.IosDl" class="validate[required] form-control" id="form-validation-field-1">
+                                <span class="help-block">App Store地址不能为空,下载地址带上https://</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">游戏Logo:</label>
+                            <div class="col-md-3">
+                                <input type="file" name="LogoFileData" />
+                                <input type="hidden" name="Logo" value="@Model.Logo" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">游戏二维码</label>
+                            <div class="col-md-3">
+                                <input type="file" name="QrCodeImageFileData" />
+                                <input type="hidden" name="Logo" value="@Model.QrCodeImage" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">背景图片</label>
+                            <div class="col-md-4">
+                                <input type="file" name="BgImage0FileData" multiple accept="image/*" />
+                                <input type="hidden" name="BgImage0FileData" value="@Model.BgImage0" />
+                            </div>
+                            <div class="col-md-4">
+                                <input type="file" name="BgImage0FileData" multiple accept="image/*" />
+                                <input type="hidden" name="BgImage1FileData" value="@Model.BgImage1" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label"></label>
-                            <div class="col-md-10">
-                                <a class="file-input-wrapper btn btn-default  fileinput btn-danger">
-                                    <input type="file" class="fileinput btn-danger" name="Filedata" id="form-validation-field-3" data-filename-placement="inside" title="@(string.IsNullOrEmpty(Model.ImagePath)? "选择游戏封面图片" :Model.ImagePath)" />
-                                </a>
-                                <input type="hidden" name="ImagePath" value="@Model.ImagePath" />
+                            <div class="col-md-4">
+                                <input type="file" name="BgImage0FileData" multiple accept="image/*" />
+                                <input type="hidden" name="BgImage2FileData" value="@Model.BgImage2" />
+                            </div>
+                            <div class="col-md-4">
+                                <input type="file" name="BgImage0FileData" multiple accept="image/*" />
+                                <input type="hidden" name="BgImage3FileData" value="@Model.BgImage3" />
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">是否置顶:</label>
-                            <div class="col-md-9">
-                                <input type="checkbox" name="top" value="true" @(Model.Top ? "checked" : "" ) />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">游戏简要介绍:</label>
-                            <div class="col-md-10">
-                                <textarea class="form-control" name="Desc" rows="5" placeholder="游戏简要介绍,建议在50字内......" id="form-validation-field-2">@Model.Desc</textarea>
-                            </div>
-                        </div>
+
                         <div class="btn-group pull-right">
                             <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
                             <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>
-                        </div>
-
+                        </div> 
                     </form>
 
                 </div>
@@ -82,7 +100,8 @@
     <script type='text/javascript' src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
     <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
     <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
-    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
+    <script type='text/javascript' src="~/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
+    <script type='text/javascript' src="/Scripts/plugins/fileinput/fileinput.min.js"></script>
     <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
     <script type="text/javascript">
         $('#validate').ajaxForm({
@@ -99,5 +118,31 @@
                 }
             }
         });
+    </script>
+
+    <script type="text/javascript">
+        $("input[type=file]").fileinput({
+            showUpload: true,
+            showRemove: true,
+            showCaption: false,
+            //autoReplace: true,
+            uploadUrl: '/GameInfo/Uplaod',
+            uploadRightNow: true,
+            allowedFileExtensions: ['jpg', 'png', 'gif'],
+            maxFileSize: 2000,
+            maxFilesCount: 1,
+            allowedFileTypes: ['image'],
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            language: 'zh',
+            slugCallback: function (filename) {
+                //$('#preview,[type=submit],#goto-sub').prop('disabled', 'disabled');
+
+                //return filename.replace(/\(|\)|\[|\]/g, '_');
+            }
+        });
+
+
+
+
     </script>
 }

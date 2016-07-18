@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameCenter.Core.Service;
+using GameCenter.Entity.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +11,20 @@ namespace GameCenter.Web.Manage.Controllers
     public class GameInfoController : Controller
     {
         // GET: GameInfo
-        public ActionResult Index()
+        public ActionResult Index(int gameId = 0)
+        {
+            var info = GameInfoService.GetGameInfo(gameId) ?? new GameInfo();
+            return View(info);
+        }
+
+        [HttpPost]
+        public ActionResult EditInfo()
+        {
+            return Json("");
+        }
+
+        [HttpPost]
+        public ActionResult UploadFile()
         {
             return View();
         }

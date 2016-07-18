@@ -17,21 +17,22 @@ namespace GameCenter.Test
         public void GetInfoByIdTest()
         {
             int id = 2;
-            NewsService.GetInfoById(id);
+            //NewsService.GetInfoById(id);
         }
 
         [TestMethod()]
         public void AddNewsTest()
         {
+            string msg = string.Empty;
             DtoNews news = new DtoNews();
             news.Title = "标题";
             news.Contents = "这是内容内容";
-            news.CreateTime = DateTime.Now;
+            //news.CreateTime = DateTime.Now;
             news.NewsType = 2;
             news.Tag = "这是一个标签";
             news.Author = "二爷";
-            news.Status = 0;
-            NewsService.AddNews(news);
+            //news.Status = 0;
+            NewsService.AddNews(news, out msg);
         }
 
         [TestMethod()]
@@ -45,14 +46,14 @@ namespace GameCenter.Test
         public void UpdateTest()
         {
             DtoNews news = new DtoNews();
-            news.Id = 2;
+            //news.Id = 2;
             news.Title = "标题";
             news.Contents = "这是改变的内容内容";
-            news.CreateTime = DateTime.Now;
+            //news.CreateTime = DateTime.Now;
             news.NewsType = 2;
             news.Tag = "这是一个标签";
             news.Author = "二爷";
-            news.Status = 0;
+            //news.Status = 0;
             //NewsService.Update(news);
         }
 
@@ -60,7 +61,7 @@ namespace GameCenter.Test
         public void DeleteTest()
         {
             int id = 1;
-            NewsService.Delete(id);
+            //  NewsService.Delete(id);
         }
 
         [TestMethod()]

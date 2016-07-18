@@ -60,6 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="common\SaveImageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\GameServiceTests.cs" />
     <Compile Include="Service\NewsServiceTests.cs" />
