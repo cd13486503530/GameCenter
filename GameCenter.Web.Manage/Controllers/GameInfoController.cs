@@ -20,7 +20,7 @@ namespace GameCenter.Web.Manage.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditInfo()
+        public ActionResult EditInfo(GameInfo req)
         {
             return Json("");
         }
