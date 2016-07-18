@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace GameCenter.Core.Cache
 {
-    interface ICache
+   public interface ICache<T>
     {
+        T Get<T>(string key);
+
+        void Set<T>(string key,T t,TimeSpan expires);
     }
 }
