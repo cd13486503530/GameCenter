@@ -126,7 +126,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\GameController.cs" />
-    <Compile Include="Controllers\NewController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\GameInfoController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -299,8 +299,8 @@
   <ItemGroup>
     <Content Include="Views\GameInfo\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup> 
-    <Content Include="Views\New\Add.cshtml" /> 
+  <ItemGroup>
+    <Content Include="Views\News\Add.cshtml" />
     <Content Include="Content\css\urlfont\cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2" />
   </ItemGroup>
   <ItemGroup>
@@ -469,7 +469,10 @@
     <Content Include="Content\css\urlfont\PRmiXeptR36kaC0GEAetxujkDdvhIIFj_YMdgqpnSB0.woff2" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\urlfont\PRmiXeptR36kaC0GEAetxolIZu-HDpmDIZMigmsroc4.woff2" /> 
+    <Content Include="Content\css\urlfont\PRmiXeptR36kaC0GEAetxolIZu-HDpmDIZMigmsroc4.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\News\List.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

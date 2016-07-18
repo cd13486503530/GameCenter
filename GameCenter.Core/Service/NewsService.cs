@@ -67,7 +67,7 @@ namespace GameCenter.Core.Service
                 {
                     cfg.CreateMap<News, DtoNews>();
                 });
-                var list = db.News.Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize).Where(a => a.NewsType == dNews.NewsType && a.Status == 0).ToList();
+                var list = db.News.Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize).Where(a => a.NewsType == dNews.NewsType && a.Status == 0).OrderByDescending(a => a.CreateTime).ToList();
                 return Mapper.Map<List<DtoNews>>(list);
             }
 
