@@ -253,7 +253,6 @@
     <Folder Include="Models\" />
     <Folder Include="Scripts\plugins\fileinput\fileinput\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\New\" />
     <Folder Include="Views\Partner\" />
   </ItemGroup>
   <ItemGroup>
@@ -296,6 +295,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\GameInfo\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\New\Add.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
