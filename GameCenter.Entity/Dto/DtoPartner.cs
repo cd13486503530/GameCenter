@@ -8,6 +8,7 @@ namespace GameCenter.Entity.Dto
 {
     public class DtoPartner
     {
+        public int Id { get; set; }
         /// <summary>
         /// 合作者名称
         /// </summary>
@@ -28,5 +29,9 @@ namespace GameCenter.Entity.Dto
         /// 显示状态
         /// </summary>
         public bool Disable { get; set; }
+
+        public int PageIndex { get; set; } = 1;
+
+        public int PageSize { get; set; } = 20;
     }
 }
