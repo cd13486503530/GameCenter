@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using GameCenter.Entity.Data;
 using GameCenter.Entity.Dto;
 using GameCenter.Core.Service;
+using GameCenter.Core.Common;
 
 namespace GameCenter.Web.Manage.Controllers
 {
@@ -36,15 +37,20 @@ namespace GameCenter.Web.Manage.Controllers
             return Json(new { status = b, error = msg });
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            return View();
+            var info = NewsService.GetOneById(id);
+            return View(info);
         }
         [HttpPost]
-        public ActionResult EditForm(int id)
+        public ActionResult EditForm(DtoNews dNews)
         {
             string msg = string.Empty;
-            var info = NewsService.GetOneById(id);
+            var info = NewsService.GetOneById(dNews.Id);
+            if (info.Id == 0)
+            {
+                return Json(new { status = false, msg = "参数错误" });
+            }
             var b = NewsService.Update(info, out msg);
             return Json(new { status = b, error = msg });
         }

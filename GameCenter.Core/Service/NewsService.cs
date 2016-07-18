@@ -8,6 +8,7 @@ using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace GameCenter.Core.Service
 {
@@ -135,6 +136,10 @@ namespace GameCenter.Core.Service
                     cfg.CreateMap<News, DtoNews>();
                 });
                 var list = db.News.Where(a => a.Title.Contains(key)).ToList();
+                if (list == null)
+                {
+                    return new List<DtoNews>();
+                }
                 return Mapper.Map<List<DtoNews>>(list);
             }
         }

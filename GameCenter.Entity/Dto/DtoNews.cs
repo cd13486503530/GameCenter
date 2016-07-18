@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace GameCenter.Entity.Dto
 {
     public class DtoNews
-    { 
+    {
+        public int Id { get; set; }
         /// <summary>
         /// 标题
         /// </summary>
@@ -15,7 +16,7 @@ namespace GameCenter.Entity.Dto
         /// <summary>
         /// 内容
         /// </summary>
-        public string Contents { get; set; } 
+        public string Contents { get; set; }
         /// <summary>
         /// 新闻类型
         /// </summary>

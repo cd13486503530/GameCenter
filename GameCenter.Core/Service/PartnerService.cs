@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameCenter.Core.Common;
 using GameCenter.Data;
 using GameCenter.Entity.Data;
 using GameCenter.Entity.Dto;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace GameCenter.Core.Service
 {
@@ -29,7 +31,7 @@ namespace GameCenter.Core.Service
             }
         }
 
-        public static List<DtoPartner> GetPartnerList(int pageIndex, int pageSize)
+        public static List<DtoPartner> GetPartnerList(DtoPartner dPartner)
         {
             var dList = new List<DtoPartner>();
             using (var db = new PortalContext())
@@ -38,12 +40,12 @@ namespace GameCenter.Core.Service
                 {
                     cfg.CreateMap<Partner, DtoPartner>();
                 });
-                var list = db.Partners.Skip((pageIndex - 1) * pageSize).Take(pageSize).Where(a => a.Disable == true).ToList();
+                var list = db.Partners.Skip((dPartner.PageIndex - 1) * dPartner.PageSize).Take(dPartner.PageSize).Where(a => a.Disable == true).ToList();
                 return Mapper.Map<List<DtoPartner>>(list);
             }
         }
 
-        public static bool AddPartner(DtoPartner dPartner, out string msg)
+        public static bool AddPartner(DtoPartner dPartner, HttpPostedFileBase file, out string msg)
         {
             msg = string.Empty;
             if (string.IsNullOrEmpty(dPartner.Name))
@@ -56,9 +58,10 @@ namespace GameCenter.Core.Service
                 msg = "合作者链接不能为空";
                 return false;
             }
-            if (string.IsNullOrEmpty(dPartner.ImagePath))
+            var imagePath = UploadFile.SaveFile(file);
+            if (imagePath == null)
             {
-                msg = "合作者标志不能为空";
+                msg = "上传失败";
                 return false;
             }
             using (var db = new PortalContext())
@@ -68,6 +71,7 @@ namespace GameCenter.Core.Service
                     cfg.CreateMap<DtoPartner, Partner>();
                 });
                 var p = Mapper.Map<Partner>(dPartner);
+                p.ImagePath = imagePath;
                 db.Partners.Add(p);
                 return db.SaveChanges() > 0;
             }
@@ -89,16 +93,32 @@ namespace GameCenter.Core.Service
             }
         }
 
-        public static bool Update(DtoPartner dPartner,out string msg)
+        public static bool Update(DtoPartner dPartner, HttpPostedFileBase file, out string msg)
         {
             msg = string.Empty;
+            if (string.IsNullOrEmpty(dPartner.Name))
+            {
+                msg = "合作者名称不能为空";
+                return false;
+            }
+            if (string.IsNullOrEmpty(dPartner.LlinkUrl))
+            {
+                msg = "合作者链接不能为空";
+                return false;
+            }
+            if (string.IsNullOrEmpty(dPartner.ImagePath))
+            {
+                msg = "合作者LOGO不能为空";
+                return false;
+            }
             using (var db = new PortalContext())
             {
                 Mapper.Initialize(cfg =>
                 {
                     cfg.CreateMap<DtoPartner, Partner>();
                 });
-                Mapper.Map<Partner>(dPartner);
+                var p = Mapper.Map<Partner>(dPartner);
+                p.ImagePath = UploadFile.SaveFile(file);
                 return db.SaveChanges() > 0;
             }
         }
