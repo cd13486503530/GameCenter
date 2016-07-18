@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ActiveAttribute.cs" />
     <Compile Include="App_Start\BaseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -299,8 +300,8 @@
   <ItemGroup>
     <Content Include="Views\GameInfo\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup> 
-    <Content Include="Views\New\Add.cshtml" /> 
+  <ItemGroup>
+    <Content Include="Views\New\Add.cshtml" />
     <Content Include="Content\css\urlfont\cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2" />
   </ItemGroup>
   <ItemGroup>
@@ -469,7 +470,7 @@
     <Content Include="Content\css\urlfont\PRmiXeptR36kaC0GEAetxujkDdvhIIFj_YMdgqpnSB0.woff2" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\urlfont\PRmiXeptR36kaC0GEAetxolIZu-HDpmDIZMigmsroc4.woff2" /> 
+    <Content Include="Content\css\urlfont\PRmiXeptR36kaC0GEAetxolIZu-HDpmDIZMigmsroc4.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
