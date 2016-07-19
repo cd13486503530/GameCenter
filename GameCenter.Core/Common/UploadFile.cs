@@ -40,7 +40,6 @@ namespace GameCenter.Core.Common
                 var fileName = FileRoot + path + randomFileName;
                 file.SaveAs(fileName);
 
-
                 return path + randomFileName;
             }
             catch (Exception ex)

@@ -41,7 +41,7 @@
                         <li>
                             <a href="/"><span class="fa fa-desktop"></span> <span class="xn-text">主页</span></a>
                         </li>
-                        <li class="xn-openable active">
+                        <li class="xn-openable @(ViewBag.Active == "Game"?"active":"")">
                             <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">游戏信息</span></a>
                             <ul>
                                 <li><a href="/Game/List"><span class="fa fa-align-justify"></span>游戏列表</a></li>
@@ -51,7 +51,7 @@
                                 <li><a href="/Game/GameImages?type=3"><span class="fa fa-heart"></span>特色系统</a></li>
                             </ul>
                         </li>
-                        <li class="xn-openable">
+                        <li class="xn-openable @(ViewBag.Active == "Menu"?"active":"")">
                             <a href="#"><span class="fa fa-gamepad"></span> <span class="xn-text">菜单栏</span></a>
                             <ul>
                                 <li><a href="/Menu/Main"><span class="fa fa-desktop"></span>主页导菜单</a></li>
@@ -59,21 +59,21 @@
                                 <li><a href="/Menu/GameMenuDesc"><span class="fa fa-edit"></span>菜单内容</a></li>
                             </ul>
                         </li>
-                        <li class="xn-openable">
+                        <li class="xn-openable @(ViewBag.Active == "News"?"active":"")">
                             <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">新闻资讯</span></a>
                             <ul>
                                 <li><a href="/News/List"><span class="fa fa-align-justify"></span>新闻列表</a></li>
                                 <li><a href="/News/Add"><span class="fa fa-edit"></span>添加新闻</a></li> 
                             </ul>
                         </li> 
-                        <li class="xn-openable">
+                        <li class="xn-openable @(ViewBag.Active == "Partner"?"active":"")">
                             <a href="#"><span class="fa fa-table"></span> <span class="xn-text">合作伙伴</span></a>
                             <ul>
                                 <li><a href="/Partner/List"><span class="fa fa-align-justify"></span>合作伙伴列表</a></li>
                                 <li><a href="/Partner/List"><span class="fa fa-edit"></span>合作伙伴添加</a></li> 
                             </ul>
                         </li> 
-                        <li class="xn-openable">
+                        <li class="xn-openable @(ViewBag.Active == "Private"?"active":"")">
                             <a href="#"><span class="fa fa-tags"></span> <span class="xn-text">隐私页</span></a>
                             <ul>
                                 <li><a href="/Private/List"><span class="fa fa-align-justify"></span>列表</a></li>

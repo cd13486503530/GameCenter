@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace GameCenter.Web.Manage.Controllers
 {
+    [Active("Game")]
     public class GameController : BaseController
     {
         // GET: Game

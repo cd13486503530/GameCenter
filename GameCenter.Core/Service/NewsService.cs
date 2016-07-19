@@ -59,7 +59,7 @@ namespace GameCenter.Core.Service
             }
         }
 
-        public static List<DtoNews> GetList(DtoNews dNews)
+        public static List<DtoNews> GetList(DtoNews dNews, out int total)
         {
             using (var db = new PortalContext())
             {
@@ -67,7 +67,9 @@ namespace GameCenter.Core.Service
                 {
                     cfg.CreateMap<News, DtoNews>();
                 });
-                var list = db.News.Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize).Where(a => a.NewsType == dNews.NewsType && a.Status == 0).OrderByDescending(a => a.CreateTime).ToList();
+                var list = db.News.Where(a => a.Status == 0).ToList();
+                total = list.Count;
+                list = list.OrderByDescending(a => a.CreateTime).Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize).ToList();
                 return Mapper.Map<List<DtoNews>>(list);
             }
 
