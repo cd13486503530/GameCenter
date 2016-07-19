@@ -31,7 +31,7 @@ namespace GameCenter.Core.Common
             try
             {
                 var ext = Path.GetExtension(file.FileName);
-                var path = tag + DateTime.Now.ToString("yyyy/MM/dd", DateTimeFormatInfo.InvariantInfo).Replace("/", "\\") + "\\";
+                var path = "\\"+ tag+"\\" + DateTime.Now.ToString("yyyy/MM/dd", DateTimeFormatInfo.InvariantInfo).Replace("/", "\\") + "\\";
                 if (!File.Exists(FileRoot + path))
                 {
                     Directory.CreateDirectory(FileRoot + path);
@@ -58,16 +58,19 @@ namespace GameCenter.Core.Common
         /// <returns></returns>
         public static string SaveImage(HttpPostedFileBase file, string tag, int width, int height)
         {
-            var sourceFile = SaveFile(file, "\\Images\\" + tag + "\\big\\"); // 需要生成缩略图的源图片
-            var newFilePath = "\\Images\\" + tag + "\\small\\" + DateTime.Now.ToString("yyyy/MM/dd", DateTimeFormatInfo.InvariantInfo).Replace("/", "\\") + "\\"; //缩略图路径
-            var ext = Path.GetExtension(file.FileName);//文件后缀
-            var randomFileName = DateTime.Now.ToString("yyyyMMddhhmmss") + new Random().Next(10000, 999999) + ext;//随机文件名
-            var newFileName = FileRoot + newFilePath + randomFileName;//缩略图完整路径
-            if (!string.IsNullOrEmpty(sourceFile))
+            var sourceFile = SaveFile(file, "Images\\" + tag + "\\big"); // 需要生成缩略图的源图片
+
+            //生成缩略图
+            if (!string.IsNullOrEmpty(sourceFile) && width > 0 && height > 0)
             {
+                var newFilePath = "\\Images\\" + tag + "\\small\\" + DateTime.Now.ToString("yyyy/MM/dd", DateTimeFormatInfo.InvariantInfo).Replace("/", "\\") + "\\"; //缩略图路径
+                var ext = Path.GetExtension(file.FileName);//文件后缀
+                var randomFileName = DateTime.Now.ToString("yyyyMMddhhmmss") + new Random().Next(10000, 999999) + ext;//随机文件名
+                var newFileName = FileRoot + newFilePath + randomFileName;//缩略图完整路径
                 try
                 {
-                    MakeThumbnailImage(FileRoot + sourceFile, newFileName, width, height, 100);
+                    //MakeThumbnailImage(FileRoot + sourceFile, newFileName, width, height, 100);
+                    ImageUtil.MakeThumbnailImage(FileRoot + sourceFile, newFileName, width, height, 100);
                     return newFilePath + randomFileName;
                 }
                 catch (Exception)
@@ -75,7 +78,7 @@ namespace GameCenter.Core.Common
                     return string.Empty;
                 }
             }
-            return string.Empty;
+            return sourceFile;
         }
 
         /// <summary>

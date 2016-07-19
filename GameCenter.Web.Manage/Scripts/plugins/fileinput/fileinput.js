@@ -866,11 +866,15 @@
         refresh: function (options) {
             var self = this, $el = self.$element;
             options = options ? $.extend(self.options, options) : self.options;
+
+            if (options.refreshCallback)
+                options = $.extend(options, options.refreshCallback($el));
             self.destroy();
             $el.fileinput(options);
             if ($el.val()) {
                 $el.trigger('change.fileinput');
             }
+
         },
         initDragDrop: function () {
             var self = this, $zone = self.$container.find('.file-drop-zone'),
@@ -2633,7 +2637,8 @@
         textEncoding: 'UTF-8',
         ajaxSettings: {},
         ajaxDeleteSettings: {},
-        showAjaxErrorDetails: true
+        showAjaxErrorDetails: true,
+        refreshCallback: null
     };
 
     $.fn.fileinputLocales.en = {

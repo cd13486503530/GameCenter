@@ -64,5 +64,13 @@ namespace GameCenter.Entity.Data
         [Column(TypeName = "varchar")]
         public string FocusImage3 { get; set; }
 
+        [MaxLength(64)]
+        [Required,Column(TypeName = "varchar")]
+        public string Version { get; set; }
+
+        [MaxLength(64)]
+        [Column(TypeName = "varchar")]
+        public string FileName { get; set; }
+
     }
 }

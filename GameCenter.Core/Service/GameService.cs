@@ -14,6 +14,7 @@ using System.Web;
 using System.Configuration;
 using System.Linq.Expressions;
 using System.Data.Entity.SqlServer;
+using GameCenter.Core.Cache;
 
 namespace GameCenter.Core.Service
 {
@@ -30,6 +31,20 @@ namespace GameCenter.Core.Service
                 var list = db.Games.Take(5).ToList();
                 return Mapper.Map<List<DtoGame>>(list);
             }
+        }
+
+        public static List<DtoGame> GetGamesCache()
+        {   
+            var key = "GameCenter.Core.Service.GameService.GetGamesCache";
+            var cacheInfo = LocalCache.Instance().Get<List<DtoGame>>(key);
+            if (cacheInfo == null)
+            {
+                var games = GetGames();
+                LocalCache.Instance().Set(key, games, DateTime.Now.AddDays(1).TimeOfDay);
+                return games;
+            }
+
+            return cacheInfo;
         }
 
         /// <summary>

@@ -32,14 +32,22 @@ namespace GameCenter.Test
         public void AddTest()
         {
             var msg = string.Empty;
-            var news = new GameForm() {
+            var news = new GameForm()
+            {
                 Code = "test",
-                ImagePath ="",
-                Desc="etst",
-                Name="test Game",
-                Top=false
+                ImagePath = "",
+                Desc = "etst",
+                Name = "test Game",
+                Top = false
             };
             //var r = GameService.Add(news,null,out msg);
+
+        }
+
+        [TestMethod()]
+        public void GetGamesCacheTest()
+        {
+            var list = GameService.GetGamesCache();
             
         }
     }
