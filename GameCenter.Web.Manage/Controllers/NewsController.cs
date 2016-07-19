@@ -25,6 +25,7 @@ namespace GameCenter.Web.Manage.Controllers
             int total = 0;
             var list = NewsService.GetList(dNews, out total);
             ViewBag.PageHtml = PageHelper.ManagePager(total, dNews.PageIndex, dNews.PageSize);
+            ViewBag.NewsForm = dNews ?? new DtoNews();
             return View(list);
         }
         public ActionResult Add()
@@ -54,7 +55,7 @@ namespace GameCenter.Web.Manage.Controllers
             {
                 return Json(new { status = false, msg = "参数错误" });
             }
-            var b = NewsService.Update(info, out msg);
+            var b = NewsService.Update(dNews, out msg);
             return Json(new { status = b, error = msg });
         }
 
@@ -62,7 +63,8 @@ namespace GameCenter.Web.Manage.Controllers
         {
             string msg = string.Empty;
             var b = NewsService.Delete(id, out msg);
-            return Json(new { status = b, error = msg }, JsonRequestBehavior.AllowGet);
+            return Redirect(Request.UrlReferrer.ToString());
+            //return Json(new { status = b, error = msg }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GameCenter.Core.Common
 {
-   public class MapperEntity
+    public class MapperEntity
     {
         public static void MapperInit()
         {
@@ -17,9 +17,12 @@ namespace GameCenter.Core.Common
             {
                 cfg.CreateMap<Game, DtoGame>();
                 cfg.CreateMap<GameForm, Game>();
-                cfg.CreateMap<GameEditForm,GameForm> ();
+                cfg.CreateMap<GameEditForm, GameForm>();
                 cfg.CreateMap<GameEditForm, Game>();
-                cfg.CreateMap<GameInfoForm,GameInfo>();
+                cfg.CreateMap<GameInfoForm, GameInfo>();
+                cfg.CreateMap<News, DtoNews>();
+                cfg.CreateMap<DtoNews, News>();
+                cfg.CreateMap<NewsType, DtoNewsType>();
             });
         }
     }

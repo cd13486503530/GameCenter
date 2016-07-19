@@ -5,6 +5,7 @@ using GameCenter.Entity.Dto;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,10 +30,6 @@ namespace GameCenter.Core.Service
             }
             using (var db = new PortalContext())
             {
-                Mapper.Initialize(cfg =>
-                {
-                    cfg.CreateMap<DtoNews, News>();
-                });
                 News n = Mapper.Map<News>(dNews);
                 n.CreateTime = DateTime.Now;
                 n.Status = 0;
@@ -46,10 +43,6 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                Mapper.Initialize(cfg =>
-                {
-                    cfg.CreateMap<News, DtoNews>();
-                });
                 var info = db.News.First(a => a.Id == id);
                 if (info == null)
                 {
@@ -63,14 +56,22 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                Mapper.Initialize(cfg =>
+                var list = db.News.Where(a => a.Status == 0);
+                //total = list.Count;
+                if (!string.IsNullOrEmpty(dNews.Title))
+                    list = list.Where(a=>a.Title.Contains(dNews.Title));
+
+                if (dNews.NewsType > 0)
+                    list = list.Where(a=>a.NewsType == dNews.NewsType);
+                total = list.Count();
+                list = list.OrderByDescending(a => a.CreateTime).Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize);
+                var dList = Mapper.Map<List<DtoNews>>(list.ToList());
+                foreach (var item in dList)
                 {
-                    cfg.CreateMap<News, DtoNews>();
-                });
-                var list = db.News.Where(a => a.Status == 0).ToList();
-                total = list.Count;
-                list = list.OrderByDescending(a => a.CreateTime).Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize).ToList();
-                return Mapper.Map<List<DtoNews>>(list);
+                    var info = NewsTypeService.GetTypeCacheList().FirstOrDefault(a => a.Id == item.NewsType) ?? new DtoNewsType(); //NewsTypeService.GetNameById(item.NewsType);
+                    item.NewsTypeName = info.Name;
+                }
+                return dList;
             }
 
         }
@@ -91,12 +92,19 @@ namespace GameCenter.Core.Service
             }
             using (var db = new PortalContext())
             {
-                Mapper.Initialize(cfg =>
+                try
                 {
-                    cfg.CreateMap<DtoNews, News>();
-                });
-                Mapper.Map<News>(dNews);
-                return db.SaveChanges() > 0;
+                    var n = Mapper.Map<News>(dNews);
+                    db.Set<News>().Attach(n);
+                    db.Entry(n).State = System.Data.Entity.EntityState.Modified;
+                    return db.SaveChanges() > 0;
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    return false;
+                }
+
+
             }
         }
 

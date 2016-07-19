@@ -22,6 +22,10 @@ namespace GameCenter.Entity.Dto
         /// </summary>
         public int NewsType { get; set; }
         /// <summary>
+        /// 新闻名称
+        /// </summary>
+        public string NewsTypeName { get; set; }
+        /// <summary>
         /// 标签
         /// </summary>
         public string Tag { get; set; }
@@ -30,6 +34,7 @@ namespace GameCenter.Entity.Dto
         /// </summary>
         public string Author { get; set; }
 
+        public DateTime CreateTime { get; set; }
 
         public int PageIndex { get; set; } = 1;
 

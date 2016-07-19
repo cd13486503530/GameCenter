@@ -16,7 +16,7 @@
                             <div class="col-md-2">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="fa fa-search"></span></span>
-                                    <input type="text" class="form-control" placeholder="新闻标题" name="Title" value="" />
+                                    <input type="text" class="form-control" placeholder="新闻标题" name="Title" value="@ViewBag.NewsForm.Title" />
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -40,7 +40,8 @@
                             <th>新闻标题</th>
                             <th>新闻标签</th>
                             <th>新闻作者</th>
-                            <th>新闻内容</th>
+                            <th>创建时间</th>
+                            <th>新闻类型</th>
                             <th>设置</th>
                         </tr>
                     </thead>
@@ -52,7 +53,8 @@
                                 <td>@item.Title</td>
                                 <td>@item.Tag</td>
                                 <td>@item.Author</td>
-                                <td>@item.Contents</td>
+                                <td>@item.CreateTime</td>
+                                <td>@item.NewsTypeName</td>
                                 <td>
                                     <a href="/News/Edit?id=@item.Id" class="btn btn-rounded">修改</a>
                                     <a href="/News/Delete?id=@item.Id" class="btn btn-rounded">删除</a>
