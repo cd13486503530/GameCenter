@@ -1,0 +1,84 @@
+﻿@model List<GameCenter.Entity.Dto.DtoGameImages>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="panel-heading">
+            <h3 class="panel-title">游戏列表</h3>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="get" action="?">
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <label class="col-md-4 control-label">游戏名称</label>
+                                <div class="col-md-8">
+                                    <select class="form-control select">
+                                        <option value="0">所有游戏</option>
+                                        @foreach (var item in ViewBag.Games)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="图片tag搜索" name="Name" value="@ViewBag.FormReq.Name" />
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-success"><span class="fa fa-search"></span> 查询</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="table table-hover" id="DataTables_Table_0">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>游戏名称</th>
+                            <th>图片Tag</th>
+                            <th>类型</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.GameName</td>
+                                <td>@item.Name</td>
+                                <td>@(item.TypeName)</td>
+                                <td> 
+                                    <a href="/GameInfo/Index?gameId=" class="btn btn-rounded">设置详情</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+            @Html.Raw(ViewBag.PageHtml)
+        </div>
+
+    </div>
+
+</div>
+@section scripts{
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
+}

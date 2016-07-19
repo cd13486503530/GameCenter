@@ -48,5 +48,10 @@ namespace GameCenter.Core.Cache
             policy.SlidingExpiration = expires; 
             _memoryCache.Set(key, t, policy);
         }
+
+        public void Remove(string key)
+        {
+            _memoryCache.Remove(key);
+        }
     }
 }

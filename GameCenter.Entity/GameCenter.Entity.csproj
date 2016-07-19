@@ -69,6 +69,7 @@
     <Compile Include="Dto\DtoPartner.cs" />
     <Compile Include="Dto\GameEditForm.cs" />
     <Compile Include="Dto\GameForm.cs" />
+    <Compile Include="Dto\GameImagesForm.cs" />
     <Compile Include="Dto\GameInfoForm.cs" />
     <Compile Include="Dto\GameListForm.cs" />
     <Compile Include="Enum\GameImageType.cs" />

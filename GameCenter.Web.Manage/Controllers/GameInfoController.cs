@@ -17,7 +17,9 @@ namespace GameCenter.Web.Manage.Controllers
         public ActionResult Index(int gameId = 0)
         {
             var info = GameInfoService.GetGameInfo(gameId) ?? new GameInfo();
+            var game = GameService.GetGamesCache().FirstOrDefault(a => a.Id == gameId) ?? new DtoGame();
             ViewBag.GameId = gameId;
+            ViewBag.GameInfo = game;
             return View(info);
         }
 

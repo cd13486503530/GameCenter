@@ -12,7 +12,9 @@ namespace GameCenter.Entity.Dto
 
         public int GameId { get; set; }
 
-        public int MenuId { get; set; }
+        public string GameName { get; set; }
+
+        public string Name { get; set; }
 
         public string ImagePath { get; set; }
 
@@ -21,5 +23,9 @@ namespace GameCenter.Entity.Dto
         public string Info { get; set; }
 
         public string Url { get; set; }
+
+        public int Type { get; set; }
+
+        public string TypeName { get; set; }
     }
 }

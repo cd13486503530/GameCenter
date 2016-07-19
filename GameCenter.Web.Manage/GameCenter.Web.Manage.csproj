@@ -126,8 +126,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
-    <Compile Include="Controllers\GameController.cs" />
-    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\GameController.cs" /> 
+    <Compile Include="Controllers\NewsController.cs" /> 
+    <Compile Include="Controllers\GameImagesController.cs" />  
     <Compile Include="Controllers\GameInfoController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -488,11 +489,14 @@
   <ItemGroup>
     <Content Include="Content\css\urlfont\PRmiXeptR36kaC0GEAetxolIZu-HDpmDIZMigmsroc4.woff2" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup> 
     <Content Include="Views\News\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\News\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GameImages\List.cshtml" /> 
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
