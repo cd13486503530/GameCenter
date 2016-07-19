@@ -5,7 +5,7 @@
 }
 
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> 修改游戏</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 修改【@ViewBag.GameInfo.Name】详情</h2>
 </div>
 
 <div class="page-content-wrap">
@@ -16,7 +16,8 @@
                 <div class="panel-body">
                     <form id="validate" method="post" class="form-horizontal" action="/GameInfo/EditInfo" enctype="multipart/form-data">
                         <input type="hidden" name="GameId" value="@(Model.Id > 0 ? Model.GameId : ViewBag.GameId)" /> 
-                        <input type="hidden" name="Id" value="@Model.Id" /> 
+                        <input type="hidden" name="Id" value="@Model.Id" />  
+
                         <div class="form-group">
                             <label class="col-md-2 control-label">App Store地址:</label>
                             <div class="col-md-6">
@@ -35,9 +36,7 @@
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">安卓Apk上传:</label>
-                            <div class="col-md-6">
-                                @*<input type="text" name="AndriodDl" value="@Model.AndriodDl" class="validate[required] form-control" id="form-validation-field-0">
-                                <span class="help-block">安卓下载地址不能为空,下载地址带上http://</span>*@
+                            <div class="col-md-6"> 
                                 <input type="file" name="AndriodDlFileData"  title="12312"/>
                                 <input type="hidden" name="AndriodDl" value="@Model.AndriodDl" />
                                 <input type="hidden" name="FileName" value="@Model.FileName" />
@@ -46,27 +45,15 @@
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏Logo:</label>
-                            <div class="col-md-3">
-                                @*<div class="file-preview">
-                                    <div class="file-drop-zone">
-                                        <div class="file-preview-thumbnails">
-                                            <img src="@(GameCenter.Core.Common.Domain.GetImage(Model.Logo))" style="width:auto;height:160px;" />
-                                        </div>
-                                    </div>
-                                </div>*@
+                            <div class="col-md-4"> 
                                 <input type="file" name="LogoFileData" accept="image/*"/>
                                 <input type="hidden" name="Logo" value="@Model.Logo" />
-                            </div>
-                            
-                            @*<div class="col-md-3">
-                                <input type="file" name="LogoFileData" accept="image/*"/>
-                                <input type="hidden" name="Logo" value="@Model.Logo" />
-                            </div>*@
+                            </div> 
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏二维码</label>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <input type="file" name="QrCodeImageFileData" accept="image/*"/>
                                 <input type="hidden" name="QrCodeImage" value="@Model.QrCodeImage" />
                             </div>

@@ -23,6 +23,7 @@ namespace GameCenter.Core.Service
         private static string UPLAOD_TAG = "Cover"; //游戏封面
         private static int ThumbnailImage_Width = 430;
         private static int ThumbnailImage_Heigth = 270;
+        private static string key = "GameCenter.Core.Service.GameService.GetGamesCache";
 
         public static List<DtoGame> GetGames()
         {
@@ -34,8 +35,7 @@ namespace GameCenter.Core.Service
         }
 
         public static List<DtoGame> GetGamesCache()
-        {   
-            var key = "GameCenter.Core.Service.GameService.GetGamesCache";
+        {
             var cacheInfo = LocalCache.Instance().Get<List<DtoGame>>(key);
             if (cacheInfo == null)
             {
@@ -164,7 +164,7 @@ namespace GameCenter.Core.Service
             if (!check)
                 return false;
 
-            var imagePath = UploadFile.SaveImage(file, UPLAOD_TAG, ThumbnailImage_Width,ThumbnailImage_Heigth);
+            var imagePath = UploadFile.SaveImage(file, UPLAOD_TAG, ThumbnailImage_Width, ThumbnailImage_Heigth);
             if (string.IsNullOrEmpty(imagePath))
             {
                 msg = "上传失败";
@@ -176,7 +176,9 @@ namespace GameCenter.Core.Service
                 var game = Mapper.Map<Game>(req);
                 game.ImagePath = imagePath;
                 db.Games.Add(game);
-                return db.SaveChanges() > 0;
+                var r = db.SaveChanges() > 0;
+                LocalCache.Instance().Remove(key);
+                return r;
             }
         }
 
@@ -205,7 +207,9 @@ namespace GameCenter.Core.Service
 
                 db.Set<Game>().Attach(game);
                 db.Entry(game).State = System.Data.Entity.EntityState.Modified;
-                return db.SaveChanges() > 0;
+                var r = db.SaveChanges() > 0;
+                LocalCache.Instance().Remove(key);
+                return r;
             }
         }
 

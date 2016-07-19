@@ -24,8 +24,7 @@ namespace GameCenter.Entity.Data
 
         public int Sort { get; set; }
 
-        [MaxLength(256)]
-        [Column(TypeName = "varchar")]
+        [Column(TypeName = "varchar(max)")]
         public string Info { get; set; }
 
         [MaxLength(256)]
@@ -36,5 +35,7 @@ namespace GameCenter.Entity.Data
         /// 游戏图片类型，GameImageType指定
         /// </summary>
         public int Type { get; set; }
+
+        public bool Disable { get; set; }
     }
 }

@@ -127,6 +127,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\GameImagesController.cs" />
     <Compile Include="Controllers\NewController.cs" />
     <Compile Include="Controllers\GameInfoController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
@@ -471,6 +472,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\urlfont\PRmiXeptR36kaC0GEAetxolIZu-HDpmDIZMigmsroc4.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GameImages\List.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
