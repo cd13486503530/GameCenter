@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ActiveAttribute.cs" />
     <Compile Include="App_Start\BaseController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -256,7 +257,6 @@
     <Folder Include="Models\" />
     <Folder Include="Scripts\plugins\fileinput\fileinput\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\New\" />
     <Folder Include="Views\Partner\" />
   </ItemGroup>
   <ItemGroup>
@@ -301,6 +301,7 @@
     <Content Include="Views\GameInfo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\New\Add.cshtml" />
     <Content Include="Content\css\urlfont\cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2" />
   </ItemGroup>
   <ItemGroup>

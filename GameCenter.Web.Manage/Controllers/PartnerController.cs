@@ -1,6 +1,7 @@
 ﻿using GameCenter.Core.Common;
 using GameCenter.Core.Service;
 using GameCenter.Entity.Dto;
+using GameCenter.Web.Manage.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace GameCenter.Web.Manage.Controllers
 {
+    [Active("Partner")]
     public class PartnerController : Controller
     {
         // GET: Partner

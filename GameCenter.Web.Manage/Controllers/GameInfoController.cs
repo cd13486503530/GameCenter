@@ -1,5 +1,6 @@
 ﻿using GameCenter.Core.Service;
 using GameCenter.Entity.Data;
+using GameCenter.Web.Manage.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace GameCenter.Web.Manage.Controllers
 {
+    [Active("Game")]
     public class GameInfoController : Controller
     {
         // GET: GameInfo
@@ -18,7 +20,7 @@ namespace GameCenter.Web.Manage.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditInfo()
+        public ActionResult EditInfo(GameInfo req)
         {
             return Json("");
         }
