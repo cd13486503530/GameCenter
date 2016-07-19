@@ -63,6 +63,7 @@
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Cache\LocalCache.cs" />
     <Compile Include="Common\AutoMapperHelper.cs" />
+    <Compile Include="Common\Domain.cs" />
     <Compile Include="Common\ExpressionExtension.cs" />
     <Compile Include="Common\MapperEntity.cs" />
     <Compile Include="Common\PageHelper.cs" />

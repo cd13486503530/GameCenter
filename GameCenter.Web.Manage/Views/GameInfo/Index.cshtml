@@ -14,37 +14,61 @@
             <!-- START VALIDATIONENGINE PLUGIN -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form id="validate" method="post" class="form-horizontal" action="/Game/EditForm" enctype="multipart/form-data">
-                        <input type="hidden" name="Id" value="@Model.Id" />
+                    <form id="validate" method="post" class="form-horizontal" action="/GameInfo/EditInfo" enctype="multipart/form-data">
+                        <input type="hidden" name="GameId" value="@(Model.Id > 0 ? Model.GameId : ViewBag.GameId)" /> 
+                        <input type="hidden" name="Id" value="@Model.Id" /> 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">安卓下载地址:</label>
-                            <div class="col-md-9">
-                                <input type="text" name="AndriodDl" value="@Model.AndriodDl" class="validate[required] form-control" id="form-validation-field-0">
-                                <span class="help-block">安卓下载地址不能为空,下载地址带上http://</span>
+                            <label class="col-md-2 control-label">App Store地址:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="IosDl" value="@Model.IosDl" class="validate[required] form-control" id="form-validation-field-1">
+                                <span class="help-block">App Store地址不能为空,下载地址带上https://</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">游戏版本:</label>
+                            <div class="col-md-2">
+                                <input type="text" name="Version" value="@Model.Version" class="validate[required] form-control" id="form-validation-field-2">
+                                <span class="help-block"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">App Store地址:</label>
-                            <div class="col-md-9">
-                                <input type="text" name="IosDl" value="@Model.IosDl" class="validate[required] form-control" id="form-validation-field-1">
-                                <span class="help-block">App Store地址不能为空,下载地址带上https://</span>
+                            <label class="col-md-2 control-label">安卓Apk上传:</label>
+                            <div class="col-md-6">
+                                @*<input type="text" name="AndriodDl" value="@Model.AndriodDl" class="validate[required] form-control" id="form-validation-field-0">
+                                <span class="help-block">安卓下载地址不能为空,下载地址带上http://</span>*@
+                                <input type="file" name="AndriodDlFileData"  title="12312"/>
+                                <input type="hidden" name="AndriodDl" value="@Model.AndriodDl" />
+                                <input type="hidden" name="FileName" value="@Model.FileName" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏Logo:</label>
                             <div class="col-md-3">
-                                <input type="file" name="LogoFileData" />
+                                @*<div class="file-preview">
+                                    <div class="file-drop-zone">
+                                        <div class="file-preview-thumbnails">
+                                            <img src="@(GameCenter.Core.Common.Domain.GetImage(Model.Logo))" style="width:auto;height:160px;" />
+                                        </div>
+                                    </div>
+                                </div>*@
+                                <input type="file" name="LogoFileData" accept="image/*"/>
                                 <input type="hidden" name="Logo" value="@Model.Logo" />
                             </div>
+                            
+                            @*<div class="col-md-3">
+                                <input type="file" name="LogoFileData" accept="image/*"/>
+                                <input type="hidden" name="Logo" value="@Model.Logo" />
+                            </div>*@
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏二维码</label>
                             <div class="col-md-3">
-                                <input type="file" name="QrCodeImageFileData" />
-                                <input type="hidden" name="Logo" value="@Model.QrCodeImage" />
+                                <input type="file" name="QrCodeImageFileData" accept="image/*"/>
+                                <input type="hidden" name="QrCodeImage" value="@Model.QrCodeImage" />
                             </div>
                         </div>
 
@@ -52,23 +76,23 @@
                             <label class="col-md-2 control-label">背景图片</label>
                             <div class="col-md-4">
                                 <input type="file" name="BgImage0FileData" accept="image/*" />
-                                <input type="hidden" name="BgImage0FileData" value="@Model.BgImage0" />
+                                <input type="hidden" name="BgImage0" value="@Model.BgImage0" />
                             </div>
                             <div class="col-md-4">
-                                <input type="file" name="BgImage0FileData" accept="image/*" />
-                                <input type="hidden" name="BgImage1FileData" value="@Model.BgImage1" />
+                                <input type="file" name="BgImage1FileData" accept="image/*" />
+                                <input type="hidden" name="BgImage1" value="@Model.BgImage1" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label"></label>
                             <div class="col-md-4">
-                                <input type="file" name="BgImage0FileData" accept="image/*" />
-                                <input type="hidden" name="BgImage2FileData" value="@Model.BgImage2" />
+                                <input type="file" name="BgImage2FileData" accept="image/*" />
+                                <input type="hidden" name="BgImage2" value="@Model.BgImage2" />
                             </div>
                             <div class="col-md-4">
-                                <input type="file" name="BgImage0FileData" accept="image/*" />
-                                <input type="hidden" name="BgImage3FileData" value="@Model.BgImage3" />
+                                <input type="file" name="BgImage3FileData" accept="image/*" />
+                                <input type="hidden" name="BgImage3" value="@Model.BgImage3" />
                             </div>
                         </div>
 
@@ -76,11 +100,11 @@
                             <label class="col-md-2 control-label">焦点图</label>
                             <div class="col-md-4">
                                 <input type="file" name="FocusImage0FileData" accept="image/*" />
-                                <input type="hidden" name="FocusImage0FileData" value="@Model.FocusImage0" />
+                                <input type="hidden" name="FocusImage0" value="@Model.FocusImage0" />
                             </div>
                             <div class="col-md-4">
                                 <input type="file" name="FocusImage1FileData" accept="image/*" />
-                                <input type="hidden" name="FocusImage1FileData" value="@Model.FocusImage1" />
+                                <input type="hidden" name="FocusImage1" value="@Model.FocusImage1" />
                             </div>
                         </div>
 
@@ -88,11 +112,11 @@
                             <label class="col-md-2 control-label"></label>
                             <div class="col-md-4">
                                 <input type="file" name="FocusImage2FileData" accept="image/*" />
-                                <input type="hidden" name="FocusImage2FileData" value="@Model.FocusImage2" />
+                                <input type="hidden" name="FocusImage2" value="@Model.FocusImage2" />
                             </div>
                             <div class="col-md-4">
                                 <input type="file" name="FocusImage3FileData" accept="image/*" />
-                                <input type="hidden" name="FocusImage3FileData" value="@Model.FocusImage3" />
+                                <input type="hidden" name="FocusImage3" value="@Model.FocusImage3" />
                             </div>
                         </div>
 
@@ -125,11 +149,11 @@
     <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
     <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
     <script type='text/javascript' src="~/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
-    <script type='text/javascript' src="/Scripts/plugins/fileinput/fileinput.min.js"></script>
+    <script type='text/javascript' src="/Scripts/plugins/fileinput/fileinput.js"></script>
     <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
     <script type="text/javascript">
         $('#validate').ajaxForm({
-            url: '/Game/EditForm',
+            url: '/GameInfo/EditInfo',
             type: "POST",
             dataType: "json",
             success: function (data) {
@@ -145,28 +169,76 @@
     </script>
 
     <script type="text/javascript">
-        $("input[type=file]").fileinput({
-            showUpload: true,
+        $("input[type=file]").not("input[name=AndriodDlFileData]").fileinput({
+            showUpload: false,
             showRemove: true,
             showCaption: false,
-            //autoReplace: true,
-            uploadUrl: '/GameInfo/Uplaod',
+            autoReplace: true,
+            uploadUrl: '/GameInfo/UploadFile',
             uploadRightNow: true,
             allowedFileExtensions: ['jpg', 'png', 'gif'],
             maxFileSize: 2000,
             maxFilesCount: 1,
             allowedFileTypes: ['image'],
             previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-            language: 'zh',
+            //language: 'zh',
             slugCallback: function (filename) {
-                //$('#preview,[type=submit],#goto-sub').prop('disabled', 'disabled');
-
-                //return filename.replace(/\(|\)|\[|\]/g, '_');
+                return filename.replace(/\(|\)|\[|\]/g, '_');
             }
+        });
+
+        $('input[type=file]').not("input[name=AndriodDlFileData]").on('fileuploaded', function (data, r, a) {
+            var _this = $(this);
+            var hiddenInputName = _this.attr("name").replace("FileData", "");
+            $("input[name=" + hiddenInputName+"]").val(r.response.filename);
+        });
+
+        $("input[name=AndriodDlFileData]").fileinput({
+            showUpload: false,
+            showRemove: true,
+            showCaption: true,
+            //autoReplace: true,
+            uploadUrl: '/GameInfo/UploadFile',
+            uploadRightNow: true,
+            //allowedFileExtensions: ['apk'],
+            //maxFileSize: 2000,
+            maxFilesCount: 1,
+            //allowedFileTypes: ['image'],
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            showPreview: false,
+            //language: 'zh',
+            slugCallback: function (filename) {
+                return filename.replace(/\(|\)|\[|\]/g, '_');
+            }
+        });
+
+        $("input[name=AndriodDlFileData]").on('fileuploaded', function (data, r, a) {
+            var _this = $(this);
+            var hiddenInputName = _this.attr("name").replace("FileData", "");
+            $("input[name=" + hiddenInputName + "]").val(r.response.filename);
+            $("input[name=FileName]").val(r.response.name);
+
         });
 
 
 
-
+        $("input[type=file]").fileinput('refresh', {
+            refreshCallback: function ($el) {
+                var imagepath = $($el).closest('.file-input').next().val();
+                var previewHtml = '';
+                if (imagepath != '') {
+                    previewHtml = '<div class="file-preview">' +
+                        '<div class="file-drop-zone">' +
+                        '<div class="file-preview-thumbnails">' +
+                        '<img src="@GameCenter.Core.Common.Domain._imageSite' + imagepath + '" style="width:auto;height:160px;">' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                }
+                return {
+                    initialPreview: previewHtml
+                };
+            }
+        });
     </script>
 }
