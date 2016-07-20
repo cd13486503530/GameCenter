@@ -48,6 +48,22 @@ namespace GameCenter.Core.Service
             }
         }
 
+        public static bool Update(DtoGameImages form,GameImages source , out string msg)
+        {
+            msg = string.Empty;
+
+            if (!Check(form, out msg))
+                return false;
+
+            using (var db = new PortalContext())
+            {
+                var gameImages = Mapper.Map<GameImages>(form);
+                db.Set<GameImages>().Attach(gameImages);
+                db.Entry(gameImages).State = System.Data.Entity.EntityState.Modified;
+                return db.SaveChanges() > 0;
+            }
+        }
+
         private static bool Check(DtoGameImages form, out string msg)
         {
             msg = string.Empty;
@@ -63,6 +79,26 @@ namespace GameCenter.Core.Service
                 return false;
             }
             return true;
+        }
+
+        public static GameImages GetOneById(int id)
+        {
+            using (var db = new PortalContext())
+            {
+                return db.GameImages.FirstOrDefault(a=>a.Id == id);
+            }
+        }
+
+        public static bool Disable(int id)
+        {
+            using (var db = new PortalContext())
+            {
+                var info = GameImagesService.GetOneById(id);
+                info.Disable = true;
+                db.Set<GameImages>().Attach(info);
+                db.Entry(info).State = System.Data.Entity.EntityState.Modified;
+                return db.SaveChanges() > 0;
+            }
         }
     }
 }

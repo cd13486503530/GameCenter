@@ -1,5 +1,6 @@
 ﻿using GameCenter.Core.Common;
 using GameCenter.Core.Service;
+using GameCenter.Entity.Data;
 using GameCenter.Entity.Dto;
 using GameCenter.Web.Manage.App_Start;
 using System;
@@ -31,6 +32,7 @@ namespace GameCenter.Web.Manage.Controllers
             return View();
         }
 
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult AddForm(DtoGameImages form)
         {
@@ -39,14 +41,30 @@ namespace GameCenter.Web.Manage.Controllers
             return Json(new { status = r,error = msg });
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(GameImagesForm req)
         {
-            return View();
+            var info = GameImagesService.GetOneById(req.Id) ?? new GameImages();
+            ViewBag.Form = req ?? new GameImagesForm();
+            ViewBag.Games = GameService.GetGamesCache();
+            return View(info);
         }
 
+        public ActionResult Disable(int id)
+        {
+            var r = GameImagesService.Disable(id);
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+
+        [HttpPost]
         public ActionResult EditForm(DtoGameImages form)
         {
-            return Json("");
+            var msg = string.Empty;
+            var info = GameImagesService.GetOneById(form.Id);
+            if (info == null)
+                return Json(new { status = false, msg = "参数错误" });
+            
+            var r = GameImagesService.Update(form, info ,out msg);
+            return Json(new { status = r, error = msg });
         }
     }
 }

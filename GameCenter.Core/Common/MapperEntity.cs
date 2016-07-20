@@ -30,7 +30,8 @@ namespace GameCenter.Core.Common
                 map.ConstructUsing(s => new DtoGameImages{
                     GameName = (GameService.GetGamesCache().FirstOrDefault(a=>a.Id ==  s.GameId) ?? new DtoGame() ).Name,
                     TypeName = ((GameImageType)s.Type).ToString()
-                }); 
+                });
+                cfg.CreateMap<DtoGameImages, GameImages>();
             });
         }
     }

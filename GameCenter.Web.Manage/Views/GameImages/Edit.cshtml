@@ -1,7 +1,160 @@
-﻿
+﻿@model GameCenter.Entity.Data.GameImages
+@using GameCenter.Entity.Enum;
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
 
+<div class="page-title">
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 修改【@(((GameImageType)ViewBag.Form.Type).ToString())】</h2>
+</div>
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START VALIDATIONENGINE PLUGIN -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form id="validate" method="post" class="form-horizontal" action="/GameImages/EditForm" enctype="multipart/form-data">
+                       <input name="Id" value="@Request["Id"]" type="hidden" />
+                        <input name="Type" value="@Request["Type"]" type="hidden" />
+                         <div class="form-group">
+                            <label class="col-md-2 control-label">选择游戏名称:</label>
+                            <div class="col-md-2">
+                                <select class="form-control select" name="GameId">
+                                    @foreach (var item in ViewBag.Games)
+                                    {
+                                        <option value="@item.Id" @(item.Id == Model.GameId ? "selected" : "" )>@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">图片Tag:</label>
+                            <div class="col-md-2">
+                                <input type="text" name="Name" class="form-control" value="@Model.Name" />
+                                <span class="help-block">可以不填,最大不能超过64汉字</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">排序值:</label>
+                            <div class="col-md-2">
+                                <input type="text" name="Sort" class="form-control" value="@Model.Sort" />
+                                <span class="help-block">可以不填,格式为数字,默认值为0</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">链接:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="Url" class="form-control" value="@Model.Url" />
+                                <span class="help-block">可以不填,如果想对图片增加链接的话,http://</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">上传图片</label>
+                            <div class="col-md-4">
+                                <input type="file" name="ImagePathFileData" id="ImagePathFileData" />
+                                <input type="hidden" name="ImagePath" id="ImagePath" value="@Model.ImagePath"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">说明信息:</label>
+                            <div class="col-md-8">
+                                <textarea class="summernote" name="Info">@Model.Info</textarea>
+                            </div>
+                        </div>
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
+                            <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- END VALIDATIONENGINE PLUGIN -->
+
+        </div>
+    </div>
+</div>
+<div class="message-box message-box-danger animated fadeIn" data-sound="fail" id="message-box-sound-2">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-times"></span> <p>错误提示!</p></div>
+            <div class="mb-footer">
+                <button class="btn btn-default btn-lg pull-right mb-control-close">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
+    <script type='text/javascript' src="/Scripts/plugins/fileinput/fileinput.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/summernote/summernote.js"></script>
+    <script type="text/javascript">
+        $('#validate').ajaxForm({
+            url: '/GameImages/EditForm',
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.status) {
+                    window.location.href = "/GameImages/List?type="+@ViewBag.Form.Type;
+                } else {
+                    $('#message-box-sound-2 .fa-times').next().html('');
+                    $('#message-box-sound-2 .fa-times').next().html(data.error);
+                    $('#message-box-sound-2').addClass('open')
+                }
+            }
+        });
+        $("input[type=file]").fileinput({
+            showUpload: false,
+            showRemove: true,
+            showCaption: false,
+            autoReplace: true,
+            uploadUrl: '/GameInfo/UploadFile',
+            uploadRightNow: true,
+            allowedFileExtensions: ['jpg', 'png', 'gif'],
+            maxFileSize: 2000,
+            maxFilesCount: 1,
+            allowedFileTypes: ['image'],
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            //language: 'zh',
+            slugCallback: function (filename) {
+                return filename.replace(/\(|\)|\[|\]/g, '_');
+            }
+        });
+
+        $('input[type=file]').on('fileuploaded', function (data, r, a) {
+            var _this = $(this);
+            var hiddenInputName = _this.attr("name").replace("FileData", "");
+            $("#ImagePath").val(r.response.filename);
+        });
+
+        $("input[type=file]").fileinput('refresh', {
+            refreshCallback: function ($el) {
+                var imagepath = $($el).closest('.file-input').next().val();
+                var previewHtml = '';
+                if (imagepath != '') {
+                    previewHtml = '<div class="file-preview">' +
+                        '<div class="file-drop-zone">' +
+                        '<div class="file-preview-thumbnails">' +
+                        '<img src="@GameCenter.Core.Common.Domain._imageSite' + imagepath + '" style="width:auto;height:160px;">' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                }
+                return {
+                    initialPreview: previewHtml
+                };
+            }
+        });
+    </script>
+}

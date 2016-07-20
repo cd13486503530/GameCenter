@@ -8,6 +8,8 @@ namespace GameCenter.Entity.Dto
 {
    public class GameImagesForm
     {
+        public int Id { get; set; }
+
         public int Type { get; set; }
 
         public int GameId { get; set; }

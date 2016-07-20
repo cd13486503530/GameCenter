@@ -14,6 +14,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form id="validate" method="post" class="form-horizontal" action="/GameImages/AddForm" enctype="multipart/form-data">
+                        <input type="hidden" name="type" value="@Request["type"]" />
                         <div class="form-group">
                             <label class="col-md-2 control-label">选择游戏名称:</label>
                             <div class="col-md-2">
@@ -35,7 +36,7 @@
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">排序值:</label>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <input type="text" name="Sort" class="form-control" />
                                 <span class="help-block">可以不填,格式为数字,默认值为0</span>
                             </div>
@@ -51,8 +52,8 @@
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">上传图片</label>
-                            <div class="col-md-3">
-                                <input type="file" name="ImagePathFiledata" id="ImagePathFiledata" />
+                            <div class="col-md-4">
+                                <input type="file" name="ImagePathFileData" id="ImagePathFileData" />
                                 <input type="hidden" name="ImagePath" id="ImagePath" />
                             </div>
                         </div>
@@ -105,7 +106,7 @@
                     window.location.href = "/GameImages/List?type="+@ViewBag.Type;
                 } else {
                     $('#message-box-sound-2 .fa-times').next().html('');
-                    $('#message-box-sound-2 .fa-times').next().html(data.msg);
+                    $('#message-box-sound-2 .fa-times').next().html(data.error);
                     $('#message-box-sound-2').addClass('open')
                 }
             }
@@ -115,7 +116,7 @@
             showRemove: true,
             showCaption: false,
             autoReplace: true,          
-            uploadUrl: '/Upload',
+            uploadUrl: '/GameInfo/UploadFile',
             uploadRightNow: true,
             allowedFileExtensions: ['jpg', 'png', 'gif'],
             maxFileSize: 2000,
