@@ -26,6 +26,8 @@ namespace GameCenter.Core.Common
                 cfg.CreateMap<DtoNews, News>();
                 cfg.CreateMap<NewsType, DtoNewsType>(); 
                 cfg.CreateMap<GameInfoForm,GameInfo>();
+                cfg.CreateMap<Partner, DtoPartner>();
+                cfg.CreateMap<DtoPartner, Partner>();
                 var map = cfg.CreateMap<GameImages,DtoGameImages>();
                 map.ConstructUsing(s => new DtoGameImages{
                     GameName = (GameService.GetGamesCache().FirstOrDefault(a=>a.Id ==  s.GameId) ?? new DtoGame() ).Name,

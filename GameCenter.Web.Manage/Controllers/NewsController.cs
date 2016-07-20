@@ -8,9 +8,11 @@ using GameCenter.Entity.Dto;
 using GameCenter.Core.Service;
 using GameCenter.Core.Common;
 using GameCenter.Core.Cache;
+using GameCenter.Web.Manage.App_Start;
 
 namespace GameCenter.Web.Manage.Controllers
 {
+    [Active("News")]
     public class NewsController : Controller
     {
         // GET: New

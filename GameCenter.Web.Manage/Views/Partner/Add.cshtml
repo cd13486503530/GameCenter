@@ -1,12 +1,11 @@
-﻿@using GameCenter.Core.Service;
+﻿
 @{
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var newsType = NewsTypeService.GetTypeCacheList();
 }
 
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> 添加新闻</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 添加合作者</h2>
 </div>
 
 <div class="page-content-wrap">
@@ -15,51 +14,33 @@
             <!-- START VALIDATIONENGINE PLUGIN -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form id="validate" method="post" class="form-horizontal" action="/New/AddForm" enctype="multipart/form-data">
+                    <form id="validate" method="post" class="form-horizontal" action="/Partner/AddForm" enctype="multipart/form-data">
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">新闻标题:</label>
+                            <label class="col-md-2 control-label">合作者名称:</label>
                             <div class="col-md-9">
-                                <input type="text" name="Title" class="validate[required] form-control" id="form-validation-field-0">
+                                <input type="text" name="Name" class="validate[required] form-control" id="form-validation-field-0">
                                 <span class="help-block">不能为空,最大不能超过16个汉字</span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">新闻标签:</label>
+                            <label class="col-md-2 control-label">链接地址:</label>
                             <div class="col-md-9">
-                                <input type="text" name="Tag" class="validate form-control" id="form-validation-field-1">
-                                <span class="help-block"></span>
+                                <input type="text" name="LlinkUrl" class="validate[required] form-control" id="form-validation-field-1">
+                                <span class="help-block">不能为空，链接地址带上https://</span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">新闻作者:</label>
+                            <label class="col-md-2 control-label">LOGO标志:</label>
                             <div class="col-md-9">
-                                <input type="text" name="Author" class="validate form-control" id="form-validation-field-2">
-                                <span class="help-block"></span>
+                                <a class="file-input-wrapper btn btn-default  fileinput btn-danger">
+                                    <input type="file" class="fileinput btn-danger" name="Filedata" id="form-validation-field-3" data-filename-placement="inside" title="选择LOGO标志">
+                                </a>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">新闻类型:</label>
-                            <div class="col-md-9">
-                                <select name="NewsType" class="validate[required]" id="form-validation-field-4">
-                                    @foreach (var item in newsType)
-                                    {
-                                        <option value="@item.Id">@item.Name</option>
-                                    }
-                                </select>
-                                <span class="help-block">不能为空</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">新闻内容:</label>
-                            <div class="col-md-10">
-                                <textarea class="summernote" name="Contents"></textarea>
-                            </div>
-                        </div>
                         <div class="btn-group pull-right">
                             <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
                             <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>
@@ -94,12 +75,12 @@
     <script type="text/javascript" src="~/Scripts/plugins/summernote/summernote.js"></script>
     <script type="text/javascript">
         $('#validate').ajaxForm({
-            url: '/News/AddForm',
+            url: '/Partner/AddForm',
             type: "POST",
             dataType: "json",
             success: function (data) {
                 if (data.status) {
-                    window.location.href = "/News/List";
+                    window.location.href = "/Partner/List";
                 } else {
                     $('#message-box-sound-2 .fa-times').next().html('');
                     $('#message-box-sound-2 .fa-times').next().html(data.error);
@@ -109,3 +90,4 @@
         });
     </script>
 }
+

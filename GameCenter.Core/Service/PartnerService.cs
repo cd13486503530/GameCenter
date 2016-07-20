@@ -18,10 +18,6 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                Mapper.Initialize(cfg =>
-                {
-                    cfg.CreateMap<Partner, DtoPartner>();
-                });
                 var info = db.Partners.First(a => a.Id == id);
                 if (info == null)
                 {
@@ -31,24 +27,23 @@ namespace GameCenter.Core.Service
             }
         }
 
-        public static List<DtoPartner> GetPartnerList(DtoPartner dPartner)
+        public static List<DtoPartner> GetPartnerList(DtoPartner dPartner, out int total)
         {
-            var dList = new List<DtoPartner>();
             using (var db = new PortalContext())
             {
-                Mapper.Initialize(cfg =>
-                {
-                    cfg.CreateMap<Partner, DtoPartner>();
-                });
-                var list = db.Partners.Skip((dPartner.PageIndex - 1) * dPartner.PageSize).Take(dPartner.PageSize).Where(a => a.Disable == true).ToList();
-                return Mapper.Map<List<DtoPartner>>(list);
+                var list = db.Partners.Where(a => a.Disable == true);
+                if (!string.IsNullOrEmpty(dPartner.Name))
+                    list = list.Where(a => a.Name.Contains(dPartner.Name));
+                total = list.Count();
+                list = list.OrderByDescending(a => a.Sort).Skip((dPartner.PageIndex - 1) * dPartner.PageSize).Take(dPartner.PageSize);
+                return Mapper.Map<List<DtoPartner>>(list.ToList());
             }
         }
 
         public static bool AddPartner(DtoPartner dPartner, HttpPostedFileBase file, out string msg)
         {
             string tag = "Partner";
-            ; msg = string.Empty;
+            msg = string.Empty;
             if (string.IsNullOrEmpty(dPartner.Name))
             {
                 msg = "合作者名称不能为空";
@@ -67,10 +62,6 @@ namespace GameCenter.Core.Service
             }
             using (var db = new PortalContext())
             {
-                Mapper.Initialize(cfg =>
-                {
-                    cfg.CreateMap<DtoPartner, Partner>();
-                });
                 var p = Mapper.Map<Partner>(dPartner);
                 p.ImagePath = imagePath;
                 db.Partners.Add(p);
@@ -115,10 +106,6 @@ namespace GameCenter.Core.Service
             }
             using (var db = new PortalContext())
             {
-                Mapper.Initialize(cfg =>
-                {
-                    cfg.CreateMap<DtoPartner, Partner>();
-                });
                 var p = Mapper.Map<Partner>(dPartner);
                 p.ImagePath = UploadFile.SaveFile(file, tag);
                 return db.SaveChanges() > 0;
