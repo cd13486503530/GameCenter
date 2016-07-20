@@ -23,5 +23,30 @@ namespace GameCenter.Web.Manage.Controllers
             ViewBag.PageHtml = PageHelper.ManagePager(total, req.PageIndex, req.PageSize);
             return View(list);
         }
+
+        public ActionResult Add(int type)
+        {
+            ViewBag.Type = type;
+            ViewBag.Games = GameService.GetGamesCache();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddForm(DtoGameImages form)
+        {
+            var msg = string.Empty;
+            var r = GameImagesService.Add(form,out msg);
+            return Json(new { status = r,error = msg });
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        public ActionResult EditForm(DtoGameImages form)
+        {
+            return Json("");
+        }
     }
 }
