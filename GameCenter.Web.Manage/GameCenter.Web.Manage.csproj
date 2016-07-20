@@ -273,7 +273,6 @@
     <Folder Include="Models\" />
     <Folder Include="Scripts\plugins\fileinput\fileinput\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Partner\" />
     <Folder Include="Views\Upload\" />
   </ItemGroup>
   <ItemGroup>
@@ -505,6 +504,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\GameImages\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partner\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Partner\Add.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

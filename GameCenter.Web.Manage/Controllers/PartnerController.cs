@@ -22,7 +22,10 @@ namespace GameCenter.Web.Manage.Controllers
 
         public ActionResult List(DtoPartner dPartner)
         {
-            var list = PartnerService.GetPartnerList(dPartner);
+            int total = 0;
+            var list = PartnerService.GetPartnerList(dPartner, out total);
+            ViewBag.PageHtml = PageHelper.ManagePager(total, dPartner.PageIndex, dPartner.PageSize);
+            ViewBag.PartnereForm = dPartner ?? new DtoPartner();
             return View(list);
         }
 

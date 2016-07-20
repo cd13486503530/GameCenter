@@ -1,7 +1,9 @@
 ﻿@model  List<GameCenter.Entity.Dto.DtoNews>
+@using GameCenter.Core.Service;
 @{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var newsType = NewsTypeService.GetTypeCacheList();
 }
 <div class="panel panel-default">
     <div class="panel-body">
@@ -19,6 +21,19 @@
                                     <input type="text" class="form-control" placeholder="新闻标题" name="Title" value="@ViewBag.NewsForm.Title" />
                                 </div>
                             </div>
+
+                            <label class="col-md-3 col-xs-12 control-label">新闻类型</label>
+                            <div class="col-md-2 col-xs-12">
+                                <select class="form-control select" name="NewsType" id="NewsType">
+                                    <option value="0">全部类型</option>
+                                    @foreach (var item in newsType)
+                                    {
+                                        <option value="@item.Id" @(item.Id == ViewBag.NewsForm.NewsType ? "selected" : "")>@item.Name</option>
+                                    }
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+
                             <div class="col-md-4">
                                 <div class="pull-right">
                                     <button type="submit" class="btn btn-success"><span class="fa fa-refresh"></span> 查询</button>
@@ -53,11 +68,11 @@
                                 <td>@item.Title</td>
                                 <td>@item.Tag</td>
                                 <td>@item.Author</td>
-                                <td>@item.CreateTime</td>
+                                <td>@item.CreateTime.ToString("yyyy-MM-dd")</td>
                                 <td>@item.NewsTypeName</td>
                                 <td>
                                     <a href="/News/Edit?id=@item.Id" class="btn btn-rounded">修改</a>
-                                    <a href="/News/Delete?id=@item.Id" class="btn btn-rounded">删除</a>
+                                    <a href="/News/Delete?id=@item.Id " class="btn btn-rounded">删除</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -73,5 +88,5 @@
 
 </div>
 @section scripts{
-    <script type="text/javascript" src="/scripts/plugins/icheck/icheck.min.js"></script>
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
 }
