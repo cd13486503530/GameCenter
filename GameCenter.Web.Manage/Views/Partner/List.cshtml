@@ -1,0 +1,72 @@
+﻿@model  List<GameCenter.Entity.Dto.DtoPartner>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="panel-heading">
+            <h3 class="panel-title">合作伙伴列表</h3>
+        </div>
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="get" action="?">
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="fa fa-search"></span></span>
+                                    <input type="text" class="form-control" placeholder="合作者名称" name="Title" value="" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-success"><span class="fa fa-refresh"></span> 查询</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover" id="DataTables_Table_0">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>合作者名称</th>
+                            <th>链接地址</th>
+                            <th>LOGO标志</th>
+                            <th>设置</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.LlinkUrl</td>
+                                <td>@item.ImagePath</td>
+                                <td>
+                                    <a href="/News/Edit?id=@item.Id" class="btn btn-rounded">修改</a>
+                                    <a href="/News/Delete?id=@item.Id" class="btn btn-rounded">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+            @Html.Raw(ViewBag.PageHtml)
+        </div>
+
+    </div>
+
+</div>
+@section scripts{
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
+}
+

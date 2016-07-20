@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title">
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 添加合作者</h2>
+</div>
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START VALIDATIONENGINE PLUGIN -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form id="validate" method="post" class="form-horizontal" action="/Partner/AddForm" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">合作者名称:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Name" class="validate[required] form-control" id="form-validation-field-0">
+                                <span class="help-block">不能为空,最大不能超过16个汉字</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">链接地址:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="LlinkUrl" class="validate[required] form-control" id="form-validation-field-1">
+                                <span class="help-block">不能为空，链接地址带上https://</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">LOGO标志:</label>
+                            <div class="col-md-9">
+                                <a class="file-input-wrapper btn btn-default  fileinput btn-danger">
+                                    <input type="file" class="fileinput btn-danger" name="Filedata" id="form-validation-field-3" data-filename-placement="inside" title="选择LOGO标志">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
+                            <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- END VALIDATIONENGINE PLUGIN -->
+
+        </div>
+    </div>
+</div>
+<div class="message-box message-box-danger animated fadeIn" data-sound="fail" id="message-box-sound-2">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-times"></span> <p>错误提示!</p></div>
+            <div class="mb-footer">
+                <button class="btn btn-default btn-lg pull-right mb-control-close">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/summernote/summernote.js"></script>
+    <script type="text/javascript">
+        $('#validate').ajaxForm({
+            url: '/Partner/AddForm',
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.status) {
+                    window.location.href = "/Partner/List";
+                } else {
+                    $('#message-box-sound-2 .fa-times').next().html('');
+                    $('#message-box-sound-2 .fa-times').next().html(data.error);
+                    $('#message-box-sound-2').addClass('open')
+                }
+            }
+        });
+    </script>
+}
+
