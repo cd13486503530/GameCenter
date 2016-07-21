@@ -8,8 +8,14 @@ namespace GameCenter.Web.Manage.Controllers
 {
     public class DefaultController : Controller
     {
+        [HttpPost]
         // GET: Default
-        public ActionResult Index()
+        public ActionResult Post(string info)
+        {
+            return View();
+        }
+
+        public ActionResult Index(string info)
         {
             return View();
         }

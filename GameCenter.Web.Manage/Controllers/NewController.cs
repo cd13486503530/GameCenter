@@ -23,8 +23,9 @@ namespace GameCenter.Web.Manage.Controllers
 
         public ActionResult List(DtoNews dNews)
         {
-            var list = NewsService.GetList(dNews);
-            return View(list);
+            //var list = NewsService.GetList(dNews);
+            //return View(list);
+            return View();
         }
         public ActionResult Add()
         {

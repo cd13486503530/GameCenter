@@ -38,25 +38,24 @@ namespace GameCenter.Web.Manage.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadFile()
+        public ActionResult UploadFile(UploadForm req)
         {
             var fileName = string.Empty;
             var file = Request.Files[0];
-            var fileInputName = Request.Files.AllKeys[0];
-            int width = 0, heigth = 0;
+            var fileInputName = Request.Files.AllKeys[0]; 
             var name = file.FileName;
             if (fileInputName.Contains("BgImage"))
             {
                 //具体参数需要修改
-                width = 1550;
-                heigth = 890;
+                req.Width = 1550;
+                req.Heigth = 890;
             }
 
             if (fileInputName.Contains("FocusImage"))
             {
                 //具体参数需要修改
-                width = 300;
-                heigth = 300;
+                req.Width = 300;
+                req.Heigth = 300;
             }
 
             if (fileInputName.Contains("AndriodDl"))
@@ -65,7 +64,7 @@ namespace GameCenter.Web.Manage.Controllers
             }
             else
             {
-                fileName = GameCenter.Core.Common.UploadFile.SaveImage(file, fileInputName.Replace("FileData", ""), width, heigth);
+                fileName = GameCenter.Core.Common.UploadFile.SaveImage(file, fileInputName.Replace("FileData", ""), req.Width, req.Heigth);
             }
 
             return Json(new { filename = fileName, name = name });

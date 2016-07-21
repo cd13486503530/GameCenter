@@ -41,6 +41,7 @@ namespace GameCenter.Web.Manage.Controllers
             return Json(new { status = r,error = msg });
         }
 
+        
         public ActionResult Edit(GameImagesForm req)
         {
             var info = GameImagesService.GetOneById(req.Id) ?? new GameImages();
@@ -55,6 +56,7 @@ namespace GameCenter.Web.Manage.Controllers
             return Redirect(Request.UrlReferrer.ToString());
         }
 
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult EditForm(DtoGameImages form)
         {

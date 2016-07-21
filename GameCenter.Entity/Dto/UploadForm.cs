@@ -8,7 +8,7 @@ namespace GameCenter.Entity.Dto
 {
     public class UploadForm
     {
-        public int width { get; set; }
-        public int heigth { get; set; }
+        public int Width { get; set; }
+        public int Heigth { get; set; }
     }
 }
