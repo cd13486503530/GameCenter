@@ -114,17 +114,11 @@
                 items: ['fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                         'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
                         'insertunorderedlist', '|', 'image', 'link', '|', 'fullscreen', 'source'],
-                afterCreate: function (e) {
-                    console.log(e);
+                afterCreate: function (e) { 
+                    //this.sync(); 
                 },
                 afterUpload: function (url) {  
-                    var a = $("#uppics").val();  
-                    if (a.length > 0) {  
-                        $("#uppics").val(a + "," + url);  
-                    } else {  
-                        $("#uppics").val(url);  
-                    }  
-                    //alert($("#uppics").val())  
+                    alert(url);
                 },  
                 afterBlur: function () { this.sync(); }
             });

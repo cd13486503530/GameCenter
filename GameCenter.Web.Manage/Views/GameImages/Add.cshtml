@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">说明信息:</label>
                             <div class="col-md-8">
-                                <textarea class="summernote" name="Info"></textarea>
+                                <textarea name="Info"></textarea>
                             </div>
                         </div>
                         <div class="btn-group pull-right">
@@ -95,8 +95,37 @@
     <script type='text/javascript' src="/Scripts/plugins/fileinput/fileinput.js"></script>
     <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
     <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
-    <script type="text/javascript" src="~/Scripts/plugins/summernote/summernote.js"></script>
+    <link href="~/Scripts/plugins/umeditor/themes/default/default.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/plugins/umeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/umeditor/lang/zh_CN.js"></script>
     <script type="text/javascript">
+        KindEditor.ready(function (K) {
+            editor = K.create('textarea[name="Info"]', {
+                resizeType: 1,
+                allowPreviewEmoticons: false,
+                allowImageUpload: true, //允许上传图片
+                uploadJson: '/GameInfo/UploadFile', //服务端上传图片处理URI
+                minWidth: 590,
+                minHeight: 300,
+                items: ['fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'image', 'link', '|', 'fullscreen', 'source'],
+                afterCreate: function (e) {
+                    console.log(e);
+                },
+                afterUpload: function (url) {
+                    var a = $("#uppics").val();
+                    if (a.length > 0) {
+                        $("#uppics").val(a + "," + url);
+                    } else {
+                        $("#uppics").val(url);
+                    }
+                    //alert($("#uppics").val())
+                },
+                afterBlur: function () { this.sync(); }
+            });
+        });
+
         $('#validate').ajaxForm({
             url: '/GameImages/AddForm',
             type: "POST",
@@ -115,7 +144,7 @@
             showUpload: false,
             showRemove: true,
             showCaption: false,
-            autoReplace: true,          
+            autoReplace: true,
             uploadUrl: '/GameInfo/UploadFile',
             uploadRightNow: true,
             allowedFileExtensions: ['jpg', 'png', 'gif'],

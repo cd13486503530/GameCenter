@@ -72,6 +72,7 @@
     <Compile Include="Dto\GameImagesForm.cs" />
     <Compile Include="Dto\GameInfoForm.cs" />
     <Compile Include="Dto\GameListForm.cs" />
+    <Compile Include="Dto\MenuForm.cs" />
     <Compile Include="Dto\UploadForm.cs" />
     <Compile Include="Enum\GameImageType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
