@@ -34,6 +34,8 @@ namespace GameCenter.Core.Common
                     TypeName = ((GameImageType)s.Type).ToString()
                 });
                 cfg.CreateMap<DtoGameImages, GameImages>();
+                cfg.CreateMap<Menu, DtoMenu>();
+                cfg.CreateMap<MenuForm, Menu>();
             });
         }
     }

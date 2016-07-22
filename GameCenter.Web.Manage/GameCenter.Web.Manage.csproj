@@ -127,6 +127,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\GameImagesController.cs" />
@@ -291,6 +292,7 @@
     <Folder Include="Models\" />
     <Folder Include="Scripts\plugins\fileinput\fileinput\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Menu\" />
     <Folder Include="Views\Upload\" />
   </ItemGroup>
   <ItemGroup>
