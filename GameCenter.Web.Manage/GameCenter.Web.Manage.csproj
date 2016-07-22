@@ -291,7 +291,6 @@
     <Folder Include="Models\" />
     <Folder Include="Scripts\plugins\fileinput\fileinput\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Menu\" />
     <Folder Include="Views\Upload\" />
   </ItemGroup>
   <ItemGroup>
@@ -532,6 +531,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Partner\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Menu\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Menu\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Menu\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Menu\AddChoose.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

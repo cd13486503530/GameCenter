@@ -1,0 +1,121 @@
+﻿@model List<GameCenter.Entity.Dto.DtoMenu>
+@{
+    ViewBag.Title = "List";
+}
+<ul class="breadcrumb">
+    @if (ViewBag.MenuForm.IsMain)
+    {
+        <li><a href="/Menu/List?IsMain=true">返回主页菜单</a></li>
+    }
+    else
+    {
+        <li><a href="/Menu/GameMenu">返回游戏菜单</a></li>
+    }
+    @if (ViewBag.MenuForm.ParentId > 0)
+    {
+        <li>@ViewBag.MenuForm.Name</li>
+    }
+
+</ul>
+<div class="page-title">
+    <h2>
+        <span class="fa fa-arrow-circle-o-left"></span>
+        @if (ViewBag.MenuForm.IsMain)
+        {
+            <text>主页菜单 </text>
+        }
+        else
+        {
+            <text>游戏菜单 </text>
+        }
+        @if (ViewBag.MenuForm.ParentId > 0)
+        {
+             @(" >> "+ViewBag.MenuForm.Name)
+        }
+    </h2>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" method="get" action="?">
+                        <div class="form-group">
+                            @if (!ViewBag.MenuForm.IsMain)
+                            {
+                                <label class="col-md-1 col-xs-12 control-label">菜单类型</label>
+                                <div class="col-md-2 col-xs-12">
+                                    <select class="form-control select" name="GameId" id="GameId">
+                                        @foreach (var item in ViewBag.Games)
+                                        {
+                                            <option value="@item.Id" @(item.Id == ViewBag.MenuForm.GameId ? "selected" : "")>@item.Name</option>
+                                        }
+                                    </select>
+                                    <span class="help-block"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="pull-right">
+                                        <button type="submit" class="btn btn-success"><span class="fa fa-refresh"></span> 查询</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-hover" id="DataTables_Table_0">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th>菜单名称</th>
+                            <th>菜单归属游戏</th>
+                            <th>排序</th>
+                            <th>设置</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@(string.IsNullOrEmpty(item.GameName) ? "【官网】主页菜单" : "【" + item.GameName + "】主页菜单")</td>
+                                <td>@item.Sort</td>
+                                <td>
+                                    @if (item.ParentId == 0)
+                                    {
+                                        <a href="/Menu/Add?parentId=@(item.Id)&GameId=@(item.GameId)" class="btn btn-rounded" title="点击添加子菜单">添加子菜单</a>
+                                        <a href="/Menu/List?IsMain=@(Request["IsMain"])&parentId=@(item.Id)&gameId=@(item.GameId)&Name=@(item.Name)" class="btn btn-rounded" title="点击查看子菜单内容">进入【@(item.Name)】子菜单 </a>
+                                    }
+                                    <a href="/Menu/Edit?id=@item.Id&IsMain=@(Request["IsMain"])&parentId=@(item.Id)" class="btn btn-rounded">修改</a>
+                                    @if (!item.Disable)
+                                    {
+                                        <a href="/Menu/Disable?id=@item.Id" class="btn btn-rounded">禁用</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/Menu/Enabled?id=@item.Id" class="btn btn-rounded">启用</a>
+                                    }
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
+}
+
+
+
+

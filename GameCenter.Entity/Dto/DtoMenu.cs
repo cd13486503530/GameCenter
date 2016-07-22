@@ -12,11 +12,18 @@ namespace GameCenter.Entity.Dto
 
         public string Name { get; set; }
 
+        public string GameName { get; set; }
+
         public int ParentId { get; set; }
 
         public string Url { get; set; }
 
         public int GameId { get; set; }
+
+        public int Sort { get; set; }
+
+        public bool Disable { get; set; }
+
 
     }
 }
