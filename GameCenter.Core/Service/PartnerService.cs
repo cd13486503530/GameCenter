@@ -54,6 +54,11 @@ namespace GameCenter.Core.Service
                 msg = "合作者链接不能为空";
                 return false;
             }
+            if (dPartner.Sort < 1 || dPartner.Sort > 100)
+            {
+                msg = "排名输入的格式不对";
+                return false;
+            }
             var imagePath = UploadFile.SaveImage(file, tag, 280, 95);
             if (string.IsNullOrEmpty(imagePath))
             {
@@ -105,12 +110,22 @@ namespace GameCenter.Core.Service
                 msg = "合作者LOGO不能为空";
                 return false;
             }
+            if (dPartner.Sort < 1 || dPartner.Sort > 100)
+            {
+                msg = "合作伙伴排名的格式不正确";
+                return false;
+            } 
             using (var db = new PortalContext())
             {
                 var p = Mapper.Map<Partner>(dPartner);
-                p.ImagePath = UploadFile.SaveImage(file, tag, 280, 95);
+                if (file != null)
+                {
+                    p.ImagePath = UploadFile.SaveImage(file, tag, 280, 95);
+                }
                 return db.SaveChanges() > 0;
             }
+
+
         }
 
         //public static List<DtoPartner> GetListByKey(string key)

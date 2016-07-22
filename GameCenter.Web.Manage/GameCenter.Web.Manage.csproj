@@ -128,7 +128,6 @@
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Controllers\NewController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\GameImagesController.cs" />
     <Compile Include="Controllers\GameInfoController.cs" />

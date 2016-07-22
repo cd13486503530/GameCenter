@@ -24,7 +24,7 @@ namespace GameCenter.Entity.Dto
         /// <summary>
         /// 排序
         /// </summary>
-        public int Sort { get; set; } 
+        public int Sort { get; set; }
 
         public int PageIndex { get; set; } = 1;
 

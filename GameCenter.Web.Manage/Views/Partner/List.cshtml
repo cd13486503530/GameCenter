@@ -39,6 +39,7 @@
                             <th>合作者名称</th>
                             <th>链接地址</th>
                             <th>LOGO标志</th>
+                            <th>合作伙伴排名</th>
                             <th>设置</th>
                         </tr>
                     </thead>
@@ -50,6 +51,7 @@
                                 <td>@item.Name</td>
                                 <td>@item.LlinkUrl</td>
                                 <td><input type="image" src="@(Domain.ImageSmall(item.ImagePath))" width="224" height="76" /></td>
+                                <td>@item.Sort</td>
                                 <td>
                                     <a href="/Partner/Edit?id=@item.Id" class="btn btn-rounded">修改</a>
                                     <a href="/Partner/Delete?id=@item.Id" class="btn btn-rounded">删除</a>
