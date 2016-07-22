@@ -39,7 +39,7 @@ namespace GameCenter.Web.Manage.Controllers
             string msg = string.Empty;
             HttpPostedFileBase file = Request.Files["Filedata"];
             var b = PartnerService.AddPartner(dPartner, file, out msg);
-            return Json(new { statust = b, error = msg });
+            return Json(new { status = b, error = msg });
         }
 
         public ActionResult Edit(int id)
@@ -65,7 +65,7 @@ namespace GameCenter.Web.Manage.Controllers
         {
             string msg = string.Empty;
             var b = PartnerService.Delete(id, out msg);
-            return Json(new { status = b, error = msg });
+            return Redirect(Request.UrlReferrer.ToString());
         }
     }
 }
