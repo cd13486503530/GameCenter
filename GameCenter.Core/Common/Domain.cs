@@ -30,7 +30,7 @@ namespace GameCenter.Core.Common
         /// </summary>
         /// <param name="imagePath"></param>
         /// <returns></returns>
-        public string ImageSmall(string imagePath)
+        public static string ImageSmall(string imagePath)
         {
             return _imageSite + "/" + imagePath.Replace("\\", "/").Replace("big", "small");
         }

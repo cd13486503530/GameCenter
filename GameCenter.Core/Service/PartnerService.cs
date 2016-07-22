@@ -18,7 +18,7 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                var info = db.Partners.First(a => a.Id == id);
+                var info = db.Partners.FirstOrDefault(a => a.Id == id);
                 if (info == null)
                 {
                     return new DtoPartner();
@@ -54,8 +54,8 @@ namespace GameCenter.Core.Service
                 msg = "合作者链接不能为空";
                 return false;
             }
-            var imagePath = UploadFile.SaveFile(file, tag);
-            if (imagePath == null)
+            var imagePath = UploadFile.SaveImage(file, tag, 280, 95);
+            if (string.IsNullOrEmpty(imagePath))
             {
                 msg = "上传失败";
                 return false;
@@ -64,6 +64,7 @@ namespace GameCenter.Core.Service
             {
                 var p = Mapper.Map<Partner>(dPartner);
                 p.ImagePath = imagePath;
+                p.Disable = true;
                 db.Partners.Add(p);
                 return db.SaveChanges() > 0;
             }
@@ -107,7 +108,7 @@ namespace GameCenter.Core.Service
             using (var db = new PortalContext())
             {
                 var p = Mapper.Map<Partner>(dPartner);
-                p.ImagePath = UploadFile.SaveFile(file, tag);
+                p.ImagePath = UploadFile.SaveImage(file, tag, 280, 95);
                 return db.SaveChanges() > 0;
             }
         }
