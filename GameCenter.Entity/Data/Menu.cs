@@ -25,5 +25,9 @@ namespace GameCenter.Entity.Data
         public string Url { get; set; }
 
         public int GameId { get; set; }
+
+        public int Sort { get; set; }
+
+        public bool Disable { get; set; }
     }
 }

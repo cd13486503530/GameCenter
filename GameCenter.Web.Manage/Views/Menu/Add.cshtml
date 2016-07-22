@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+}
+<ul class="breadcrumb">
+    @if (ViewBag.MenuForm.IsMain)
+    {
+        <li><a href="/Menu/List?IsMain=true">返回主页菜单</a></li>
+    }
+    else
+    {
+        <li><a href="/Menu/GameMenu">返回游戏菜单</a></li>
+    }
+    @if (ViewBag.MenuForm.ParentId > 0)
+    {
+        <li>@ViewBag.MenuForm.Name</li>
+    }
+</ul>
+<div class="page-title">
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 添加【@(ViewBag.GameInfo == null ? "首页" : @ViewBag.GameInfo.Name)】菜单</h2>
+</div>
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START VALIDATIONENGINE PLUGIN -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form id="validate" method="post" class="form-horizontal" action="/Menu/AddForm">
+                        <input type="hidden" name="GameId" value="@ViewBag.MenuForm.GameId"/>
+                        <input type="hidden" name="ParentId" value="@ViewBag.MenuForm.ParentId" />
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">菜单名称:</label>
+                            <div class="col-md-2">
+                                <input type="text" name="Name" class="validate[required] form-control"/>
+                                <span class="help-block">不能为空,最大不能超过16个汉子</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">排序:</label>
+                            <div class="col-md-4">
+                                <input type="text" name="Sort" class="validate[required] form-control" />
+                                <span class="help-block">不填默认值为0,值越小,越靠前</span>
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">菜单链接:</label>
+                            <div class="col-md-4">
+                                <input type="text" name="Url" class="validate[required] form-control"/>
+                                <span class="help-block">不能为空</span>
+                            </div>
+                        </div> 
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
+                            <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <!-- END VALIDATIONENGINE PLUGIN -->
+        </div>
+    </div>
+</div>
+<div class="message-box message-box-danger animated fadeIn" data-sound="fail" id="message-box-sound-2">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-times"></span> <p>错误提示!</p></div>
+            <div class="mb-footer">
+                <button class="btn btn-default btn-lg pull-right mb-control-close">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script> 
+    <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
+    <script type="text/javascript">
+        $('#validate').ajaxForm({
+            url: '/Menu/AddPost',
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.status) {
+                    window.location.href = "/Menu/List?GameId=@ViewBag.MenuForm.GameId&IsMain=@(ViewBag.MenuForm.GameId == 0 ? "true" : "false")";
+                } else {
+                    $('#message-box-sound-2 .fa-times').next().html('');
+                    $('#message-box-sound-2 .fa-times').next().html(data.msg);
+                    $('#message-box-sound-2').addClass('open')
+                }
+            }
+        });
+    </script>
+}
