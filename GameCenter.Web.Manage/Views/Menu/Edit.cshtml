@@ -39,16 +39,16 @@
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">排序:</label>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <input type="text" name="Sort" class="validate[required] form-control" value="@Model.Sort" />
                                 <span class="help-block">不填默认值为0,值越小,越靠前</span>
                             </div>
                         </div> 
                         <div class="form-group">
                             <label class="col-md-2 control-label">菜单链接:</label>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <input type="text" name="Url" class="validate[required] form-control" value="@Model.Url" />
-                                <span class="help-block">不能为空</span>
+                                <span class="help-block">可以不填,当菜单链接不填时，需要对此菜单增加内容,如需增加内容,点击<a href="?MenuId=@Model.Id" target="_blank">这里</a></span>
                             </div>
                         </div>
                         <div class="btn-group pull-right">

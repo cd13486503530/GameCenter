@@ -72,6 +72,7 @@
     <Compile Include="Service\GameImagesService.cs" />
     <Compile Include="Service\GameInfoService.cs" />
     <Compile Include="Service\GameService.cs" />
+    <Compile Include="Service\MenuInfoService.cs" />
     <Compile Include="Service\MenuService.cs" />
     <Compile Include="Service\NewsService.cs" />
     <Compile Include="Service\NewsTypeService.cs" />

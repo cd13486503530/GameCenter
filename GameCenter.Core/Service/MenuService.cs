@@ -104,11 +104,11 @@ namespace GameCenter.Core.Service
                 return false;
             }
 
-            if (string.IsNullOrEmpty(form.Url))
-            {
-                msg = "请输入菜单链接";
-                return false;
-            }
+            //if (string.IsNullOrEmpty(form.Url))
+            //{
+            //    msg = "请输入菜单链接";
+            //    return false;
+            //}
 
             //if (form.GameId < 1)
             //{
