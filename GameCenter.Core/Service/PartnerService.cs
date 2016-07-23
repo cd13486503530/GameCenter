@@ -31,7 +31,7 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                var list = db.Partners.Where(a => a.Disable == true);
+                var list = db.Partners.Where(a => a.Disable == false);
                 if (!string.IsNullOrEmpty(dPartner.Name))
                     list = list.Where(a => a.Name.Contains(dPartner.Name));
                 total = list.Count();
@@ -95,6 +95,7 @@ namespace GameCenter.Core.Service
         {
             string tag = "Partner";
             msg = string.Empty;
+
             if (string.IsNullOrEmpty(dPartner.Name))
             {
                 msg = "合作者名称不能为空";
@@ -105,23 +106,27 @@ namespace GameCenter.Core.Service
                 msg = "合作者链接不能为空";
                 return false;
             }
-            if (string.IsNullOrEmpty(dPartner.ImagePath))
-            {
-                msg = "合作者LOGO不能为空";
-                return false;
-            }
             if (dPartner.Sort < 1 || dPartner.Sort > 100)
             {
                 msg = "合作伙伴排名的格式不正确";
                 return false;
-            } 
+            }
+            if (file != null)
+            {
+                var imagePath = UploadFile.SaveImage(file, tag, 280, 95);
+                if (string.IsNullOrEmpty(imagePath))
+                {
+                    msg = "上传失败";
+                    return false;
+                }
+                dPartner.ImagePath = imagePath;
+            }
+
             using (var db = new PortalContext())
             {
                 var p = Mapper.Map<Partner>(dPartner);
-                if (file != null)
-                {
-                    p.ImagePath = UploadFile.SaveImage(file, tag, 280, 95);
-                }
+                db.Set<Partner>().Attach(p);
+                db.Entry(p).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges() > 0;
             }
 
