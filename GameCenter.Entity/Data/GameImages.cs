@@ -22,6 +22,13 @@ namespace GameCenter.Entity.Data
         [Required, Column(TypeName = "varchar")]
         public string ImagePath { get; set; }
 
+        /// <summary>
+        /// 暂时只用于英雄介绍的头像图片
+        /// </summary>
+        public string SmallImagePath { get; set; }
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
+
         public int Sort { get; set; }
 
         [Column(TypeName = "varchar(max)")]
