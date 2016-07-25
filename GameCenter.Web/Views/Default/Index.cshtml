@@ -1,0 +1,106 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>匀腾游戏首页</title>
+    <link rel="stylesheet" href="~/Content/css/default/style.css">
+    <script type="text/javascript" src="/Scripts/default/jquery.min.js"></script>
+    <script type="text/javascript" src="/Scripts/default/jquery.touchSlider.js"></script>
+    <script type="text/javascript" src="/Scripts/default/index.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="wrap">
+            <ul class="nav clearfix">
+                <li><a href="">公司介绍</a></li>
+                <li><a href="">新闻中心</a></li>
+                <li><a href="">联系我们</a></li>
+                <li><a href="">家长监护</a></li>
+                <li><a href="">产品列表</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main_visual">
+        <div class="flicking_con">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+        </div>
+        <div class="main_image">
+            <ul>
+                <li><a href="#"><img src="/Content/images/default/banner.jpg" /></a></li>
+                <li><a href="#"><img src="/Content/images/default/banner.jpg" /></a></li>
+                <li><a href="#"><img src="/Content/images/default/banner.jpg" /></a></li>
+            </ul>
+            <a href="javascript:;" id="btn_prev" class="arrow"></a>
+            <a href="javascript:;" id="btn_next" class="arrow"></a>
+        </div>
+    </div>
+    <div class="middle">
+        <div class="pos">
+            <div class="wrap clearfix">
+                <div class="fl" style="width:37.3%">
+                    <img src="/Content/images/default/mid_1.jpg" alt="" width="100%">
+                </div>
+                <div class="fl" style="width:25.4%">
+                    <img src="/Content/images/default/mid_2.jpg" alt="" width="100%">
+                </div>
+                <div class="news fl" style="width:37.3%;">
+                    <h3>《灵文对决》即将上线</h3>
+                    <ul>
+                        <li><a href=""> 匀腾游戏成立5周年，感谢新老玩家支持...</a></li>
+                        <li><a href="">《AT》英雄背包介绍</a></li>
+                        <li><a href="">《灵文对决》即将上线</a></li>
+                        <li><a href=""> 匀腾游戏成立5周年，感谢新老玩家支持...</a></li>
+                        <li><a href="">《AT》英雄背包介绍</a></li>
+                        <li><a href="">《灵文对决》即将上线</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hot wrap clearfix">
+        <h3><i></i>热点手游</h3>
+        <div class="game">
+            <img src="/Content/images/default/bottom_1.jpg" alt="">
+            <div class="text">
+                <h4>《灵纹对决》<a href="" class="enter">进入官网</a></h4>
+                <p>热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游</p>
+            </div>
+        </div>
+        <div class="game" style="margin:0 5%">
+            <img src="/Content/images/default/bottom_2.jpg" alt="">
+            <div class="text">
+                <h4>《灵纹对决》<a href="" class="enter">进入官网</a></h4>
+                <p>热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游</p>
+            </div>
+        </div>
+        <div class="game">
+            <img src="/Content/images/default/bottom_3.jpg" alt="">
+            <div class="text">
+                <h4>《灵纹对决》<a href="" class="enter">进入官网</a></h4>
+                <p>热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游热点手游</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="wrap">
+            <p>健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活</p>
+            <p><i></i>COPYRIGHT © 2016 杭州匀腾网络科技有限公司 ALL RIGHTS RESERVED</p>
+        </div>
+    </div>
+    <script>
+		var h=$('.middle img').height();
+		$('.news').css("height",h);
+		$(window).resize(function(event) {
+			var h=$('.middle img').height();
+			$('.news').css("height",h);
+		});
+    </script>
+</body>
+</html>

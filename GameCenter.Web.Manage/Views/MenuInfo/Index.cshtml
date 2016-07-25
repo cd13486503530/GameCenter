@@ -1,0 +1,109 @@
+﻿@model GameCenter.Entity.Data.MenuInformation
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="page-title">
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 添加</h2>
+</div>
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START VALIDATIONENGINE PLUGIN -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form id="validate" method="post" class="form-horizontal" action="/MenuInfo/EditForm">
+                        <input type="hidden" name="id" value="@Model.Id"/>
+                        <input type="hidden" name="MenuId" value="@Request["MenuId"]" />
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">是否禁用:</label>
+                            <div class="col-md-2">
+                                <input type="checkbox" name="Disable" value="true" @(Model.Disable ? "checked" : "") />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">菜单显示的内容信息:</label>
+                            <div class="col-md-8">
+                                <textarea name="GameDescription">@Model.GameDescription</textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
+                            <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- END VALIDATIONENGINE PLUGIN -->
+
+        </div>
+    </div>
+</div>
+<div class="message-box message-box-danger animated fadeIn" data-sound="fail" id="message-box-sound-2">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-times"></span> <p>错误提示!</p></div>
+            <div class="mb-footer">
+                <button class="btn btn-default btn-lg pull-right mb-control-close">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
+    <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
+    <link href="~/Scripts/plugins/umeditor/themes/default/default.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/plugins/umeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/umeditor/lang/zh_CN.js"></script>
+    <script type="text/javascript">
+        KindEditor.ready(function (K) {
+            editor = K.create('textarea[name="GameDescription"]', {
+                resizeType: 1,
+                allowPreviewEmoticons: false,
+                allowImageUpload: true, //允许上传图片
+                uploadJson: '/GameInfo/UploadFile?t=kindeditor', //服务端上传图片处理URI
+                minWidth: 700,
+                minHeight: 300,
+                items: ['fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        'insertunorderedlist', '|', 'image', 'link', '|', 'fullscreen', 'source'],
+                afterCreate: function (e) {
+                    console.log(e);
+                },
+                afterUpload: function (url) {
+                    var a = $("#uppics").val();
+                    if (a.length > 0) {
+                        $("#uppics").val(a + "," + url);
+                    } else {
+                        $("#uppics").val(url);
+                    }
+                    //alert($("#uppics").val())
+                },
+                afterBlur: function () { this.sync(); }
+            });
+        });
+
+        $('#validate').ajaxForm({
+            url: '/MenuInfo/EditForm',
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.status) {
+                    window.location.href = history.go(-1);
+                } else {
+                    $('#message-box-sound-2 .fa-times').next().html('');
+                    $('#message-box-sound-2 .fa-times').next().html(data.error);
+                    $('#message-box-sound-2').addClass('open')
+                }
+            }
+        });
+    </script>
+}

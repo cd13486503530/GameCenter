@@ -129,6 +129,7 @@
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\MenuInfoController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\GameImagesController.cs" />
     <Compile Include="Controllers\GameInfoController.cs" />
@@ -546,6 +547,7 @@
     <Content Include="Views\Menu\AddChoose.cshtml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Content Include="Views\AdminUser\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -553,6 +555,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\AdminUser\Edit.cshtml" />
+=======
+    <Content Include="Views\MenuInfo\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GameImages\HeroAdd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GameImages\HeroEdit.cshtml" />
+>>>>>>> cc9ee61db56a9bc38c046d0e3607aa0a3b74ab8d
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

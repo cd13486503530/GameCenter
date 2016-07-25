@@ -120,14 +120,34 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\default\style.css" />
+    <Content Include="Content\images\default\arrow.png" />
+    <Content Include="Content\images\default\banner.jpg" />
+    <Content Include="Content\images\default\bottom_1.jpg" />
+    <Content Include="Content\images\default\bottom_2.jpg" />
+    <Content Include="Content\images\default\bottom_3.jpg" />
+    <Content Include="Content\images\default\group.png" />
+    <Content Include="Content\images\default\icon.png" />
+    <Content Include="Content\images\default\logo.png" />
+    <Content Include="Content\images\default\logo2.png" />
+    <Content Include="Content\images\default\mid_1.jpg" />
+    <Content Include="Content\images\default\mid_2.jpg" />
+    <Content Include="Content\images\default\news.png" />
+    <Content Include="Content\images\default\next.png" />
+    <Content Include="Content\images\default\prev.png" />
+    <Content Include="Content\images\default\weixin.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.touchSlider.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -142,15 +162,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="Views\Default1\" />
-    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

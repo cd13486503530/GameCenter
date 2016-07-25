@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- META SECTION -->
+    <title>Atlant - Responsive Bootstrap Admin Template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- END META SECTION -->
+    <!-- CSS INCLUDE -->
+    <link href="~/Content/css/theme-default.css" rel="stylesheet" />
+    <!-- EOF CSS INCLUDE -->
+</head>
+<body>
+    @{
+        ViewBag.Title = "Login";
+        Layout = null;
+    }
+    <div class="login-container login-v2">
+        <div class="login-box animated fadeInDown">
+            <div class="login-body">
+                <div class="login-title"><strong>Welcome</strong>, Please login.</div>
+                <form action="/AdminUser/LoginForm" class="form-horizontal" method="post" id="validate">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="fa fa-user"></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Username" name="UserName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="fa fa-lock"></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="Password" name="PassWord" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="message-box message-box-danger animated fadeIn" data-sound="fail" id="message-box-sound-2">
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-title"><span class="fa fa-times"></span> <p>错误提示!</p></div>
+                <div class="mb-footer">
+                    <button class="btn btn-default btn-lg pull-right mb-control-close">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="~/Scripts/plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
+    <script type="text/javascript" src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
+    <script type="text/javascript" src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
+    <script type="text/javascript">
+        $('#validate').ajaxForm({
+            url: '/AdminUser/LoginForm',
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.status) {
+                    window.location.href = "/Default/Index";
+                } else {
+                    //$('#message-box-sound-2 .fa-times').next().html('');
+                    //$('#message-box-sound-2 .fa-times').next().html(data.error);
+                    //$('#message-box-sound-2').addClass('open')
+                    alert(data.error);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

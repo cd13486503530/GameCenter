@@ -1,12 +1,10 @@
-﻿@model GameCenter.Entity.Data.GameImages
-@using GameCenter.Entity.Enum;
+﻿@using GameCenter.Entity.Enum;
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "HeroAdd"; 
 }
 
-
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> 修改【@(((GameImageType)ViewBag.Form.Type).ToString())】</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 添加【@(((GameImageType)ViewBag.Type).ToString())】</h2>
 </div>
 
 <div class="page-content-wrap">
@@ -15,16 +13,15 @@
             <!-- START VALIDATIONENGINE PLUGIN -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form id="validate" method="post" class="form-horizontal" action="/GameImages/EditForm" enctype="multipart/form-data">
-                        <input name="Id" value="@Request["Id"]" type="hidden" />
-                        <input name="Type" value="@Request["Type"]" type="hidden" />
+                    <form id="validate" method="post" class="form-horizontal" action="/GameImages/HeroAddForm" enctype="multipart/form-data">
+                        <input type="hidden" name="type" value="@Request["type"]" />
                         <div class="form-group">
                             <label class="col-md-2 control-label">选择游戏名称:</label>
                             <div class="col-md-2">
                                 <select class="form-control select" name="GameId">
                                     @foreach (var item in ViewBag.Games)
                                     {
-                                        <option value="@item.Id" @(item.Id == Model.GameId ? "selected" : "" )>@item.Name</option>
+                                        <option value="@item.Id">@item.Name</option>
                                     }
                                 </select>
                             </div>
@@ -32,7 +29,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">图片Tag:</label>
                             <div class="col-md-2">
-                                <input type="text" name="Name" class="form-control" value="@Model.Name" />
+                                <input type="text" name="Name" class="form-control" />
                                 <span class="help-block">可以不填,最大不能超过64汉字</span>
                             </div>
                         </div>
@@ -40,7 +37,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">排序值:</label>
                             <div class="col-md-2">
-                                <input type="text" name="Sort" class="form-control" value="@Model.Sort" />
+                                <input type="text" name="Sort" class="form-control" />
                                 <span class="help-block">可以不填,格式为数字,默认值为0</span>
                             </div>
                         </div>
@@ -48,23 +45,31 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">链接:</label>
                             <div class="col-md-6">
-                                <input type="text" name="Url" class="form-control" value="@Model.Url" />
+                                <input type="text" name="Url" class="form-control" />
                                 <span class="help-block">可以不填,如果想对图片增加链接的话,http://</span>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">上传图片</label>
+                            <label class="col-md-2 control-label">上传英雄头像</label>
+                            <div class="col-md-4">
+                                <input type="file" name="SmallImagePathFileData" id="SmallImagePathFileData" />
+                                <input type="hidden" name="SmallImagePath" id="SmallImagePath" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">上传英雄详情图片</label>
                             <div class="col-md-4">
                                 <input type="file" name="ImagePathFileData" id="ImagePathFileData" />
-                                <input type="hidden" name="ImagePath" id="ImagePath" value="@Model.ImagePath" />
+                                <input type="hidden" name="ImagePath" id="ImagePath" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">说明信息:</label>
                             <div class="col-md-8">
-                                <textarea name="Info" id="Info">@Model.Info</textarea>
+                                <textarea name="Info"></textarea>
                             </div>
                         </div>
                         <div class="btn-group pull-right">
@@ -101,7 +106,6 @@
     <link href="~/Scripts/plugins/umeditor/themes/default/default.css" rel="stylesheet" />
     <script type="text/javascript" src="~/Scripts/plugins/umeditor/kindeditor-min.js"></script>
     <script type="text/javascript" src="~/Scripts/plugins/umeditor/lang/zh_CN.js"></script>
-
     <script type="text/javascript">
         KindEditor.ready(function (K) {
             editor = K.create('textarea[name="Info"]', {
@@ -114,23 +118,23 @@
                 items: ['fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                         'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
                         'insertunorderedlist', '|', 'image', 'link', '|', 'fullscreen', 'source'],
-                afterCreate: function (e) { 
-                    //this.sync(); 
+                afterCreate: function (e) {
+                    console.log(e);
                 },
-                afterUpload: function (url) {  
-                    //alert(url);
-                },  
+                afterUpload: function (url) {
+                
+                },
                 afterBlur: function () { this.sync(); }
             });
         });
 
         $('#validate').ajaxForm({
-            url: '/GameImages/EditForm',
+            url: '/GameImages/HeroAddForm',
             type: "POST",
             dataType: "json",
             success: function (data) {
                 if (data.status) {
-                    window.location.href = "/GameImages/List?type="+@ViewBag.Form.Type;
+                    window.location.href = "/GameImages/List?type="+@ViewBag.Type;
                 } else {
                     $('#message-box-sound-2 .fa-times').next().html('');
                     $('#message-box-sound-2 .fa-times').next().html(data.error);
@@ -159,27 +163,7 @@
         $('input[type=file]').on('fileuploaded', function (data, r, a) {
             var _this = $(this);
             var hiddenInputName = _this.attr("name").replace("FileData", "");
-            $("#ImagePath").val(r.response.filename);
+            $("input[name=" + hiddenInputName + "]").val(r.response.filename);
         });
-
-        $("input[type=file]").fileinput('refresh', {
-            refreshCallback: function ($el) {
-                var imagepath = $($el).closest('.file-input').next().val();
-                var previewHtml = '';
-                if (imagepath != '') {
-                    previewHtml = '<div class="file-preview">' +
-                        '<div class="file-drop-zone">' +
-                        '<div class="file-preview-thumbnails">' +
-                        '<img src="@GameCenter.Core.Common.Domain._imageSite' + imagepath + '" style="width:auto;height:160px;">' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>';
-                }
-                return {
-                    initialPreview: previewHtml
-                };
-            }
-        });
-
     </script>
 }

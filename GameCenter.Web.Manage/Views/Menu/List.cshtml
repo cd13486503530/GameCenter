@@ -93,6 +93,7 @@
                                         <a href="/Menu/Add?parentId=@(item.Id)&GameId=@(item.GameId)" class="btn btn-rounded" title="点击添加子菜单">添加子菜单</a>
                                         <a href="/Menu/List?IsMain=@(Request["IsMain"])&parentId=@(item.Id)&gameId=@(item.GameId)&Name=@(item.Name)" class="btn btn-rounded" title="点击查看子菜单内容">进入【@(item.Name)】子菜单 </a>
                                     }
+                                    <a href="/MenuInfo/Index?MenuId=@item.Id" class="btn btn-rounded" title="为此菜单添加内容">添加内容</a>
                                     <a href="/Menu/Edit?id=@item.Id&IsMain=@(Request["IsMain"])&parentId=@(item.Id)" class="btn btn-rounded">修改</a>
                                     @if (!item.Disable)
                                     {
@@ -102,7 +103,6 @@
                                     {
                                         <a href="/Menu/Enabled?id=@item.Id" class="btn btn-rounded">启用</a>
                                     }
-
                                 </td>
                             </tr>
                         </tbody>

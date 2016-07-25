@@ -1,23 +1,10 @@
-﻿@model GameCenter.Entity.Dto.DtoMenu
+﻿@model GameCenter.Entity.Dto.DtoAdminUser
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<ul class="breadcrumb">
-    @if (ViewBag.MenuForm.IsMain)
-    {
-        <li><a href="/Menu/List?IsMain=true">返回主页菜单</a></li>
-    }
-    else
-    {
-        <li><a href="/Menu/GameMenu">返回游戏菜单</a></li>
-    }
-    @if (ViewBag.MenuForm.ParentId > 0)
-    {
-        <li>@ViewBag.MenuForm.Name</li>
-    }
-</ul>
 <div class="page-title">
-    <h2><span class="fa fa-arrow-circle-o-left"></span> 修改【@Model.Name】菜单</h2>
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 修改密码</h2>
 </div>
 
 <div class="page-content-wrap">
@@ -26,40 +13,45 @@
             <!-- START VALIDATIONENGINE PLUGIN -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form id="validate" method="post" class="form-horizontal" action="/Menu/EditForm">
-                        <input type="hidden" name="Id" value="@Request["Id"]" />
-                        <input type="hidden" name="GameId" value="@Model.GameId" />
-                        <input type="hidden" name="ParentId" value="@Model.ParentId" />
+                    <form id="validate" method="post" class="form-horizontal" action="/AdminUser/EditForm" enctype="multipart/form-data">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <input type="hidden" name="Name" value="@Model.Name" />
+                        <input type="hidden" name="UserName" value="@Model.UserName" />
                         <div class="form-group">
-                            <label class="col-md-2 control-label">菜单名称:</label>
-                            <div class="col-md-2">
-                                <input type="text" name="Name" class="validate[required] form-control" value="@Model.Name"/>
-                                <span class="help-block">不能为空,最大不能超过16个汉子</span>
+                            <label class="col-md-2 control-label">原始密码:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="PassWord" value="" class="validate[required] form-control" id="form-validation-field-0">
+                                <span class="help-block">原始密码不能为空</span>
                             </div>
                         </div>
+
                         <div class="form-group">
-                            <label class="col-md-2 control-label">排序:</label>
-                            <div class="col-md-2">
-                                <input type="text" name="Sort" class="validate[required] form-control" value="@Model.Sort" />
-                                <span class="help-block">不填默认值为0,值越小,越靠前</span>
-                            </div>
-                        </div> 
-                        <div class="form-group">
-                            <label class="col-md-2 control-label">菜单链接:</label>
-                            <div class="col-md-5">
-                                <input type="text" name="Url" class="validate[required] form-control" value="@Model.Url" />
-                                <span class="help-block">可以不填,当菜单链接不填时，需要对此菜单增加内容,如需增加内容,点击<a href="?MenuId=@Model.Id" target="_blank">这里</a></span>
+                            <label class="col-md-2 control-label">修改密码:</label>
+                            <div class="col-md-9">
+                                <input type="password" name="NewPassWord" value="" class="validate[required] form-control" id="form-validation-field-1">
+                                <span class="help-block">修改密码不能为空</span>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">确认密码:</label>
+                            <div class="col-md-9">
+                                <input type="password" name="ConfirmPassword" value="" class="validate[required] form-control" id="form-validation-field-2">
+                                <span class="help-block">确认密码不能为空</span>
+                            </div>
+                        </div>
+
                         <div class="btn-group pull-right">
                             <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
                             <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>
                         </div>
+
                     </form>
 
                 </div>
             </div>
             <!-- END VALIDATIONENGINE PLUGIN -->
+
         </div>
     </div>
 </div>
@@ -78,18 +70,19 @@
     <script type='text/javascript' src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
     <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
     <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
     <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
     <script type="text/javascript">
         $('#validate').ajaxForm({
-            url: '/Menu/EditPost',
+            url: '/AdminUser/EditForm',
             type: "POST",
             dataType: "json",
             success: function (data) {
                 if (data.status) {
-                    window.location.href = "/Menu/List?GameId=@Model.GameId&ParentId=@Model.ParentId&IsMain=@(Model.GameId == 0 ? "true" : "false")";
+                    window.location.href = "/AdminUser/Login";
                 } else {
                     $('#message-box-sound-2 .fa-times').next().html('');
-                    $('#message-box-sound-2 .fa-times').next().html(data.msg);
+                    $('#message-box-sound-2 .fa-times').next().html(data.error);
                     $('#message-box-sound-2').addClass('open')
                 }
             }
