@@ -42,7 +42,8 @@ namespace GameCenter.Web.Manage.Controllers
         {
             var fileName = string.Empty;
             var file = Request.Files[0];
-            var fileInputName = Request.Files.AllKeys[0]; 
+            var fileInputName = Request.Files.AllKeys[0];
+            var t = Request["t"]; //上传来原
             var name = file.FileName;
             if (fileInputName.Contains("BgImage"))
             {
@@ -67,8 +68,16 @@ namespace GameCenter.Web.Manage.Controllers
                 fileName = GameCenter.Core.Common.UploadFile.SaveImage(file, fileInputName.Replace("FileData", ""), req.Width, req.Heigth);
             }
 
-            // error、messag、url 为kindeditor返回参数
-            return Json(new { error = 0 ,filename = fileName, name = name,message="" ,url = GameCenter.Core.Common.Domain.GetImage(fileName)});  
+
+            if(t == "kindeditor")
+            {
+                // error、messag、url 为kindeditor返回参数
+                return Json(new { error = 0, filename = fileName, name = name, message = "", url = GameCenter.Core.Common.Domain.GetImage(fileName) });
+            }
+            else
+            {
+                return Json(new {filename = fileName, name = name });
+            }
         }
 
 

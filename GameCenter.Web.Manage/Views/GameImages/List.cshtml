@@ -16,7 +16,14 @@
                         <input type="hidden" name="type" value="@ViewBag.FormReq.Type" />
                         <div class="form-group">
                             <div class="col-md-1">
-                                <a class="btn btn-primary" href="/GameImages/Add?type=@ViewBag.FormReq.Type">添加@(((GameImageType)ViewBag.FormReq.Type).ToString())</a>
+                                @if (@ViewBag.FormReq.Type == 4)
+                                {
+                                    <a class="btn btn-primary" href="/GameImages/HeroAdd?type=4">添加@(((GameImageType)ViewBag.FormReq.Type).ToString())</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-primary" href="/GameImages/Add?type=@ViewBag.FormReq.Type">添加@(((GameImageType)ViewBag.FormReq.Type).ToString())</a>
+                                }
                             </div>
                             <div class="col-md-3">
                                 <label class="col-md-4 control-label">游戏名称</label>
@@ -66,7 +73,14 @@
                                 <td>@item.GameName</td>
                                 <td>@item.Name</td> 
                                 <td> 
-                                    <a href="/GameImages/Edit?id=@item.Id&Type=@ViewBag.FormReq.Type" class="btn btn-rounded">设置详情</a>
+                                    @if (ViewBag.FormReq.Type == 4)
+                                    {
+                                        <a href="/GameImages/HeroEdit?id=@item.Id&Type=@ViewBag.FormReq.Type" class="btn btn-rounded">设置详情</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/GameImages/Edit?id=@item.Id&Type=@ViewBag.FormReq.Type" class="btn btn-rounded">设置详情</a>
+                                    }
                                     <a href="/GameImages/Disable?id=@item.Id" class="btn btn-rounded">禁用</a>
                                 </td>
                             </tr>

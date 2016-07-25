@@ -68,5 +68,42 @@ namespace GameCenter.Web.Manage.Controllers
             var r = GameImagesService.Update(form, info ,out msg);
             return Json(new { status = r, error = msg });
         }
+
+        public ActionResult HeroAdd(int type)
+        {
+            ViewBag.Type = type;
+            ViewBag.Games = GameService.GetGamesCache();
+            return View();
+        }
+
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult HeroAddForm(DtoGameImages form)
+        {
+            var msg = string.Empty;
+            var r = GameImagesService.Add(form, out msg);
+            return Json(new { status = r, error = msg });
+        }
+
+        public ActionResult HeroEdit(GameImagesForm req)
+        {
+            var info = GameImagesService.GetOneById(req.Id) ?? new GameImages();
+            ViewBag.Form = req ?? new GameImagesForm();
+            ViewBag.Games = GameService.GetGamesCache();
+            return View(info);
+        }
+
+        [ValidateInput(false)]
+        [HttpPost]
+        public ActionResult HeroEditForm(DtoGameImages form)
+        {
+            var msg = string.Empty;
+            var info = GameImagesService.GetOneById(form.Id);
+            if (info == null)
+                return Json(new { status = false, msg = "参数错误" });
+
+            var r = GameImagesService.Update(form, info, out msg);
+            return Json(new { status = r, error = msg });
+        }
     }
 }

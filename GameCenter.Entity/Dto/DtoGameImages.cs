@@ -18,6 +18,8 @@ namespace GameCenter.Entity.Dto
 
         public string ImagePath { get; set; }
 
+        public string SmallImagePath { get; set; }
+
         public int Sort { get; set; }
 
         public string Info { get; set; }

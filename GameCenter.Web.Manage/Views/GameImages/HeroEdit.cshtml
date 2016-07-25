@@ -1,9 +1,7 @@
-﻿@model GameCenter.Entity.Data.GameImages
-@using GameCenter.Entity.Enum;
+﻿@using GameCenter.Entity.Enum;
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "HeroEdit";  
 }
-
 
 <div class="page-title">
     <h2><span class="fa fa-arrow-circle-o-left"></span> 修改【@(((GameImageType)ViewBag.Form.Type).ToString())】</h2>
@@ -15,7 +13,7 @@
             <!-- START VALIDATIONENGINE PLUGIN -->
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form id="validate" method="post" class="form-horizontal" action="/GameImages/EditForm" enctype="multipart/form-data">
+                    <form id="validate" method="post" class="form-horizontal" action="/GameImages/HeroEditForm" enctype="multipart/form-data">
                         <input name="Id" value="@Request["Id"]" type="hidden" />
                         <input name="Type" value="@Request["Type"]" type="hidden" />
                         <div class="form-group">
@@ -54,7 +52,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-2 control-label">上传图片</label>
+                            <label class="col-md-2 control-label">上传英雄头像</label>
+                            <div class="col-md-4">
+                                <input type="file" name="SmallImagePathFileData" id="SmallImagePathFileData" />
+                                <input type="hidden" name="SmallImagePath" id="SmallImagePath" value="@Model.SmallImagePath" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">上传英雄详情图片</label>
                             <div class="col-md-4">
                                 <input type="file" name="ImagePathFileData" id="ImagePathFileData" />
                                 <input type="hidden" name="ImagePath" id="ImagePath" value="@Model.ImagePath" />
@@ -114,18 +120,18 @@
                 items: ['fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
                         'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
                         'insertunorderedlist', '|', 'image', 'link', '|', 'fullscreen', 'source'],
-                afterCreate: function (e) { 
-                    //this.sync(); 
+                afterCreate: function (e) {
+                    //this.sync();
                 },
-                afterUpload: function (url) {  
+                afterUpload: function (url) {
                     //alert(url);
-                },  
+                },
                 afterBlur: function () { this.sync(); }
             });
         });
 
         $('#validate').ajaxForm({
-            url: '/GameImages/EditForm',
+            url: '/GameImages/HeroEditForm',
             type: "POST",
             dataType: "json",
             success: function (data) {
@@ -159,7 +165,7 @@
         $('input[type=file]').on('fileuploaded', function (data, r, a) {
             var _this = $(this);
             var hiddenInputName = _this.attr("name").replace("FileData", "");
-            $("#ImagePath").val(r.response.filename);
+            $("input[name=" + hiddenInputName + "]").val(r.response.filename);
         });
 
         $("input[type=file]").fileinput('refresh', {
@@ -183,3 +189,4 @@
 
     </script>
 }
+

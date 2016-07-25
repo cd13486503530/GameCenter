@@ -548,6 +548,12 @@
   <ItemGroup>
     <Content Include="Views\MenuInfo\Index.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GameImages\HeroAdd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\GameImages\HeroEdit.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

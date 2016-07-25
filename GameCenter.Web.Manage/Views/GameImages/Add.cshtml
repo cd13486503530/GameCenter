@@ -104,7 +104,7 @@
                 resizeType: 1,
                 allowPreviewEmoticons: false,
                 allowImageUpload: true, //允许上传图片
-                uploadJson: '/GameInfo/UploadFile', //服务端上传图片处理URI
+                uploadJson: '/GameInfo/UploadFile?t=kindeditor', //服务端上传图片处理URI
                 minWidth: 590,
                 minHeight: 300,
                 items: ['fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
@@ -114,12 +114,12 @@
                     console.log(e);
                 },
                 afterUpload: function (url) {
-                    var a = $("#uppics").val();
-                    if (a.length > 0) {
-                        $("#uppics").val(a + "," + url);
-                    } else {
-                        $("#uppics").val(url);
-                    }
+                    //var a = $("#uppics").val();
+                    //if (a.length > 0) {
+                    //    $("#uppics").val(a + "," + url);
+                    //} else {
+                    //    $("#uppics").val(url);
+                    //}
                     //alert($("#uppics").val())
                 },
                 afterBlur: function () { this.sync(); }
