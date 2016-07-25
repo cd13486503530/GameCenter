@@ -42,6 +42,14 @@ namespace GameCenter.Entity.Data
         /// <summary>
         /// 删除状态，0是未删除，1是删除
         /// </summary>
-        public int Status { get; set; }
+        public int Status { get; set; } 
+        
+        public int GameId { get; set; } 
+         
+        public bool Hot { get; set; }
+
+        [MaxLength(256)]
+        [Required, Column(TypeName = "varchar(256)")]
+        public string ImagePath { get; set; }
     }
 }
