@@ -170,6 +170,16 @@
   <ItemGroup>
     <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameCenter.Core\GameCenter.Core.csproj">
+      <Project>{8DEA4E60-EB42-4A99-A758-B88819DA4344}</Project>
+      <Name>GameCenter.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameCenter.Entity\GameCenter.Entity.csproj">
+      <Project>{5501d844-3389-43f3-b5e2-ea44eb934428}</Project>
+      <Name>GameCenter.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
