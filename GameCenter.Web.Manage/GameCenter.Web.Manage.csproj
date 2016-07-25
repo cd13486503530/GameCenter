@@ -125,6 +125,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -543,6 +544,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Menu\AddChoose.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AdminUser\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\urlfont\DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AdminUser\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
