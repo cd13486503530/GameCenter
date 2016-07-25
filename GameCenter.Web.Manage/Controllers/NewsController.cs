@@ -34,7 +34,7 @@ namespace GameCenter.Web.Manage.Controllers
         {
             return View();
         }
-
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult AddForm(DtoNews news)
         {
@@ -48,6 +48,7 @@ namespace GameCenter.Web.Manage.Controllers
             var info = NewsService.GetOneById(id);
             return View(info);
         }
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult EditForm(DtoNews dNews)
         {

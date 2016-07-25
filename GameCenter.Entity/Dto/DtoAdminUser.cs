@@ -6,28 +6,29 @@ using System.Threading.Tasks;
 
 namespace GameCenter.Entity.Dto
 {
-    public class DtoPartner
+    public class DtoAdminUser
     {
         public int Id { get; set; }
         /// <summary>
-        /// 合作者名称
+        /// 名称
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// 链接
+        /// 用户名
         /// </summary>
-        public string LlinkUrl { get; set; }
+        public string UserName { get; set; }
         /// <summary>
-        /// 图片路径
+        /// 原始密码 
         /// </summary>
-        public string ImagePath { get; set; }
+        public string PassWord { get; set; }
         /// <summary>
-        /// 排序
+        /// 新密码
         /// </summary>
-        public int Sort { get; set; }
+        public string NewPassWord { get; set; }
+        /// <summary>
+        /// 确认密码
+        /// </summary>
+        public string ConfirmPassword { get; set; }
 
-        public int PageIndex { get; set; } = 1;
-
-        public int PageSize { get; set; } = 20;
     }
 }

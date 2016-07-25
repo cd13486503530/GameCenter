@@ -12,7 +12,7 @@ namespace GameCenter.Entity.Data
     public class AdminUser
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(32)]
         [Required, Column(TypeName = "varchar")]
@@ -32,7 +32,7 @@ namespace GameCenter.Entity.Data
 
         public int RoleId { get; set; }
 
-        public int Desable { get; set; } 
+        public bool Disable { get; set; }
 
     }
 }
