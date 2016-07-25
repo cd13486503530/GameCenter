@@ -38,8 +38,12 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li class="xn-openable @(ViewBag.Active == "Main"?"active":"")">
                             <a href="/"><span class="fa fa-desktop"></span> <span class="xn-text">主页</span></a>
+                            <ul>
+                                <li><a href="/Main/Set"><span class="fa fa-desktop"></span>主页设置</a></li>
+                                <li><a href="/Menu/List?IsMain=true"><span class="fa fa-desktop"></span>主页菜单</a></li> 
+                            </ul>
                         </li>
                         <li class="xn-openable @(ViewBag.Active == "Game"?"active":"")">
                             <a href="#"><span class="fa fa-gamepad"></span> <span class="xn-text">游戏信息</span></a>
@@ -55,11 +59,9 @@
                         <li class="xn-openable @(ViewBag.Active == "Menu"?"active":"")">
                             <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">菜单栏</span></a>
                             <ul>
-                                <li><a href="/Menu/List?IsMain=true"><span class="fa fa-desktop"></span>主页菜单</a></li>
                                 <li><a href="/Menu/GameMenu"><span class="fa fa-align-justify"></span>游戏菜单</a></li>
                                 <li><a href="/Menu/AddChoose"><span class="fa fa-edit"></span>添加菜单</a></li>
                                 <li><a href="/Menu/GameMenuDesc"><span class="fa fa-file-text-o"></span>菜单内容</a></li>
-                                
                             </ul>
                         </li>
                         <li class="xn-openable @(ViewBag.Active == "News"?"active":"")">

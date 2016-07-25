@@ -21,12 +21,15 @@ namespace GameCenter.Core.Service
             }
         }
 
-        public static bool Update(GameInfoForm form, GameInfo info, out string msg)
+        public static bool Update(GameInfoForm form, GameInfo info, out string msg,bool isCheck = true)
         {
             msg = string.Empty;
-            var check = Check(form, out msg);
-            if (!check)
-                return false;
+            if (isCheck)
+            {
+                var check = Check(form, out msg);
+                if (!check)
+                    return false;
+            } 
 
             using (var db = new PortalContext())
             {
@@ -40,12 +43,16 @@ namespace GameCenter.Core.Service
         }
 
 
-        public static bool Add(GameInfoForm form,out string msg)
+        public static bool Add(GameInfoForm form,out string msg,bool isCheck = true)
         {
             msg = string.Empty;
-            var check = Check(form,out msg);
-            if (!check)
-                return false;
+            if (isCheck)
+            {
+                var check = Check(form, out msg);
+                if (!check)
+                    return false;
+            }
+           
 
             using (var db = new PortalContext())
             {

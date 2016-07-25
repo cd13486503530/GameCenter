@@ -14,6 +14,8 @@ namespace GameCenter.Web.Controllers
         public ActionResult Index()
         {
             ViewBag.MainBgImages = GameInfoService.GetGameInfo(0);
+            ViewBag.Menu = MenuService.GetListCache().Where(a=>a.GameId == 0).ToList();
+            ViewBag.Games = GameService.GetGamesCache().Where(a=>a.Top).ToList();
             return View();
         }
     }

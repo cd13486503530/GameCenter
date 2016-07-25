@@ -17,11 +17,10 @@
     <div class="header">
         <div class="wrap">
             <ul class="nav clearfix">
-                <li><a href="">公司介绍</a></li>
-                <li><a href="">新闻中心</a></li>
-                <li><a href="">联系我们</a></li>
-                <li><a href="">家长监护</a></li>
-                <li><a href="">产品列表</a></li>
+                @foreach (var item in ViewBag.Menu)
+                {
+                    <li><a href="@item.Url">@item.Name</a></li>
+                }
             </ul>
         </div>
     </div>
@@ -33,9 +32,23 @@
         </div>
         <div class="main_image">
             <ul>
-                <li><a href="#"><img src="/Content/images/default/banner.jpg" /></a></li>
-                <li><a href="#"><img src="/Content/images/default/banner.jpg" /></a></li>
-                <li><a href="#"><img src="/Content/images/default/banner.jpg" /></a></li>
+                @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage0))
+                {
+                    <li><a href="#"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage0))" /></a></li>
+                }
+                @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage1))
+                {
+                    <li><a href="#"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage1))" /></a></li>
+                }
+                @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage2))
+                {
+                    <li><a href="#"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage2))" /></a></li>
+                }
+                @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage3))
+                {
+                    <li><a href="#"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage3))" /></a></li>
+                }
+
             </ul>
             <a href="javascript:;" id="btn_prev" class="arrow"></a>
             <a href="javascript:;" id="btn_next" class="arrow"></a>
@@ -95,12 +108,12 @@
         </div>
     </div>
     <script>
-		var h=$('.middle img').height();
-		$('.news').css("height",h);
-		$(window).resize(function(event) {
-			var h=$('.middle img').height();
-			$('.news').css("height",h);
-		});
+        var h = $('.middle img').height();
+        $('.news').css("height", h);
+        $(window).resize(function (event) {
+            var h = $('.middle img').height();
+            $('.news').css("height", h);
+        });
     </script>
 </body>
 </html>

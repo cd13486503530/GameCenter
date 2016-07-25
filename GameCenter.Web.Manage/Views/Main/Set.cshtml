@@ -1,0 +1,145 @@
+﻿@model GameCenter.Entity.Data.GameInfo
+@{
+    ViewBag.Title = "Set";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title">
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 主页设置</h2>
+</div>
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START VALIDATIONENGINE PLUGIN -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form id="validate" method="post" class="form-horizontal" action="/Main/Post" enctype="multipart/form-data">
+                        <input type="hidden" name="Id" value="@Model.Id" />  
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">游戏二维码</label>
+                            <div class="col-md-4">
+                                <input type="file" name="QrCodeImageFileData" accept="image/*" />
+                                <input type="hidden" name="QrCodeImage" value="@Model.QrCodeImage" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">背景图片</label>
+                            <div class="col-md-4">
+                                <input type="file" name="BgImage0FileData" accept="image/*" />
+                                <input type="hidden" name="BgImage0" value="@Model.BgImage0" />
+                            </div>
+                            <div class="col-md-4">
+                                <input type="file" name="BgImage1FileData" accept="image/*" />
+                                <input type="hidden" name="BgImage1" value="@Model.BgImage1" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"></label>
+                            <div class="col-md-4">
+                                <input type="file" name="BgImage2FileData" accept="image/*" />
+                                <input type="hidden" name="BgImage2" value="@Model.BgImage2" />
+                            </div>
+                            <div class="col-md-4">
+                                <input type="file" name="BgImage3FileData" accept="image/*" />
+                                <input type="hidden" name="BgImage3" value="@Model.BgImage3" />
+                            </div>
+                        </div>
+
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
+                            <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <!-- END VALIDATIONENGINE PLUGIN -->
+
+        </div>
+    </div>
+</div>
+<div class="message-box message-box-danger animated fadeIn" data-sound="fail" id="message-box-sound-2">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-times"></span> <p>错误提示!</p></div>
+            <div class="mb-footer">
+                <button class="btn btn-default btn-lg pull-right mb-control-close">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
+    <script type='text/javascript' src="~/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
+    <script type='text/javascript' src="/Scripts/plugins/fileinput/fileinput.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
+    <script type="text/javascript">
+        $('#validate').ajaxForm({
+            url: '/Main/Post',
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.status) {
+                    window.location.href = "/Main/Set";
+                } else {
+                    $('#message-box-sound-2 .fa-times').next().html('');
+                    $('#message-box-sound-2 .fa-times').next().html(data.msg);
+                    $('#message-box-sound-2').addClass('open')
+                }
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        $("input[type=file]").fileinput({
+            showUpload: false,
+            showRemove: true,
+            showCaption: false,
+            autoReplace: true,
+            uploadUrl: '/GameInfo/UploadFile',
+            uploadRightNow: true,
+            allowedFileExtensions: ['jpg', 'png', 'gif'],
+            maxFileSize: 2000,
+            maxFilesCount: 1,
+            allowedFileTypes: ['image'],
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            //language: 'zh',
+            slugCallback: function (filename) {
+                return filename.replace(/\(|\)|\[|\]/g, '_');
+            }
+        });
+
+        $('input[type=file]').on('fileuploaded', function (data, r, a) {
+            var _this = $(this);
+            var hiddenInputName = _this.attr("name").replace("FileData", "");
+            $("input[name=" + hiddenInputName+"]").val(r.response.filename);
+        }); 
+
+
+        $("input[type=file]").fileinput('refresh', {
+            refreshCallback: function ($el) {
+                var imagepath = $($el).closest('.file-input').next().val();
+                var previewHtml = '';
+                if (imagepath != '') {
+                    previewHtml = '<div class="file-preview">' +
+                        '<div class="file-drop-zone">' +
+                        '<div class="file-preview-thumbnails">' +
+                        '<img src="@GameCenter.Core.Common.Domain._imageSite' + imagepath + '" style="width:auto;height:160px;">' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+                }
+                return {
+                    initialPreview: previewHtml
+                };
+            }
+        });
+    </script>
+}
