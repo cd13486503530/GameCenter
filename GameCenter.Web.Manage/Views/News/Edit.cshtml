@@ -4,6 +4,7 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var newsType = NewsTypeService.GetTypeCacheList();
+    var gamesList = GameService.GetGamesCache();
 }
 
 <div class="page-title">
@@ -41,6 +42,13 @@
                                 <input type="text" name="Tag" value="@Model.Tag" class="validate form-control" id="form-validation-field-2">
                                 <span class="help-block"></span>
                             </div>
+                        </div> 
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">是否置顶:</label>
+                            <div class="col-md-9">
+                                <input type="checkbox" name="top" value="true" @(Model.Hot ? "checked" : "" ) />
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -60,6 +68,36 @@
                                     }
                                 </select>
                                 <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">游戏名称:</label>
+                            <div class="col-md-9">
+                                <select name="NewsType" class="validate[required]" id="form-validation-field-4">
+                                    @foreach (var item in gamesList)
+                                    {
+                                        if (item.Id == Model.GameId)
+                                        {
+                                            <option value="@item.Id" selected="selected"> @item.Name</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.Id"> @item.Name</option>
+                                        }
+                                    }
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">新闻图片</label>
+                            <div class="col-md-10">
+                                <a class="file-input-wrapper btn btn-default  fileinput btn-danger">
+                                    <input type="file" class="fileinput btn-danger" name="Filedata" id="form-validation-field-3" data-filename-placement="inside" title="@(string.IsNullOrEmpty(Model.ImagePath)? "选择游戏封面图片" :Model.ImagePath)" />
+                                </a>
+                                <input type="hidden" name="ImagePath" value="@Model.ImagePath" />
                             </div>
                         </div>
 

@@ -554,7 +554,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\AdminUser\Edit.cshtml" />
- </ItemGroup>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Views\MenuInfo\Index.cshtml" />
   </ItemGroup>
