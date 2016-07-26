@@ -143,7 +143,6 @@
     <Content Include="Content\images\default\next.png" />
     <Content Include="Content\images\default\prev.png" />
     <Content Include="Content\images\default\weixin.png" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery.min.js" />
@@ -172,7 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameCenter.Core\GameCenter.Core.csproj">
-      <Project>{8DEA4E60-EB42-4A99-A758-B88819DA4344}</Project>
+      <Project>{8dea4e60-eb42-4a99-a758-b88819da4344}</Project>
       <Name>GameCenter.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\GameCenter.Entity\GameCenter.Entity.csproj">

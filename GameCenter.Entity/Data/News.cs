@@ -46,9 +46,9 @@ namespace GameCenter.Entity.Data
 
         public int GameId { get; set; }
 
-        public bool Hot { get; set; }
-
-        [MaxLength(256)]
+        public bool Hot { get; set; } 
+ 
+        [MaxLength(128)] 
         [Column(TypeName = "varchar")]
         public string ImagePath { get; set; }
     }

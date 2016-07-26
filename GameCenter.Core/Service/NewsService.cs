@@ -80,6 +80,19 @@ namespace GameCenter.Core.Service
 
         }
 
+        public static List<DtoNews> GetHotListByGameId(int gameId,int top,bool imgNews)
+        {
+            using (var db = new PortalContext())
+            {
+                var list = db.News.Where(a => a.GameId == gameId);
+                if (imgNews)
+                    list = list.Where(a => !string.IsNullOrEmpty(a.ImagePath));
+                list = list.OrderByDescending(a => a.Hot).OrderByDescending(a => a.CreateTime).Take(top);
+
+                return Mapper.Map<List<DtoNews>>(list.ToList());
+            }
+
+        }
 
         public static bool Update(DtoNews dNews, HttpPostedFileBase file, out string msg)
         {
