@@ -40,6 +40,10 @@ namespace GameCenter.Entity.Dto
 
         public int PageSize { get; set; } = 10;
 
+        public int GameId { get; set; }
 
+        public bool Hot { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

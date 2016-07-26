@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameCenter.Core.Common;
 using GameCenter.Data;
 using GameCenter.Entity.Data;
 using GameCenter.Entity.Dto;
@@ -15,8 +16,9 @@ namespace GameCenter.Core.Service
 {
     public class NewsService
     {
-        public static bool AddNews(DtoNews dNews, out string msg)
+        public static bool AddNews(DtoNews dNews, HttpPostedFileBase file, out string msg)
         {
+            string tag = "News";
             msg = string.Empty;
             if (string.IsNullOrEmpty(dNews.Title))
             {
@@ -28,9 +30,11 @@ namespace GameCenter.Core.Service
                 msg = "新闻内容不能为空";
                 return false;
             }
+            var imagePath = UploadFile.SaveImage(file, tag, 280, 95);
             using (var db = new PortalContext())
             {
                 News n = Mapper.Map<News>(dNews);
+                n.ImagePath = imagePath;
                 n.CreateTime = DateTime.Now;
                 n.Status = 0;
                 db.News.Add(n);
@@ -59,10 +63,10 @@ namespace GameCenter.Core.Service
                 var list = db.News.Where(a => a.Status == 0);
                 //total = list.Count;
                 if (!string.IsNullOrEmpty(dNews.Title))
-                    list = list.Where(a=>a.Title.Contains(dNews.Title));
+                    list = list.Where(a => a.Title.Contains(dNews.Title));
 
                 if (dNews.NewsType > 0)
-                    list = list.Where(a=>a.NewsType == dNews.NewsType);
+                    list = list.Where(a => a.NewsType == dNews.NewsType);
                 total = list.Count();
                 list = list.OrderByDescending(a => a.CreateTime).Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize);
                 var dList = Mapper.Map<List<DtoNews>>(list.ToList());
@@ -76,9 +80,23 @@ namespace GameCenter.Core.Service
 
         }
 
-
-        public static bool Update(DtoNews dNews, out string msg)
+        public static List<DtoNews> GetHotListByGameId(int gameId,int top,bool imgNews)
         {
+            using (var db = new PortalContext())
+            {
+                var list = db.News.Where(a => a.GameId == gameId);
+                if (imgNews)
+                    list = list.Where(a => !string.IsNullOrEmpty(a.ImagePath));
+                list = list.OrderByDescending(a => a.Hot).OrderByDescending(a => a.CreateTime).Take(top);
+
+                return Mapper.Map<List<DtoNews>>(list.ToList());
+            }
+
+        }
+
+        public static bool Update(DtoNews dNews, HttpPostedFileBase file, out string msg)
+        {
+            string tag = "News";
             msg = string.Empty;
             if (string.IsNullOrEmpty(dNews.Title))
             {
@@ -89,6 +107,11 @@ namespace GameCenter.Core.Service
             {
                 msg = "新闻内容不能为空";
                 return false;
+            }
+            if (file != null)
+            {
+                var imagePath = UploadFile.SaveImage(file, tag, 280, 95);
+                dNews.ImagePath = imagePath;
             }
             using (var db = new PortalContext())
             {

@@ -38,8 +38,12 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
+                        <li class="xn-openable @(ViewBag.Active == "Main"?"active":"")">
                             <a href="/"><span class="fa fa-desktop"></span> <span class="xn-text">主页</span></a>
+                            <ul>
+                                <li><a href="/Main/Set"><span class="fa fa-desktop"></span>主页设置</a></li>
+                                <li><a href="/Menu/List?IsMain=true"><span class="fa fa-desktop"></span>主页菜单</a></li> 
+                            </ul>
                         </li>
                         <li class="xn-openable @(ViewBag.Active == "Game"?"active":"")">
                             <a href="#"><span class="fa fa-gamepad"></span> <span class="xn-text">游戏信息</span></a>
@@ -55,11 +59,13 @@
                         <li class="xn-openable @(ViewBag.Active == "Menu"?"active":"")">
                             <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">菜单栏</span></a>
                             <ul>
-                                <li><a href="/Menu/List?IsMain=true"><span class="fa fa-desktop"></span>主页菜单</a></li>
                                 <li><a href="/Menu/GameMenu"><span class="fa fa-align-justify"></span>游戏菜单</a></li>
                                 <li><a href="/Menu/AddChoose"><span class="fa fa-edit"></span>添加菜单</a></li>
                                 <li><a href="/Menu/GameMenuDesc"><span class="fa fa-file-text-o"></span>菜单内容</a></li>
-                                
+<<<<<<< HEAD
+=======
+
+>>>>>>> b7e48fa27ef9e26d649521348190d7e75453af4f
                             </ul>
                         </li>
                         <li class="xn-openable @(ViewBag.Active == "News"?"active":"")">
@@ -83,6 +89,12 @@
                                 <li><a href="/Private/Add"><span class="fa fa-edit"></span>添加</a></li>
                             </ul>
                         </li>
+                        <li class="xn-openable @(ViewBag.Active == "AdminUser"?"active":"")">
+                            <a href="#"><span class="fa fa-wrench"></span> <span class="xn-text">账户管理</span></a>
+                            <ul>
+                                <li><a href="/AdminUser/Edit"><span class="fa fa-edit"></span>密码修改</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <!-- END X-NAVIGATION -->
                 </div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: block;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 612px; top: 0px; display: block; max-height: 789px;" oncontextmenu="return false;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div>
@@ -99,7 +111,7 @@
                 <li class="xn-icon-button pull-right last">
                     <a href="/Login/SignOut"><span class="fa fa-power-off"></span></a>
                     <ul class="xn-drop-left animated zoomIn">
-                        <li><a href="/Login/SignOut" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
+                        <li><a href="/AdminUser/SignOut" class="mb-control" data-box="#mb-signout" id="OutLogin"><span class="fa fa-sign-out"></span> Sign Out</a></li>
                     </ul>
                 </li>
                 <!-- END POWER OFF -->
@@ -121,7 +133,7 @@
             $(".spinner_default").spinner()
             $(".spinner_decimal").spinner({ step: 0.01, numberFormat: "n" });
             //End spinner
-        });
+        }); 
     </script>
     @RenderSection("scripts", required: false)
 </body>

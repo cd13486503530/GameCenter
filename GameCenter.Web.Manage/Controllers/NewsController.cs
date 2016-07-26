@@ -34,12 +34,13 @@ namespace GameCenter.Web.Manage.Controllers
         {
             return View();
         }
-
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult AddForm(DtoNews news)
         {
             string msg = string.Empty;
-            var b = NewsService.AddNews(news, out msg);
+            HttpPostedFileBase file = Request.Files["Filedata"];
+            var b = NewsService.AddNews(news, file, out msg);
             return Json(new { status = b, error = msg });
         }
 
@@ -48,6 +49,7 @@ namespace GameCenter.Web.Manage.Controllers
             var info = NewsService.GetOneById(id);
             return View(info);
         }
+        [ValidateInput(false)]
         [HttpPost]
         public ActionResult EditForm(DtoNews dNews)
         {
@@ -57,7 +59,8 @@ namespace GameCenter.Web.Manage.Controllers
             {
                 return Json(new { status = false, msg = "参数错误" });
             }
-            var b = NewsService.Update(dNews, out msg);
+            HttpPostedFileBase file = Request.Files["Filedata"];
+            var b = NewsService.Update(dNews, file, out msg);
             return Json(new { status = b, error = msg });
         }
 

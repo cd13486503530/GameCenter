@@ -125,8 +125,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MenuInfoController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -545,6 +547,15 @@
   <ItemGroup>
     <Content Include="Views\Menu\AddChoose.cshtml" />
   </ItemGroup>
+  <ItemGroup> 
+    <Content Include="Views\AdminUser\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\css\urlfont\DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\AdminUser\Edit.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Views\MenuInfo\Index.cshtml" />
   </ItemGroup>
@@ -552,7 +563,10 @@
     <Content Include="Views\GameImages\HeroAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\GameImages\HeroEdit.cshtml" />
+    <Content Include="Views\GameImages\HeroEdit.cshtml" /> 
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Main\Set.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

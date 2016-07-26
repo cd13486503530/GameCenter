@@ -41,6 +41,15 @@
                                 <input type="hidden" name="ImagePath" value="@Model.ImagePath" />
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">合作伙伴排名:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Sort" value="@Model.Sort" class="validate[required] form-control" id="form-validation-field-2">
+                                <span class="help-block">不能为空,请输入1-100的数字</span>
+                            </div>
+                        </div>
+
                         <div class="btn-group pull-right">
                             <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
                             <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>

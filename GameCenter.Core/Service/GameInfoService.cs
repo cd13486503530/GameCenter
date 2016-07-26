@@ -16,21 +16,25 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                var info = db.GameInfos.FirstOrDefault(a => a.GameId == gameId);
-                return info;
+                var info = db.GameInfos;
+                var l = info.Count();
+                return info.FirstOrDefault(a => a.GameId == gameId);
             }
         }
 
-        public static bool Update(GameInfoForm form, GameInfo info, out string msg)
+        public static bool Update(GameInfoForm form, GameInfo info, out string msg, bool isCheck = true)
         {
             msg = string.Empty;
-            var check = Check(form, out msg);
-            if (!check)
-                return false;
+            if (isCheck)
+            {
+                var check = Check(form, out msg);
+                if (!check)
+                    return false;
+            }
 
             using (var db = new PortalContext())
             {
-              
+
                 var updateInfo = Mapper.Map<GameInfo>(form);
                 db.Set<GameInfo>().Attach(updateInfo);
                 db.Entry(updateInfo).State = System.Data.Entity.EntityState.Modified;
@@ -40,12 +44,16 @@ namespace GameCenter.Core.Service
         }
 
 
-        public static bool Add(GameInfoForm form,out string msg)
+        public static bool Add(GameInfoForm form, out string msg, bool isCheck = true)
         {
             msg = string.Empty;
-            var check = Check(form,out msg);
-            if (!check)
-                return false;
+            if (isCheck)
+            {
+                var check = Check(form, out msg);
+                if (!check)
+                    return false;
+            }
+
 
             using (var db = new PortalContext())
             {
@@ -55,7 +63,7 @@ namespace GameCenter.Core.Service
             }
         }
 
-        private static bool Check(GameInfoForm form,out string msg)
+        private static bool Check(GameInfoForm form, out string msg)
         {
             msg = string.Empty;
 
@@ -77,7 +85,7 @@ namespace GameCenter.Core.Service
                 return false;
             }
 
-            if(string.IsNullOrEmpty(form.BgImage0) && string.IsNullOrEmpty(form.BgImage1) && string.IsNullOrEmpty(form.BgImage2) && string.IsNullOrEmpty(form.BgImage3))
+            if (string.IsNullOrEmpty(form.BgImage0) && string.IsNullOrEmpty(form.BgImage1) && string.IsNullOrEmpty(form.BgImage2) && string.IsNullOrEmpty(form.BgImage3))
             {
                 msg = "至少上传一张游戏首页背景图片";
                 return false;
