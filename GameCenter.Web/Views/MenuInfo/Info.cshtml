@@ -1,0 +1,42 @@
+﻿@model GameCenter.Entity.Data.MenuInformation
+@{
+    Layout = null;
+}
+<html> 
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/content/css/ling.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-inner">
+            <img src="/content/images/cloud-logo.png" alt="" class="cloud-logo">
+            <ul class="u-header">
+                @foreach (var item in ViewBag.Menu)
+                {
+                    <li class="l-header "><a href="@(!string.IsNullOrEmpty(item.Url)|| item.Url == "#"?item.Url:("/MenuInfo/Info?MenuId="+item.Id))">@item.Name</a></li>
+                } 
+            </ul>
+        </div>
+    </div>
+    <div class="cloud-banner">
+        <div class="cloud-type">@((GameCenter.Core.Service.MenuService.GetOne(Model.Id)??new GameCenter.Entity.Dto.DtoMenu ()).Name)</div>
+    </div>
+    <div class="main main-culture">
+        <div class="culture-cxt">
+            @Html.Raw(Model.GameDescription)
+        </div>
+        <div class="culture-pic">
+
+        </div>
+    </div>
+    <div class="cloud-bottom">
+        <img class="btm-img" src="/content/images/cloud-btm.png" alt="">
+    </div>
+    <script src="/scripts/jquery.min.js"></script>
+    <script>
+    </script>
+</body>
+</html>

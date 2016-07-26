@@ -547,7 +547,7 @@
   <ItemGroup>
     <Content Include="Views\Menu\AddChoose.cshtml" />
   </ItemGroup>
-  <ItemGroup> 
+  <ItemGroup>
     <Content Include="Views\AdminUser\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -563,10 +563,13 @@
     <Content Include="Views\GameImages\HeroAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\GameImages\HeroEdit.cshtml" /> 
+    <Content Include="Views\GameImages\HeroEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Main\Set.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\Manage.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

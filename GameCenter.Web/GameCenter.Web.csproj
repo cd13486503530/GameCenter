@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\MenuInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -128,6 +129,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\default\style.css" />
+    <Content Include="Content\css\ling.css" />
+    <Content Include="Content\images\android-no.png" />
+    <Content Include="Content\images\android-yes.png" />
+    <Content Include="Content\images\cloud-banner.png" />
+    <Content Include="Content\images\cloud-btm.png" />
+    <Content Include="Content\images\cloud-logo.png" />
+    <Content Include="Content\images\d-android.png" />
+    <Content Include="Content\images\d-ios-s.png" />
+    <Content Include="Content\images\d-ios.png" />
     <Content Include="Content\images\default\arrow.png" />
     <Content Include="Content\images\default\banner.jpg" />
     <Content Include="Content\images\default\bottom_1.jpg" />
@@ -143,10 +153,29 @@
     <Content Include="Content\images\default\next.png" />
     <Content Include="Content\images\default\prev.png" />
     <Content Include="Content\images\default\weixin.png" />
+    <Content Include="Content\images\dn-notes.png" />
+    <Content Include="Content\images\ios-no.png" />
+    <Content Include="Content\images\ios-yes.png" />
+    <Content Include="Content\images\iphone1.png" />
+    <Content Include="Content\images\left-icon.png" />
+    <Content Include="Content\images\ling-banner.png" />
+    <Content Include="Content\images\ling-btm.png" />
+    <Content Include="Content\images\ling-content.png" />
+    <Content Include="Content\images\ling-logo.png" />
+    <Content Include="Content\images\mobile-head.png" />
+    <Content Include="Content\images\qq.png" />
+    <Content Include="Content\images\qq2.png" />
+    <Content Include="Content\images\right-icon.png" />
+    <Content Include="Content\images\right_pic.png" />
+    <Content Include="Content\images\right_pic_2.png" />
+    <Content Include="Content\images\right_pic_3.png" />
+    <Content Include="Content\images\two-d-code.png" />
+    <Content Include="Content\images\wechat.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\default\index.js" />
     <Content Include="Scripts\default\jquery.min.js" />
     <Content Include="Scripts\default\jquery.touchSlider.js" />
+    <Content Include="Scripts\jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -178,6 +207,9 @@
       <Project>{5501d844-3389-43f3-b5e2-ea44eb934428}</Project>
       <Name>GameCenter.Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MenuInfo\Info.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

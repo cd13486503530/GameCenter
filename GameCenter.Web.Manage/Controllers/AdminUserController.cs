@@ -46,6 +46,7 @@ namespace GameCenter.Web.Manage.Controllers
             var info = AdminUserService.GetUserAndPassWord();
             return View(info);
         }
+
         [HttpPost]
         public ActionResult EditForm(DtoAdminUser dAdminUser)
         {

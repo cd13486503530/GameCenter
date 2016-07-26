@@ -84,7 +84,9 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                var list = db.News.Where(a => a.GameId == gameId);
+                var list = db.News.Where(a=>a.Id > 0);
+                if(gameId > 0)
+                    list = list.Where(a => a.GameId == gameId);
                 if (imgNews)
                     list = list.Where(a => !string.IsNullOrEmpty(a.ImagePath));
                 list = list.OrderByDescending(a => a.Hot).OrderByDescending(a => a.CreateTime).Take(top);

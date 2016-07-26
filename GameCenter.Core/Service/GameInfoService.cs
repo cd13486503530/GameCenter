@@ -17,7 +17,6 @@ namespace GameCenter.Core.Service
             using (var db = new PortalContext())
             {
                 var info = db.GameInfos;
-                var l = info.Count();
                 return info.FirstOrDefault(a => a.GameId == gameId);
             }
         }
