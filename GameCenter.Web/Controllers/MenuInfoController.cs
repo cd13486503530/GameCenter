@@ -5,17 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using GameCenter.Core.Service;
 using GameCenter.Web.App_Start;
+using GameCenter.Entity.Data;
+using GameCenter.Entity.Dto;
 
 namespace GameCenter.Web.Controllers
 {
     public class MenuInfoController : Controller
     {
-        [Active("")]
-        // GET: MenuInfo
         public ActionResult Info(int MenuId)
         {
-            var info = MenuInfoService.GetOne(MenuId) ?? new Entity.Data.MenuInformation ();  
-            ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == 0).ToList();
+            var info = MenuInfoService.GetOne(MenuId) ?? new MenuInformation ();
+          
             return View(info);
         }
     }
