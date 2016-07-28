@@ -17,7 +17,7 @@ namespace GameCenter.Web
                name: "Index",
                url: "",
                defaults: new { controller = "Default", action = "Index", id = UrlParameter.Optional }
-           );
+            );
 
             routes.MapRoute(
                 name: "Default",

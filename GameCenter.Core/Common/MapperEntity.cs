@@ -22,7 +22,11 @@ namespace GameCenter.Core.Common
                 cfg.CreateMap<GameEditForm, GameForm>();
                 cfg.CreateMap<GameEditForm, Game>();
                 cfg.CreateMap<GameInfoForm, GameInfo>();
-                cfg.CreateMap<News, DtoNews>();
+                var newsMap = cfg.CreateMap<News, DtoNews>();
+                newsMap.ConstructUsing(n => new DtoNews
+                {
+                    NewsTypeName = (NewsTypeService.GetTypeCacheList().FirstOrDefault(a => a.Id == n.NewsType) ?? new DtoNewsType()).Name
+                });
                 cfg.CreateMap<DtoNews, News>();
                 cfg.CreateMap<NewsType, DtoNewsType>();
                 cfg.CreateMap<GameInfoForm, GameInfo>();
@@ -44,6 +48,8 @@ namespace GameCenter.Core.Common
                     GameName = (GameService.GetGamesCache().FirstOrDefault(a => a.Id == s.GameId) ?? new DtoGame()).Name,
                 });
                 cfg.CreateMap<MenuForm, Menu>();
+
+
             });
         }
     }

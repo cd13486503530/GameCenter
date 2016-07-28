@@ -11,6 +11,7 @@ namespace GameCenter.Web.Controllers
         // GET: Game
         public ActionResult Index()
         {
+            ViewBag.Name = "产品介绍";
             return View();
         }
     }

@@ -1,0 +1,19 @@
+﻿@model GameCenter.Entity.Dto.DtoNews
+@{
+    ViewBag.Title = "Info";
+    Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+}
+
+<div class="cloud-banner">
+    <div class="cloud-type">@Model.Title</div>
+</div>
+<div class="main main-culture">
+    <div class="culture-cxt">
+        @Html.Raw(Model.Contents)
+    </div>
+    <div class="culture-pic">
+    </div>
+</div>
+
+
+

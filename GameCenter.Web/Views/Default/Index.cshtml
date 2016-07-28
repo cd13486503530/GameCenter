@@ -61,14 +61,14 @@
                 {
                     <div class="fl">
                         @*<img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="350">*@
-                       <a href="/News?id=@item.Id"><img src="/content/images/default/mid_1.jpg" alt="" width="350"></a> 
+                       <a href="/News/Info?id=@item.Id"><img src="/content/images/default/mid_1.jpg" alt="" width="350"></a> 
                     </div>
                 } 
                 <div class="news fl" style="width:37.3%;"> 
                     <ul>
                         @foreach (var item in ViewBag.News)
                         {
-                            <li><a href="/News?id=@item.Id">@item.Title</a></li>
+                            <li><a href="/News/Info?id=@item.Id">@item.Title</a></li>
                         } 
                     </ul>
                 </div>

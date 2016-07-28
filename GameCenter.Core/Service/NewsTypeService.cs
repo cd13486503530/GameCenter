@@ -17,7 +17,7 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                var info = db.NewsTypes.FirstOrDefault(a=>a.Id == id) ?? new NewsType ();
+                var info = db.NewsTypes.FirstOrDefault(a => a.Id == id) ?? new NewsType();
                 return Mapper.Map<DtoNewsType>(info);
             }
         }
@@ -28,6 +28,11 @@ namespace GameCenter.Core.Service
                 var list = db.NewsTypes.ToList();
                 return Mapper.Map<List<DtoNewsType>>(list);
             }
+        }
+
+        public static DtoNewsType GetOneByName(string name)
+        {
+            return GetTypeCacheList().FirstOrDefault(a => a.Name == name) ?? new DtoNewsType();
         }
 
         public static List<DtoNewsType> GetTypeCacheList()

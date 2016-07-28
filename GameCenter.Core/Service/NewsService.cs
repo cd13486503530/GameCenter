@@ -70,22 +70,31 @@ namespace GameCenter.Core.Service
                 total = list.Count();
                 list = list.OrderByDescending(a => a.CreateTime).Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize);
                 var dList = Mapper.Map<List<DtoNews>>(list.ToList());
-                foreach (var item in dList)
-                {
-                    var info = NewsTypeService.GetTypeCacheList().FirstOrDefault(a => a.Id == item.NewsType) ?? new DtoNewsType(); //NewsTypeService.GetNameById(item.NewsType);
-                    item.NewsTypeName = info.Name;
-                }
+                //foreach (var item in dList)
+                //{
+                //    var info = NewsTypeService.GetTypeCacheList().FirstOrDefault(a => a.Id == item.NewsType) ?? new DtoNewsType(); //NewsTypeService.GetNameById(item.NewsType);
+                //    item.NewsTypeName = info.Name;
+                //}
                 return dList;
             }
 
         }
 
-        public static List<DtoNews> GetHotListByGameId(int gameId,int top,bool imgNews)
+
+        public static List<DtoNews> GetListByTypeId(int typeId,int top)
         {
             using (var db = new PortalContext())
             {
-                var list = db.News.Where(a=>a.Id > 0);
-                if(gameId > 0)
+                return Mapper.Map<List<DtoNews>>(db.News.OrderByDescending(a=>a.CreateTime).Where(a => a.NewsType == typeId).Take(top));
+            }
+        }
+
+        public static List<DtoNews> GetHotListByGameId(int gameId, int top, bool imgNews)
+        {
+            using (var db = new PortalContext())
+            {
+                var list = db.News.Where(a => a.Id > 0);
+                if (gameId > 0)
                     list = list.Where(a => a.GameId == gameId);
                 if (imgNews)
                     list = list.Where(a => !string.IsNullOrEmpty(a.ImagePath));

@@ -16,76 +16,40 @@
         </ul>
         <div class="d-lists-wrap">
             <ul class="u-content-lists  u-comprehensive">
-                <li class="l-content-list">
-                    <span class="list-title">综合</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">综合</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">综合</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">综合</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
+                @foreach (var item in ViewBag.Type1)
+                {
+                    <li class="l-content-list">
+                        <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                        <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                    </li>
+                } 
             </ul>
             <ul class="u-content-lists  u-news">
-                <li class="l-content-list">
-                    <span class="list-title">新闻</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">新闻</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">新闻</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">新闻</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
+                @foreach (var item in ViewBag.Type2)
+                {
+                    <li class="l-content-list">
+                        <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                        <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                    </li>
+                } 
             </ul>
             <ul class="u-content-lists  u-report">
-                <li class="l-content-list">
-                    <span class="list-title">公告</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">公告</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">公告</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">公告</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
+                @foreach (var item in ViewBag.Type3)
+                {
+                    <li class="l-content-list">
+                        <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                        <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                    </li>
+                } 
             </ul>
             <ul class="u-content-lists  u-acti">
-                <li class="l-content-list">
-                    <span class="list-title">活动</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">活动</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">活动</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
-                <li class="l-content-list">
-                    <span class="list-title">活动</span>
-                    <span class="list-time">2016年3月10日</span>
-                </li>
+                @foreach (var item in ViewBag.Type4)
+                {
+                    <li class="l-content-list">
+                        <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                        <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                    </li>
+                } 
             </ul>
         </div>
     </div>
@@ -95,3 +59,17 @@
         <a href="" class="acti-href"><img src="/content/images/right_pic_3.png" alt=""></a>
     </div>
 </div>
+
+@section scripts{
+<script>
+		$(function(){
+			var typeArr = ['main-content-comprehensive', 'main-content-news', 'main-content-report', 'main-content-acti'];
+			var $obj = $(".main-content");
+			$(document).on("click", ".u-content-type .l-content-type", function(){
+				if($(this).hasClass("sel")) return;
+				$(this).addClass("sel").siblings(".sel").removeClass("sel");
+				$obj.removeClass(typeArr.join(" ")).addClass(typeArr[$(this).index()]);
+			})
+		})
+</script>
+}

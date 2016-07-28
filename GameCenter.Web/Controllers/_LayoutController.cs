@@ -10,13 +10,19 @@ namespace GameCenter.Web.Controllers
 {
     public class _LayoutController : Controller
     {
-        // GET: _Layout
-        public PartialViewResult _Menu(int MenuId)
+        
+        public PartialViewResult _DescMenu(int MenuId)
         {
             var model = MenuService.GetListCache().FirstOrDefault(a => a.Id == MenuId) ?? new DtoMenu();
             ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == 0).ToList();
             ViewBag.Model = model;
-            ViewBag.Active = model.Name;
+            return PartialView();
+        }
+
+        public PartialViewResult _Menu(string name)
+        {
+            ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == 0).ToList();
+            ViewBag.Name = name;
             return PartialView();
         }
     }

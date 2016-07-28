@@ -11,7 +11,14 @@
         <div class="header-inner">
             <img src="/content/images/cloud-logo.png" alt="" class="cloud-logo">
             <ul class="u-header">
-                @{Html.RenderAction("_Menu", "_Layout"); }
+                @if (!string.IsNullOrEmpty(Request["MenuId"]))
+                {
+                    Html.RenderAction("_DescMenu", "_Layout");
+                }
+                else
+                {
+                    Html.RenderAction("_Menu", "_Layout", new { name = ViewBag.Name });
+                }  
             </ul>
         </div>
     </div>
@@ -20,5 +27,6 @@
         <img class="btm-img" src="/content/images/cloud-btm.png" alt="">
     </div>
     <script src="/scripts/jquery.min.js"></script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
