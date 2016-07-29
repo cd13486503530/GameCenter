@@ -10,6 +10,23 @@ namespace GameCenter.Core.Common
     public class Domain
     {
         public static string _imageSite;
+
+        public static string MainUrl
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["MainUrl"] ?? string.Empty;
+            }
+        }
+
+        public static string MainUrlFull
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["MainUrlFull"] ?? string.Empty;
+            }
+        }
+
         static Domain()
         {
             _imageSite = ConfigurationManager.AppSettings["ImageSite"] ?? string.Empty;

@@ -52,7 +52,7 @@ namespace GameCenter.Data
         {
             // 禁用一对多级联删除
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
+            
             // 禁用多对多级联删除
             //modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
