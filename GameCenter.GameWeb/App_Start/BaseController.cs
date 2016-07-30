@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GameCenter.Entity.Dto;
+using GameCenter.Core.Service;
 
 namespace GameCenter.GameWeb.App_Start
 {
@@ -13,9 +14,12 @@ namespace GameCenter.GameWeb.App_Start
 
         public string DoMain { get; set; }
 
+
         public BaseController()
         {
             DoMain = GameDoMain.GetDoMain(System.Web.HttpContext.Current);
+            GameInfo = GameService.GetOneByName(DoMain) ?? new DtoGame();
+            ViewBag.Logo = GameCenter.Core.Common.Domain.GetImage(GameInfo.ImagePath);// /Content/img/ling-logo.png
         }
     }
 }

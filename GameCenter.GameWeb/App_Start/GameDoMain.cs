@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
+using System.Web; 
 
 namespace GameCenter.GameWeb.App_Start
 {
@@ -40,7 +40,7 @@ namespace GameCenter.GameWeb.App_Start
             //ert.CHEN.glass.com.cn
 
             domainPrefix = host.Substring(0, host.Length - DOMAIN_MAIN.Length);
-            var pres = domainPrefix.Split('.');
+            var pres = domainPrefix.Split(new char[] { '.'},StringSplitOptions.RemoveEmptyEntries);
             domainPrefix = pres.Last();
             switch (pres.Length)
             {

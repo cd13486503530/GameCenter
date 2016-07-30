@@ -1,4 +1,5 @@
 ﻿using GameCenter.Core.Cache;
+using GameCenter.Core.Common;
 using GameCenter.GameWeb.App_Start;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace GameCenter.GameWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            MapperEntity.MapperInit();
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

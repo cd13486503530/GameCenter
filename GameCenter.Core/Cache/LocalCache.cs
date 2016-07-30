@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameCenter.Core.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
@@ -53,5 +54,16 @@ namespace GameCenter.Core.Cache
         {
             _memoryCache.Remove(key);
         }
+
+
+        public void RemoveAll(params string[] urls)
+        {
+            var count = _memoryCache.GetCount();
+            for (int i = 0; i < count; i++)
+            {
+
+            }
+        }
+         
     }
 }

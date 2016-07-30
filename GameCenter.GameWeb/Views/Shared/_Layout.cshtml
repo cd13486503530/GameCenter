@@ -4,11 +4,31 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-
+    <link rel="stylesheet" href="/Content/css/ling.css">
+    <title>@ViewBag.Title</title>
 </head>
 <body>
+    <div class="header">
+        <div class="header-inner">
+            <img src="@ViewBag.Logo" alt="" class="ling-logo">
+            <ul class="u-header">
+                @if (!string.IsNullOrEmpty(Request["MenuId"]))
+                {
+                    Html.RenderAction("_DescMenu", "_Layout");
+                }
+                else
+                {
+                    Html.RenderAction("_Menu", "_Layout", new { name = ViewBag.Name });
+                }
+                
+            </ul>
+        </div>
+    </div>
     @RenderBody()
+    <div class="cloud-bottom">
+        <img class="btm-img" src="/content/img/cloud-btm.png" alt="">
+    </div>
+    <script src="/Scripts/jquery.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

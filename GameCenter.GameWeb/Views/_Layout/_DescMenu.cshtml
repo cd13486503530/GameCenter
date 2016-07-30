@@ -1,0 +1,6 @@
+﻿@foreach (var item in ViewBag.Menu)
+{
+    <li class="l-header @(item.Name == ViewBag.Model.Name?"sel":"")"><a href="@(!string.IsNullOrEmpty(item.Url)?item.Url:("/MenuInfo/Info?MenuId="+item.Id))">@item.Name</a></li>
+}
+
+

@@ -1,0 +1,114 @@
+﻿@model GameCenter.Entity.Dto.DtoGameInfo
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="index-top">
+    <div class="index-top-inner">
+        <div class="index-download">
+            <div class="two-d-code">
+                <img src="/Content/img/two-d-code.png" alt="" class='two-d-img'>
+                <span class="two-d-notes">(扫描下载匀腾手游)</span>
+            </div>
+            <div class="dn-img-wrap">
+                <a href=""><img src="/Content/img/d-android.png" alt=""></a>
+                <a href=""><img src="/Content/img/d-ios.png" alt=""></a>
+                @*<a href=""><img src="/Content/img/d-ios-s.png" alt=""></a>*@
+            </div>
+        </div>
+        <div class="img-wrap">
+            <div class="imgs">
+                <img class="J-curImg" src="/Content/img/mobile-head.png" alt="">
+                <img src="/Content/img/right_pic.png" alt="">
+                <img src="/Content/img/right_pic_2.png" alt="">
+                <img src="/Content/img/ling-bg.png" alt="">
+            </div>
+            <div class="img-nav">
+                <span class="s-nav cur-nav"></span>
+                <span class="s-nav"></span>
+                <span class="s-nav"></span>
+                <span class="s-nav"></span>
+            </div>
+        </div>
+        <div class="indexs-info indexs-info-conprehensive">
+            <ul class="u-info-head">
+                <li class="l-info-head sel">综合</li>
+                <li class="l-info-head">新闻</li>
+                <li class="l-info-head">公告</li>
+                <li class="l-info-head">通知</li>
+            </ul>
+            <div class="indexs-info-content">
+                <ul class="u-info-conprehensive">
+                    @foreach (var item in ViewBag.Type1)
+                    {
+                    <li class="l-info">
+                        <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                    </li>
+                    }
+                </ul>
+                <ul class="u-info-news">
+                    @foreach (var item in ViewBag.Type2)
+                    {
+                    <li class="l-info">
+                        <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                    </li>
+                    }
+                </ul>
+                <ul class="u-info-abroad">
+                    @foreach (var item in ViewBag.Type3)
+                   {
+                    <li class="l-info">
+                        <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                    </li>
+                   }
+                </ul>
+                <ul class="u-info-notice">
+                    @foreach (var item in ViewBag.Type4)
+                    {
+                    <li class="l-info">
+                        <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(function () {
+            var typeArr = ['indexs-info-conprehensive', 'indexs-info-news', 'indexs-info-abroad', 'indexs-info-notice'];
+            var $obj = $(".indexs-info");
+            $(document).on("click", ".u-info-head .l-info-head", function () {
+                if ($(this).hasClass("sel")) return;
+                $(this).addClass("sel").siblings(".sel").removeClass("sel");
+                $obj.removeClass(typeArr.join(" ")).addClass(typeArr[$(this).index()]);
+            })
+
+            var imgChange = function (total) {
+                setTimeout(function () {
+                    var index = $(".img-wrap .J-curImg").index();
+                    var nIndex = index < total - 1 ? index + 1 : 0;
+                    var $cur = $(".img-wrap .J-curImg");
+                    var $next = $(".img-wrap img").eq(nIndex);
+                    $cur.animate({
+                        'left': '-490px'
+                    })
+                    $next.animate({
+                        'left': '0'
+                    }, function () {
+                        $cur.removeClass("J-curImg");
+                        $next.addClass("J-curImg");
+                        $cur.css({ "left": "490px" })
+                        $(".img-nav .s-nav").eq(nIndex).addClass("cur-nav").siblings(".cur-nav").removeClass("cur-nav")
+
+                        imgChange(total);
+                    });
+                }, 2000)
+            }
+            var totalImgNum = $(".img-wrap img").size();
+            imgChange(totalImgNum);
+        })
+    </script>
+}
+

@@ -213,6 +213,19 @@ namespace GameCenter.Core.Service
             }
         }
 
+
+        public static DtoGame GetOneByName(string name)
+        {
+            using (var db = new PortalContext())
+            {
+                var info = db.Games.FirstOrDefault(a=>a.Code == name);
+                if (info == null)
+                    return null;
+
+                return Mapper.Map<DtoGame>(info);
+            }
+        }
+
         /// <summary>
         /// 添加游戏时验证参数
         /// </summary>
