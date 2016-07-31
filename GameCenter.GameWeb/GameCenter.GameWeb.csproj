@@ -132,6 +132,7 @@
     <Compile Include="App_Start\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\MenuInfoController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\_LayoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -189,6 +190,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Common\" />
+    <Folder Include="Views\News\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
