@@ -21,7 +21,7 @@
         <div class="login-box animated fadeInDown">
             <div class="login-body">
                 <div class="login-title"><strong>Welcome</strong>, Please login.</div>
-                <form action="/AdminUser/LoginForm" class="form-horizontal" method="post" id="validate">
+                <form action="/Login/LoginForm" class="form-horizontal" method="post" id="validate">
                     <div class="form-group">
                         <div class="col-md-12">
                             <div class="input-group">
@@ -69,7 +69,7 @@
     <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
     <script type="text/javascript">
         $('#validate').ajaxForm({
-            url: '/AdminUser/LoginForm',
+            url: '/Login/LoginForm',
             type: "POST",
             dataType: "json",
             success: function (data) {

@@ -13,7 +13,7 @@ namespace GameCenter.Web.Controllers
         public ActionResult Remove()
         {
 
-            LocalCache.Instance().Remove(key);
+            //LocalCache.Instance().Remove(key);
             return Json(new { s = true });
         }
     }

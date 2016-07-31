@@ -39,6 +39,7 @@
                                 <a class="file-input-wrapper btn btn-default  fileinput btn-danger">
                                     <input type="file" class="fileinput btn-danger" name="Filedata" id="form-validation-field-3" data-filename-placement="inside" title="选择游戏封面图片">
                                 </a>
+                                <span class="help-block">备注：图片规格大小324×138</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -85,19 +86,19 @@
     <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
     <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
     <script type="text/javascript">
-        $('#validate').ajaxForm({ 
+        $('#validate').ajaxForm({
             url: '/Game/AddForm',
             type: "POST",
             dataType: "json",
             success: function (data) {
-                if (data.status) { 
+                if (data.status) {
                     window.location.href = "/Game/List";
                 } else {
                     $('#message-box-sound-2 .fa-times').next().html('');
                     $('#message-box-sound-2 .fa-times').next().html(data.msg);
-                    $('#message-box-sound-2').addClass('open') 
+                    $('#message-box-sound-2').addClass('open')
                 }
-            } 
+            }
         });
     </script>
 }
