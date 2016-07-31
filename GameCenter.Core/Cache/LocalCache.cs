@@ -56,14 +56,14 @@ namespace GameCenter.Core.Cache
         }
 
 
-        public void RemoveAll(params string[] urls)
+        public void RemoveAll()
         {
-            var count = _memoryCache.GetCount();
-            for (int i = 0; i < count; i++)
+            var keys = CacheKeyManage.keys;
+            foreach (var item in keys)
             {
-
+                _memoryCache.Remove(item);
             }
-        }
-         
+        } 
+       
     }
 }

@@ -12,14 +12,13 @@ namespace GameCenter.GameWeb.App_Start
     {
         public DtoGame GameInfo { get; set; }
 
-        public string DoMain { get; set; }
-
+        public string DoMain { get; set; } 
 
         public BaseController()
         {
             DoMain = GameDoMain.GetDoMain(System.Web.HttpContext.Current);
             GameInfo = GameService.GetOneByName(DoMain) ?? new DtoGame();
-            ViewBag.Logo = GameCenter.Core.Common.Domain.GetImage(GameInfo.ImagePath);// /Content/img/ling-logo.png
+           
         }
     }
 }

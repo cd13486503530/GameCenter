@@ -48,15 +48,15 @@ namespace GameCenter.Web.Manage.Controllers
             if (fileInputName.Contains("BgImage"))
             {
                 //具体参数需要修改
-                req.Width = 1550;
-                req.Heigth = 890;
+                req.Width = 1920;
+                req.Heigth = 1062;
             }
 
             if (fileInputName.Contains("FocusImage"))
             {
                 //具体参数需要修改
-                req.Width = 300;
-                req.Heigth = 300;
+                req.Width = 490;
+                req.Heigth = 320;
             }
 
             if (fileInputName.Contains("AndriodDl"))

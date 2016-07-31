@@ -65,7 +65,7 @@ body{
 .ling-banner{
 	padding-top: 90px;
 	height: 60px;
-	background: url(/Content/img/ling-banner.png);
+	background: url(../img/ling-banner.png);
 	background-size: 100% 100%;
 }
 
@@ -84,7 +84,7 @@ body{
 }
 
 .ling-content{
-	background: url(/Content/img/ling-content.png) no-repeat top center;
+	background: url(../img/ling-content.png) no-repeat top center;
 	background-size: 100% 100%; 
 }
 
@@ -285,7 +285,7 @@ body{
 .tch-imgs-wrap{
 	width: 900px;
 	margin: 0 auto;
-	background: url(/Content/img/iphone1.png) no-repeat;
+	background: url(../img/iphone1.png) no-repeat;
 	background-size: 100% 100%;
 	height: 433px;
 	position: relative;
@@ -408,7 +408,7 @@ body{
 .cloud-banner{
 	padding-top: 190px;
 	height: 60px;
-	background: url(/Content/img/cloud-banner.png);
+	background: url(../img/cloud-banner.png);
 	background-size: 100% 100%;
 }
 
@@ -453,16 +453,13 @@ body{
 
 .index-top{
 	height: 900px;
-	/*background: url(/Content/img/ling-bg.png) no-repeat;*/
-	/*background-size: 100% 100%;*/
-	position: relative;
+    
+	background-size: 100% 100%;
 }
 .index-top-inner{
 	width: 1000px;
 	margin: 0 auto;
 	padding-top: 380px;
-	position: relative;
-	z-index: 2;
 }
 .index-download{
 	overflow: hidden;
@@ -605,40 +602,6 @@ body{
 
 .indexs-info-notice .u-info-notice{
 	display: block !important;
-}
-
-.bg-wrap{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-}
-.bg-wrap .bg-imgs-wrap img{
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 100%;
-}
-
-.bg-wrap .bg-imgs-wrap .cur-bg-img{
-	left: 0;
-}
-
-.bg-wrap .bg-prev-img{
-	position: absolute;
-	top: 50%;
-	left: 0;
-	margin-top: -61px;
-}
-
-.bg-wrap .bg-next-img{
-	position: absolute;
-	top: 50%;
-	right: 0;
-	margin-top: -61px;
 }
 
 
