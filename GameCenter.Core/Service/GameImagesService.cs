@@ -88,6 +88,13 @@ namespace GameCenter.Core.Service
                 return db.GameImages.FirstOrDefault(a=>a.Id == id);
             }
         }
+        public static GameImages GetOneByTypeId(int typeId,int gameId)
+        {
+            using (var db = new PortalContext())
+            {
+                return db.GameImages.FirstOrDefault(a=>a.Type == typeId && a.GameId == gameId && !a.Disable);
+            }
+        }
 
         public static bool Disable(int id)
         {

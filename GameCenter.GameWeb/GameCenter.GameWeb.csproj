@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\BaseController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\GameImagesController.cs" />
     <Compile Include="Controllers\MenuInfoController.cs" />
     <Compile Include="Controllers\_LayoutController.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,6 +197,8 @@
     <Content Include="Views\_Layout\_DescMenu.cshtml" />
     <Content Include="Views\_Layout\_Menu.cshtml" />
     <Content Include="Views\MenuInfo\Info.cshtml" />
+    <Content Include="Views\GameImages\Info.cshtml" />
+    <Content Include="Views\GameImages\Map.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameCenter.Core\GameCenter.Core.csproj">

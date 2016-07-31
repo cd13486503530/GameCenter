@@ -260,6 +260,13 @@ body{
 	clear: both;
 }
 
+.intro-content-contact{
+	background: #ffffff;
+	border: 1px solid #c6c170;
+	border-top: 10px solid #35d800;
+	clear: both;
+}
+
 .intro-gameSys .l-gameSys{
 	line-height: 26px;
 	padding-top: 8px;
