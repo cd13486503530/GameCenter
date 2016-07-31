@@ -549,9 +549,6 @@
     <Content Include="Views\Menu\AddChoose.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Login\Login.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Content\css\urlfont\DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2" />
   </ItemGroup>
   <ItemGroup>
@@ -571,6 +568,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Manage.pubxml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
