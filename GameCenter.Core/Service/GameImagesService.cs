@@ -16,9 +16,12 @@ namespace GameCenter.Core.Service
         public static List<DtoGameImages> GetPageList(GameImagesForm form, out int recount)
         {
             recount = 0;
+            if (form.PageIndex < 1)
+                form.PageIndex = 1;
+
             using (var db = new PortalContext())
             {
-                var list = db.GameImages.OrderByDescending(a => a.Id).Where(a => a.Disable == false);
+                var list = db.GameImages.Where(a => a.Disable == false);
                 if (!string.IsNullOrEmpty(form.Name))
                     list = list.Where(a => SqlFunctions.PatIndex(form.Name + "%", a.Name) > 0);
 
@@ -28,7 +31,7 @@ namespace GameCenter.Core.Service
                 if (form.GameId > 0)
                     list = list.Where(a => a.GameId == form.GameId);
                 recount = list.Count();
-                list = list.Skip((form.PageIndex - 1) * form.PageSize).Take(form.PageSize);
+                list = list.OrderBy(a => a.Sort).Skip((form.PageIndex - 1) * form.PageSize).Take(form.PageSize);
                 return Mapper.Map<List<DtoGameImages>>(list.ToList());
             }
         }

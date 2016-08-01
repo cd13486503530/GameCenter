@@ -1,0 +1,20 @@
+﻿@model List<GameCenter.Entity.Dto.DtoGameImages>
+ 
+<div class="ling-banner">
+    <div class="ling-type">资料站 <span class="sub-ling-type">> 英雄介绍</span></div>
+</div>
+<div class="ling-content">
+    <div class="main">
+        <ul class="u-hero-lists">
+            @foreach (var item in Model)
+            {
+                <li class="l-hero-list">
+                    <a href="/Hero/Info?id=@item.Id">
+                        <img src="@(GameCenter.Core.Common.Domain.GetImage(item.SmallImagePath))" alt="" class="hero-img">
+                        <span class="hero-name">@item.Name</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

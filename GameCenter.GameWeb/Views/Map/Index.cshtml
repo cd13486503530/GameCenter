@@ -1,0 +1,35 @@
+﻿@model GameCenter.Entity.Dto.DtoGameImages
+
+<div class="ling-banner">
+    <div class="ling-type">游戏介绍 <span class="sub-ling-type">> 游戏地图</span></div>
+</div>
+<div class="ling-content">
+    <div class="main tch-main">
+        <div class="tch-head">
+            @Model.Name
+            <div class="intro-title">@Model.Info</div>
+        </div>
+        <div class="tch-imgs-wrap">
+            <div class="tch-imgs">
+                <img src="@(GameCenter.Core.Common.Domain.GetImage(Model.ImagePath))" alt="" class="cur-img">
+            </div>
+            @Html.Raw(ViewBag.HtmlPage)
+        </div>
+    </div>
+    <img class="btm-img" src="/content/img/ling-btm.png" alt="">
+</div>
+
+@section scripts{
+    <script>
+        $(function () {
+            var typeArr = ['main-content-junior', 'main-content-senior', 'main-content-strategy'];
+            var $obj = $(".main-content");
+            $(document).on("click", ".u-content-type .l-content-type", function () {
+                if ($(this).hasClass("sel")) return;
+                $(this).addClass("sel").siblings(".sel").removeClass("sel");
+                $obj.removeClass(typeArr.join(" ")).addClass(typeArr[$(this).index()]);
+            })
+        })
+    </script>
+
+}

@@ -25,12 +25,6 @@ namespace GameCenter.GameWeb.Controllers
             return View(image);
         }
 
-        public ActionResult Map(GameImagesForm req)
-        {
-            int total = 0;
-            var info = GameImagesService.GetPageList(req, out total);
-            ViewBag.Total = total;
-            return View(info.FirstOrDefault() ?? new DtoGameImages());
-        }
+      
     }
 }
