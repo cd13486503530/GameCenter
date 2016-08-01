@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "新闻中心";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="cloud-banner">
+    <div class="cloud-type">@Model.Title</div>
+</div>
+<div class="main main-culture">
+    <div class="culture-cxt">
+        @Html.Raw(Model.Contents)
+    </div>
+    <div class="culture-pic">
+    </div>
+</div>
+

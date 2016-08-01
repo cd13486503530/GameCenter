@@ -39,7 +39,14 @@ namespace GameCenter.Core.Service
                 return Mapper.Map<List<DtoPartner>>(list.ToList());
             }
         }
-
+        public static List<DtoPartner> GetPartnerListBySotr()
+        {
+            using (var db = new PortalContext())
+            {
+                var list = db.Partners.Where(a => a.Disable == false).OrderByDescending(a => a.Sort).Take(20);
+                return Mapper.Map<List<DtoPartner>>(list.ToList());
+            }
+        }
         public static bool AddPartner(DtoPartner dPartner, HttpPostedFileBase file, out string msg)
         {
             string tag = "Partner";

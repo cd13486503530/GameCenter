@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header">
+    <div class="header-inner">
+        <img src="../img/ling-logo.png" alt="" class="ling-logo">
+        <ul class="u-header">
+            <li class="l-header"><a href="">匀腾游戏</a></li>
+            <li class="l-header sel"><a href="">游戏介绍</a></li>
+            <li class="l-header"><a href="">资料站</a></li>
+            <li class="l-header"><a href="">联系我们</a></li>
+            <li class="l-header"><a href="">家长监护</a></li>
+        </ul>
+    </div>
+</div>
+<div class="ling-banner">
+    <div class="ling-type">新闻中心</div>
+</div>
+<div class="ling-content">
+    <div class="main">
+        <div class="main-content main-content-comprehensive">
+            <ul class="u-content-type">
+                <li class="l-content-type sel">综合</li>
+                <li class="l-content-type">新闻</li>
+                <li class="l-content-type">公告</li>
+                <li class="l-content-type">活动</li>
+            </ul>
+            <div class="d-lists-wrap">
+                <ul class="u-content-lists  u-comprehensive">
+                    @foreach (var item in ViewBag.News1)
+                    {
+                        <li class="l-content-list">
+                            <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                            <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                        </li>
+                    }
+                </ul>
+                <ul class="u-content-lists  u-news">
+                    @foreach (var item in ViewBag.News2)
+                    {
+                        <li class="l-content-list">
+                            <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                            <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                        </li>
+                    }
+                </ul>
+                <ul class="u-content-lists  u-report">
+                    @foreach (var item in ViewBag.News3)
+                    {
+                        <li class="l-content-list">
+                            <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                            <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                        </li>
+                    }
+                </ul>
+
+                <ul class="u-content-lists  u-acti">
+                    @foreach (var item in ViewBag.News4)
+                    {
+                        <li class="l-content-list">
+                            <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                            <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="main-sidebar">
+            <a href="" class="acti-href"><img src="../img/right_pic.png" alt=""></a>
+            <a href="" class="acti-href"><img src="../img/right_pic_2.png" alt=""></a>
+            <a href="" class="acti-href"><img src="../img/right_pic_3.png" alt=""></a>
+        </div>
+    </div>
+    <img class="btm-img" src="../img/ling-btm.png" alt="">
+</div>
+<div class="download">
+    <div class="two-d-code">
+        <img src="../img/two-d-code.png" alt="" class='two-d-img'>
+        <span class="two-d-notes">(扫描下载匀腾手游)</span>
+    </div>
+    <a href=""><img src="../img/d-android.png" alt=""></a>
+    <a href=""><img src="../img/d-ios.png" alt=""></a>
+    <a href=""><img src="../img/d-ios-s.png" alt=""></a>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script>
+    $(function () {
+        var typeArr = ['main-content-comprehensive', 'main-content-news', 'main-content-report', 'main-content-acti'];
+        var $obj = $(".main-content");
+        $(document).on("click", ".u-content-type .l-content-type", function () {
+            if ($(this).hasClass("sel")) return;
+            $(this).addClass("sel").siblings(".sel").removeClass("sel");
+            $obj.removeClass(typeArr.join(" ")).addClass(typeArr[$(this).index()]);
+        })
+    })
+</script>

@@ -1,0 +1,16 @@
+﻿@model List<GameCenter.Entity.Dto.DtoPartner>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="index-top">
+    <div class="bg-wrap">
+        <div class="bg-imgs-wrap">
+            @foreach (var item in Model)
+            {
+                <img class="cur-bg-img" src="@GameCenter.Core.Common.Domain.GetImage(item.LlinkUrl)" />
+            }
+        </div>
+    </div>
+</div>

@@ -135,6 +135,9 @@
     <Compile Include="Controllers\HeroController.cs" />
     <Compile Include="Controllers\MapController.cs" />
     <Compile Include="Controllers\MenuInfoController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PartnerController.cs" />
+    <Compile Include="Controllers\StrategyController.cs" />
     <Compile Include="Controllers\_LayoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +196,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Common\" />
+    <Folder Include="Views\Strategy\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -201,11 +205,15 @@
     <Content Include="Views\_Layout\_DescMenu.cshtml" />
     <Content Include="Views\_Layout\_Menu.cshtml" />
     <Content Include="Views\MenuInfo\Info.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Info.cshtml" />
+    <Content Include="Views\Partner\Index.cshtml" />
     <Content Include="Views\GameImages\Info.cshtml" />
     <Content Include="Views\GameImages\Map.cshtml" />
     <Content Include="Views\Map\Index.cshtml" />
     <Content Include="Views\Hero\List.cshtml" />
     <Content Include="Views\Hero\Info.cshtml" />
+    <None Include="Properties\PublishProfiles\GameWeb.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameCenter.Core\GameCenter.Core.csproj">
