@@ -1,9 +1,30 @@
-﻿@model GameCenter.Entity.Dto.DtoGameInfo
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model GameCenter.Entity.Data.GameInfo
 
 <div class="index-top">
+    <div class="bg-wrap">
+        <div class="bg-imgs-wrap">
+            @if (!string.IsNullOrEmpty(Model.BgImage0))
+            {
+                <img class="cur-bg-img" src="@GameCenter.Core.Common.Domain.GetImage(Model.BgImage0)" />
+            }
+            @if (!string.IsNullOrEmpty(Model.BgImage1))
+            {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.BgImage1)" />
+            }
+
+            @if (!string.IsNullOrEmpty(Model.BgImage2))
+            {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.BgImage2)" />
+            }
+            @if (!string.IsNullOrEmpty(Model.BgImage3))
+            {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.BgImage3)" />
+            }
+        </div>
+        <img src="/Content/img/prev.png" alt="" class="bg-prev-img">
+        <img src="/Content/img/next.png" alt="" class="bg-next-img">
+    </div>
+
     <div class="index-top-inner">
         <div class="index-download">
             <div class="two-d-code">
@@ -11,17 +32,29 @@
                 <span class="two-d-notes">(扫描下载匀腾手游)</span>
             </div>
             <div class="dn-img-wrap">
-                <a href=""><img src="/Content/img/d-android.png" alt=""></a>
-                <a href=""><img src="/Content/img/d-ios.png" alt=""></a>
+                <a href="@GameCenter.Core.Common.Domain.GetImage(Model.AndriodDl)"><img src="/Content/img/d-android.png" alt=""></a>
+                <a href="@GameCenter.Core.Common.Domain.GetImage(Model.IosDl)"><img src="/Content/img/d-ios.png" alt=""></a>
                 @*<a href=""><img src="/Content/img/d-ios-s.png" alt=""></a>*@
             </div>
         </div>
         <div class="img-wrap">
             <div class="imgs">
-                <img class="J-curImg" src="/Content/img/mobile-head.png" alt="">
-                <img src="/Content/img/right_pic.png" alt="">
-                <img src="/Content/img/right_pic_2.png" alt="">
-                <img src="/Content/img/ling-bg.png" alt="">
+                @if (!string.IsNullOrEmpty(Model.FocusImage0))
+                {
+                <img class="J-curImg" src="@GameCenter.Core.Common.Domain.GetImage(Model.FocusImage0)" alt="">
+                }
+                @if (!string.IsNullOrEmpty(Model.FocusImage1))
+                {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.FocusImage1)" alt="">
+                }
+                @if (!string.IsNullOrEmpty(Model.FocusImage2))
+                {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.FocusImage2)" alt="">
+                }
+                @if (!string.IsNullOrEmpty(Model.FocusImage3))
+                {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.FocusImage3)" alt="">
+                }
             </div>
             <div class="img-nav">
                 <span class="s-nav cur-nav"></span>
@@ -41,33 +74,33 @@
                 <ul class="u-info-conprehensive">
                     @foreach (var item in ViewBag.Type1)
                     {
-                    <li class="l-info">
-                        <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
-                    </li>
+                        <li class="l-info">
+                            <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                        </li>
                     }
                 </ul>
                 <ul class="u-info-news">
                     @foreach (var item in ViewBag.Type2)
                     {
+                        <li class="l-info">
+                            <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                        </li>
+                    }
+                </ul>
+                <ul class="u-info-abroad">
+                    @foreach (var item in ViewBag.Type3)
+                    {
                     <li class="l-info">
                         <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
                     </li>
                     }
                 </ul>
-                <ul class="u-info-abroad">
-                    @foreach (var item in ViewBag.Type3)
-                   {
-                    <li class="l-info">
-                        <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
-                    </li>
-                   }
-                </ul>
                 <ul class="u-info-notice">
                     @foreach (var item in ViewBag.Type4)
                     {
-                    <li class="l-info">
-                        <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
-                    </li>
+                        <li class="l-info">
+                            <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                        </li>
                     }
                 </ul>
             </div>
@@ -77,37 +110,91 @@
 @section scripts{
     <script>
         $(function () {
-            var typeArr = ['indexs-info-conprehensive', 'indexs-info-news', 'indexs-info-abroad', 'indexs-info-notice'];
-            var $obj = $(".indexs-info");
-            $(document).on("click", ".u-info-head .l-info-head", function () {
-                if ($(this).hasClass("sel")) return;
-                $(this).addClass("sel").siblings(".sel").removeClass("sel");
-                $obj.removeClass(typeArr.join(" ")).addClass(typeArr[$(this).index()]);
+            //$('.index-top').css("background", "url(@GameCenter.Core.Common.Domain.GetImage(Model.BgImage0)) no-repeat");
+            $(function () {
+                // 新闻等切换
+                !function () {
+                    var typeArr = ['indexs-info-conprehensive', 'indexs-info-news', 'indexs-info-abroad', 'indexs-info-notice'];
+                    var $obj = $(".indexs-info");
+                    $(document).on("click", ".u-info-head .l-info-head", function () {
+                        if ($(this).hasClass("sel")) return;
+                        $(this).addClass("sel").siblings(".sel").removeClass("sel");
+                        $obj.removeClass(typeArr.join(" ")).addClass(typeArr[$(this).index()]);
+                    })
+                }()
+
+                // 小图切换
+                !function () {
+                    var imgChange = function (total) {
+                        setTimeout(function () {
+                            var index = $(".img-wrap .J-curImg").index();
+                            var nIndex = index < total - 1 ? index + 1 : 0;
+                            var $cur = $(".img-wrap .J-curImg");
+                            var $next = $(".img-wrap img").eq(nIndex);
+                            $cur.animate({
+                                'left': '-490px'
+                            })
+                            $next.animate({
+                                'left': '0'
+                            }, function () {
+                                $cur.removeClass("J-curImg");
+                                $next.addClass("J-curImg");
+                                $cur.css({ "left": "490px" })
+                                $(".img-nav .s-nav").eq(nIndex).addClass("cur-nav").siblings(".cur-nav").removeClass("cur-nav")
+
+                                imgChange(total);
+                            })
+
+                        }, 2000)
+                    }
+                    var totalImgNum = $(".img-wrap img").size();
+                    imgChange(totalImgNum);
+                }()
+
+                // 北京大图切换
+                !function () {
+                    var $prev = null;
+                    var $next = null;
+                    var $cur = null;
+                    $(".bg-imgs-wrap img").eq(1).addClass("next-bg-img");
+                    $(".bg-imgs-wrap img:last").addClass("prev-bg-img");
+                    $(document).on("click", ".bg-wrap .bg-prev-img, .bg-wrap .bg-next-img", function () {
+
+                        $cur && $cur.stop(true, true);
+                        $prev && $prev.stop(true, true);
+                        $next && $next.stop(true, true);
+
+                        $cur = $(".bg-imgs-wrap .cur-bg-img");
+                        $prev = $(".bg-imgs-wrap .prev-bg-img");
+                        $next = $(".bg-imgs-wrap .next-bg-img");
+
+                        types = [
+                            { $obj: $prev, curAfterCls: 'next-bg-img', nextAniCls: 'prev-bg-img', oritation: -1 },
+                            { $obj: $next, curAfterCls: 'prev-bg-img', nextAniCls: 'next-bg-img', oritation: 1 }
+                        ];
+                        tar = $(this).hasClass("bg-prev-img") ? types[0] : types[1];
+
+                        $cur.animate({ "left": -100 * tar.oritation + "%" }, function () {
+                            $cur.removeClass("cur-bg-img").addClass(tar.curAfterCls);
+                            tar.$obj.removeClass(tar.nextAniCls);
+                        })
+
+                        tar.$obj.animate({ "left": "0" }, function () {
+                            if (tar.oritation == -1) {
+                                $afterObj = tar.$obj.prev("img").size() ? tar.$obj.prev("img") : $(".bg-imgs-wrap img").last();
+                                $next.removeClass("next-bg-img");
+                            } else {
+                                $afterObj = tar.$obj.next("img").size() ? tar.$obj.next("img") : $(".bg-imgs-wrap img").eq(0);
+                                $prev.removeClass("prev-bg-img");
+                            }
+                            tar.$obj.addClass("cur-bg-img");
+                            $afterObj.addClass(tar.nextAniCls);
+                            $(".bg-imgs-wrap ." + tar.nextAniCls).css({ "left": tar.oritation * 100 + "%" });
+                        })
+                    })
+                }()
             })
 
-            var imgChange = function (total) {
-                setTimeout(function () {
-                    var index = $(".img-wrap .J-curImg").index();
-                    var nIndex = index < total - 1 ? index + 1 : 0;
-                    var $cur = $(".img-wrap .J-curImg");
-                    var $next = $(".img-wrap img").eq(nIndex);
-                    $cur.animate({
-                        'left': '-490px'
-                    })
-                    $next.animate({
-                        'left': '0'
-                    }, function () {
-                        $cur.removeClass("J-curImg");
-                        $next.addClass("J-curImg");
-                        $cur.css({ "left": "490px" })
-                        $(".img-nav .s-nav").eq(nIndex).addClass("cur-nav").siblings(".cur-nav").removeClass("cur-nav")
-
-                        imgChange(total);
-                    });
-                }, 2000)
-            }
-            var totalImgNum = $(".img-wrap img").size();
-            imgChange(totalImgNum);
         })
     </script>
 }

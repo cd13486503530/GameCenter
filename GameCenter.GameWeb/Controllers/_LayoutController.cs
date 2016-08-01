@@ -14,14 +14,14 @@ namespace GameCenter.GameWeb.Controllers
         public PartialViewResult _DescMenu(int MenuId)
         {
             var model = MenuService.GetListCache().FirstOrDefault(a => a.Id == MenuId) ?? new DtoMenu();
-            ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == GameInfo.Id).ToList();
+            ViewBag.Menu = MenuService.GetListCache().OrderBy(a=>a.Sort).Where(a => a.ParentId == 0 && a.GameId == GameInfo.Id).ToList();
             ViewBag.Model = model;
             return PartialView();
         }
 
         public PartialViewResult _Menu(string name)
         {
-            ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == GameInfo.Id).ToList();
+            ViewBag.Menu = MenuService.GetListCache().OrderBy(a => a.Sort).Where(a => a.ParentId == 0 && a.GameId == GameInfo.Id).ToList();
             ViewBag.Name = name;
             return PartialView();
         }

@@ -40,7 +40,7 @@ namespace GameCenter.Core.Service
             if (cacheInfo == null)
             {
                 var games = GetGames();
-                LocalCache.Instance().Set(key, games, DateTime.Now.AddDays(1).TimeOfDay);
+                LocalCache.Instance().Set(key, games, DateTime.Now.AddMinutes(10).TimeOfDay);
                 return games;
             }
 

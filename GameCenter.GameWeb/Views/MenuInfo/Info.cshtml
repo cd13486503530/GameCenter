@@ -1,0 +1,18 @@
+﻿@model GameCenter.Entity.Data.MenuInformation
+<div class="ling-banner">
+    <div class="ling-type">@((GameCenter.Core.Service.MenuService.GetOne(Model.MenuId) ?? new GameCenter.Entity.Dto.DtoMenu()).Name)</div>
+</div>
+<div class="ling-content">
+    <div class="main">
+        <div class="intro-content content-intro-gameBg">
+            <div class="intro-content-contact">
+                <div class="intro-gameBg intro-cm">
+                    <p class="intro-cxt">
+                        @Html.Raw(Model.GameDescription)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img class="btm-img" src="/content/img/ling-btm.png" alt="">
+</div>

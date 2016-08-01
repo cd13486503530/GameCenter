@@ -54,9 +54,6 @@ namespace GameCenter.Core.Cache
         {
             _memoryCache.Remove(key);
         }
-
-
-         
-         
+ 
     }
 }

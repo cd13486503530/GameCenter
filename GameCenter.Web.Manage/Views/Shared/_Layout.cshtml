@@ -42,7 +42,7 @@
                             <a href="/"><span class="fa fa-desktop"></span> <span class="xn-text">主页</span></a>
                             <ul>
                                 <li><a href="/Main/Set"><span class="fa fa-desktop"></span>主页设置</a></li>
-                                <li><a href="/Menu/List?IsMain=true"><span class="fa fa-desktop"></span>主页菜单</a></li> 
+                                <li><a href="/Menu/List?IsMain=true"><span class="fa fa-desktop"></span>主页菜单</a></li>
                             </ul>
                         </li>
                         <li class="xn-openable @(ViewBag.Active == "Game"?"active":"")">
@@ -61,7 +61,7 @@
                             <ul>
                                 <li><a href="/Menu/GameMenu"><span class="fa fa-align-justify"></span>游戏菜单</a></li>
                                 <li><a href="/Menu/AddChoose"><span class="fa fa-edit"></span>添加菜单</a></li>
-                                <li><a href="/Menu/GameMenuDesc"><span class="fa fa-file-text-o"></span>菜单内容</a></li>
+                                @*<li><a href="/Menu/GameMenuDesc"><span class="fa fa-file-text-o"></span>菜单内容</a></li>*@
                             </ul>
                         </li>
                         <li class="xn-openable @(ViewBag.Active == "News"?"active":"")">
@@ -105,9 +105,9 @@
                 <!-- END TOGGLE NAVIGATION -->
                 <!-- POWER OFF -->
                 <li class="xn-icon-button pull-right last">
-                    <a href="/Login/SignOut"><span class="fa fa-power-off"></span></a>
+                    <a href="#"><span class="fa fa-power-off"></span></a>
                     <ul class="xn-drop-left animated zoomIn">
-                        <li><a href="/AdminUser/SignOut" class="mb-control" data-box="#mb-signout" id="OutLogin"><span class="fa fa-sign-out"></span> Sign Out</a></li>
+                        <li><a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span> Sign Out</a></li>
                     </ul>
                 </li>
                 <!-- END POWER OFF -->
@@ -116,6 +116,25 @@
             @RenderBody()
         </div>
     </div>
+    <!-- MESSAGE BOX-->
+    <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                <div class="mb-content">
+                    <p>你确定要注销吗?</p>
+                    <p>按NO继续工作,按YES注销当前用户</p>
+                </div>
+                <div class="mb-footer">
+                    <div class="pull-right">
+                        <a href="/AdminUser/SignOut" class="btn btn-success btn-lg">Yes</a>
+                        <button class="btn btn-default btn-lg mb-control-close">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MESSAGE BOX-->
     <script type="text/javascript" src="/Scripts/plugins/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/Scripts/plugins/jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap.min.js"></script>
@@ -129,7 +148,7 @@
             $(".spinner_default").spinner()
             $(".spinner_decimal").spinner({ step: 0.01, numberFormat: "n" });
             //End spinner
-        }); 
+        });
     </script>
     @RenderSection("scripts", required: false)
 </body>

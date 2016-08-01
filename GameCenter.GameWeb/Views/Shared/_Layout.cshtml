@@ -10,7 +10,7 @@
 <body>
     <div class="header">
         <div class="header-inner">
-            <img src="@ViewBag.Logo" alt="" class="ling-logo">
+            <img src="@ViewBag.Logo" class="ling-logo">
             <ul class="u-header">
                 @if (!string.IsNullOrEmpty(Request["MenuId"]))
                 {
@@ -20,7 +20,6 @@
                 {
                     Html.RenderAction("_Menu", "_Layout", new { name = ViewBag.Name });
                 }
-                
             </ul>
         </div>
     </div>
@@ -28,6 +27,15 @@
     <div class="cloud-bottom">
         <img class="btm-img" src="/content/img/cloud-btm.png" alt="">
     </div>
+    <div class="download">
+        <div class="two-d-code">
+            <img src="/content/img/two-d-code.png" alt="" class='two-d-img'>
+            <span class="two-d-notes">(扫描下载匀腾手游)</span>
+        </div>
+        <a href=""><img src="/content/img/d-android.png" alt=""></a>
+        <a href=""><img src="/content/img/d-ios.png" alt=""></a>
+    </div>
+
     <script src="/Scripts/jquery.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>

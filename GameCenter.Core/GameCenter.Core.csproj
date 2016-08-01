@@ -60,9 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cache\CacheKeyManage.cs" />
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Cache\LocalCache.cs" />
     <Compile Include="Common\AutoMapperHelper.cs" />
+    <Compile Include="Common\CookiesHelper.cs" />
     <Compile Include="Common\Domain.cs" />
     <Compile Include="Common\ExpressionExtension.cs" />
     <Compile Include="Common\HttpClinetHelper.cs" />

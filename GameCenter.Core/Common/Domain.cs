@@ -39,7 +39,10 @@ namespace GameCenter.Core.Common
         /// <returns></returns>
         public string ImageBig(string imagePath)
         {
-            return _imageSite + "/" + imagePath.Replace("\\", "/").Replace("small", "big");
+            if (string.IsNullOrEmpty(imagePath))
+                return string.Empty;
+
+            return _imageSite + imagePath.Replace("\\", "/").Replace("small", "big");
         }
 
         /// <summary>
@@ -49,7 +52,10 @@ namespace GameCenter.Core.Common
         /// <returns></returns>
         public static string ImageSmall(string imagePath)
         {
-            return _imageSite + "/" + imagePath.Replace("\\", "/").Replace("big", "small");
+            if (string.IsNullOrEmpty(imagePath))
+                return string.Empty;
+
+            return _imageSite + imagePath.Replace("\\", "/").Replace("big", "small");
         }
 
         /// <summary>
@@ -59,7 +65,10 @@ namespace GameCenter.Core.Common
         /// <returns></returns>
         public static string GetImage(string imagePath)
         {
-            return _imageSite + "/" + imagePath.Replace("\\", "/");
+            if (string.IsNullOrEmpty(imagePath))
+                return string.Empty;
+
+            return _imageSite + imagePath.Replace("\\", "/");
         }
     }
 }
