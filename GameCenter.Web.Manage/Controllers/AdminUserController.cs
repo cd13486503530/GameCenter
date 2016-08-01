@@ -42,7 +42,7 @@ namespace GameCenter.Web.Manage.Controllers
         [HttpGet]
         public ActionResult SignOut()
         {
-            CookiesHelper.ReadCookie();
+            CookiesHelper.RemoveCookie();
             return Redirect("/Login/Index");
         }
     }

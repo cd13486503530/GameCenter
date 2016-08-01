@@ -7,16 +7,13 @@ using System.Web.Mvc;
 
 namespace GameCenter.GameWeb.Controllers
 {
-    public class NewsController : Controller
+    public class StrategyController : Controller
     {
-        // GET: News
+        // GET: Strategy
         public ActionResult Index()
         {
-            ViewBag.News1 = NewsService.GetListByTypeId(1, 10);
-            ViewBag.News2 = NewsService.GetListByTypeId(2, 10);
-            ViewBag.News3 = NewsService.GetListByTypeId(3, 10);
-            ViewBag.News4 = NewsService.GetListByTypeId(4, 10);
-            return View();
+            var list = NewsService.GetListByTypeId(1, 10);
+            return View(list);
         }
 
         public ActionResult Info(int id)

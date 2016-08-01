@@ -30,7 +30,7 @@ namespace GameCenter.Core.Common
 
         public static void RemoveCookie()
         {
-            WebUtil.ReadCookie(USERSTATUS_COOKIE_NAME);
+            WebUtil.RemoveCookie(USERSTATUS_COOKIE_NAME);
         }
 
     }
