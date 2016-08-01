@@ -39,6 +39,9 @@ namespace GameCenter.Core.Common
         /// <returns></returns>
         public string ImageBig(string imagePath)
         {
+            if (string.IsNullOrEmpty(imagePath))
+                return string.Empty;
+
             return _imageSite + imagePath.Replace("\\", "/").Replace("small", "big");
         }
 
@@ -49,6 +52,9 @@ namespace GameCenter.Core.Common
         /// <returns></returns>
         public static string ImageSmall(string imagePath)
         {
+            if (string.IsNullOrEmpty(imagePath))
+                return string.Empty;
+
             return _imageSite + imagePath.Replace("\\", "/").Replace("big", "small");
         }
 
@@ -59,6 +65,9 @@ namespace GameCenter.Core.Common
         /// <returns></returns>
         public static string GetImage(string imagePath)
         {
+            if (string.IsNullOrEmpty(imagePath))
+                return string.Empty;
+
             return _imageSite + imagePath.Replace("\\", "/");
         }
     }

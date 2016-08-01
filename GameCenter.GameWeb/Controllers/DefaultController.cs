@@ -18,7 +18,6 @@ namespace GameCenter.GameWeb.Controllers
             ViewBag.Title = GameInfo.Name + "游戏首页";
             ViewBag.MainBgImages = GameInfoService.GetGameInfo(GameInfo.Id) ?? new GameInfo();
             ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == GameInfo.Id).ToList();
-            var gameInfo = GameInfoService.GetGameInfo(GameInfo.Id) ?? new GameInfo ();
             
             //新闻
             ViewBag.Type1 = NewsService.GetHotListByGameId(NewsTypeService.GetOneByName("综合").Id, 7, false); // 综合
@@ -26,9 +25,7 @@ namespace GameCenter.GameWeb.Controllers
             ViewBag.Type3 = NewsService.GetHotListByGameId(NewsTypeService.GetOneByName("公告").Id, 7, false); // 公告
             ViewBag.Type4 = NewsService.GetHotListByGameId(NewsTypeService.GetOneByName("活动").Id, 7, false); // 活动
 
-            ViewBag.Logo = GameCenter.Core.Common.Domain.GetImage(gameInfo.Logo);// /Content/img/ling-logo.png
-
-            return View(gameInfo);
+            return View(this.GameDesc);
         }
     }
 }
