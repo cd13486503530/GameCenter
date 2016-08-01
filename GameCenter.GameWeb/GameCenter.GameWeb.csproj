@@ -222,7 +222,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>9863</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/GameCenter.GameWeb</IISUrl>
+          <IISUrl>http://atyx.zjwinturn.com/GameCenter.GameWeb</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -65,6 +65,7 @@
     <Compile Include="Common\AutoMapperHelper.cs" />
     <Compile Include="Common\Domain.cs" />
     <Compile Include="Common\ExpressionExtension.cs" />
+    <Compile Include="Common\HttpClinetHelper.cs" />
     <Compile Include="Common\MapperEntity.cs" />
     <Compile Include="Common\PageHelper.cs" />
     <Compile Include="Common\UploadFile.cs" />
