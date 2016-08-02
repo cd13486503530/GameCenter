@@ -1,4 +1,5 @@
 ﻿using GameCenter.Core.Service;
+using GameCenter.GameWeb.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace GameCenter.GameWeb.Controllers
 {
-    public class PartnerController : Controller
+    public class PartnerController :BaseController
     {
         // GET: Partner
         public ActionResult Index()

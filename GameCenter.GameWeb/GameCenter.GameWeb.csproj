@@ -214,6 +214,8 @@
     <Content Include="Views\Hero\List.cshtml" />
     <Content Include="Views\Hero\Info.cshtml" />
     <None Include="Properties\PublishProfiles\GameWeb.pubxml" />
+    <Content Include="Views\News\ResourceList.cshtml" />
+    <Content Include="Views\News\ResourceInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameCenter.Core\GameCenter.Core.csproj">

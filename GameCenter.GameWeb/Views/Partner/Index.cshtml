@@ -1,16 +1,30 @@
 ﻿@model List<GameCenter.Entity.Dto.DtoPartner>
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<div class="index-top">
-    <div class="bg-wrap">
-        <div class="bg-imgs-wrap">
+<div class="ling-banner">
+    <div class="ling-type"><span>合作伙伴</span></div>
+</div>
+@*<div class="ling-content">
+        <div class="index-top">
+            <div class="bg-wrap">
+                <div class="bg-imgs-wrap">
+                    @foreach (var item in Model)
+                    {
+                        <img class="cur-bg-img" src="@GameCenter.Core.Common.Domain.GetImage(item.LlinkUrl)" />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>*@
+<div class="ling-content">
+    <div class="main">
+        <ul class="u-Partner-lists">
             @foreach (var item in Model)
             {
-                <img class="cur-bg-img" src="@GameCenter.Core.Common.Domain.GetImage(item.LlinkUrl)" />
+                <li class="l-Partner-list"> 
+                    <img src="@GameCenter.Core.Common.Domain.GetImage(item.ImagePath)" alt="" class="Partner-img">
+                    <span class="Partner-name">@item.Name</span> 
+                </li>
             }
-        </div>
+        </ul>
     </div>
 </div>

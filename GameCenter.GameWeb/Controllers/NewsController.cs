@@ -1,4 +1,5 @@
 ﻿using GameCenter.Core.Service;
+using GameCenter.GameWeb.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace GameCenter.GameWeb.Controllers
 {
-    public class NewsController : Controller
+    public class NewsController :BaseController
     {
         // GET: News
         public ActionResult Index()
@@ -21,6 +22,19 @@ namespace GameCenter.GameWeb.Controllers
 
         public ActionResult Info(int id)
         {
+            var info = NewsService.GetOneById(id);
+            return View(info);
+        }
+
+        public ActionResult ResourceList()
+        {
+            var list = NewsService.GetListByTypeId(5, 10);
+            return View(list);
+        }
+
+        public ActionResult ResourceInfo(int id)
+        {
+
             var info = NewsService.GetOneById(id);
             return View(info);
         }
