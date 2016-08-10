@@ -36,7 +36,7 @@ a{
 	float:right;
 }
 .wrap{
-	width: 80%;
+	width: 1000px;
 	margin:0 auto;
 }
 
@@ -73,6 +73,9 @@ a{
 	background:url('/Content/images/default/arrow.png') center 140px no-repeat #CD161C;
 	color:#fff;
 }
+
+
+
 
 /* 轮播图 */
 .main_visual{height:818px;overflow:hidden;position:relative;}
@@ -117,15 +120,30 @@ a{
 .news{
 	/* height:100%; */
 	padding:20px;
-	box-sizing:border-box;
+	box-sizing: border-box;
 	overflow:hidden;
-	background:url('/Content/images/default/news.png') top right no-repeat #272727;
+	background: #272727;
+	position: relative;
 }
 .news h3{
 	color:#dc0000;
 	font-size:24px;
 	line-height:35px;
 	border-bottom:1px solid #3a3a3a;
+	
+}
+
+.news h3 .news-list{
+	display: block;
+	width: 39px;
+	height: 39px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.news h3 .news-list img{
+	display: block;
 }
 .news li a{
 	display:block;
@@ -210,4 +228,97 @@ a{
   	.nav li a{
 		font-size:20px;
 	}
+}
+
+.header{
+	height: 150px;
+}
+.header .header-inner{
+	width: 1000px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.header .header-inner .ling-logo{
+	position: absolute;
+	top: 0;
+	left: -40px;
+	width: 320px;
+}
+
+.header .header-inner .u-header{
+	float: right;
+	height: 150px;
+}
+.header .header-inner .u-header .l-header{
+	float: left;
+	color: #8b8b8b;
+	font-size: 22px;
+	line-height: 150px;
+	padding: 0 20px;
+	cursor: pointer;
+	position: relative;
+}
+
+.header .header-inner .u-header .l-header:hover{
+	background: #cd161c;
+	
+	height: 170px;
+	position: relative;
+}
+.header .header-inner .u-header .l-header:hover a{
+	color: #ffffff;
+}
+.header .header-inner .u-header .l-header:hover .sub-more-icon{
+	width:0;    
+	height:0;   
+	border:10px solid transparent;    
+	border-top-color:#fff;
+	position: absolute;
+	bottom: 12px;
+	left: 50%;
+	margin-left: -10px;
+	display: block;
+}
+
+.header .header-inner .u-header .l-header:hover .sub-news-head{
+	display: block;
+}
+
+.sub-news-head{
+	position: absolute;
+	top: 150px;
+	left: 0;
+	z-index: 6;
+	
+	background: #cd161c;
+	font-size: 20px;
+	display: none;
+	width: 100%;
+	padding: 10px 0;
+}
+.header .header-inner .u-header .l-header:hover .sub-news-head a{
+	display: block;
+	color: #ffffff;
+	text-align: center;
+	line-height: 38px;
+}
+
+.header .header-inner .u-header .l-header a{
+	color: #8b8b8b;
+}
+
+.header .header-inner .u-header .sel{
+	background: #cd161c;
+	
+	height: 170px;
+	position: relative;
+}
+.header .header-inner .u-header .sel a{
+	color: #ffffff;
+}
+
+
+.header .cloud-logo{
+	margin-top: 30px;
 }

@@ -15,11 +15,14 @@
 </head>
 <body>
     <div class="header">
-        <div class="wrap">
-            <ul class="nav clearfix">
+        <div class="header-inner">
+            <img src="/content/images/cloud-logo.png" alt="" class="cloud-logo">
+            <ul class="u-header">
                 @foreach (var item in ViewBag.Menu)
                 {
-                    <li><a href="@(!string.IsNullOrEmpty(item.Url)?item.Url:("/MenuInfo/Info?MenuId="+item.Id))">@item.Name</a></li>
+                    <li class="l-header">
+                        <a href="@(!string.IsNullOrEmpty(item.Url)?item.Url:("/MenuInfo/Info?MenuId="+item.Id))">@item.Name</a>
+                    </li>
                 }
             </ul>
         </div>
@@ -64,7 +67,7 @@
                        <a href="/News/Info?id=@item.Id"><img src="/content/images/default/mid_1.jpg" alt="" width="335"></a> 
                     </div>
                 } 
-                <div class="news fl" style="width:37.3%;"> 
+                <div class="news fl" style="width:30.3%;"> 
                     <ul>
                         @foreach (var item in ViewBag.News)
                         {
