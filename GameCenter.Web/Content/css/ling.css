@@ -8,6 +8,7 @@ body{
 	font-family: "Microsoft Yahei";
 }
 .header{
+    background:#fff;
 	height: 150px;
 }
 .header .header-inner{

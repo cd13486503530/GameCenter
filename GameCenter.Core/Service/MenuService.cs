@@ -30,6 +30,11 @@ namespace GameCenter.Core.Service
             }
         }
 
+        public static List<DtoMenu> GetList(int parentId, int gameId)
+        {
+            return GetListCache().Where(a=>a.ParentId == parentId && a.GameId == gameId).ToList();
+        }
+
         public static List<DtoMenu> GetListCache()
         {
             var cache = LocalCache.Instance().Get<List<DtoMenu>>(key);
@@ -129,14 +134,14 @@ namespace GameCenter.Core.Service
         public static bool Disable(DtoMenu dtoMenu)
         {
             using (var db = new PortalContext())
-            {  
+            {
                 var info = Mapper.Map<Menu>(dtoMenu);
                 db.Set<Menu>().Attach(info);
                 db.Entry(info).State = System.Data.Entity.EntityState.Modified;
                 return db.SaveChanges() > 0;
             }
-        } 
+        }
 
-        
+
     }
 }

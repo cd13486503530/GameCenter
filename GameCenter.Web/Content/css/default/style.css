@@ -23,7 +23,7 @@ a{
 }
 .clearfix:after{
 	content:"";
-	display:block;
+	display:block; 
 	clear:both;
 }
 .clearfix{
