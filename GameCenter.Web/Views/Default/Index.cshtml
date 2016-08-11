@@ -21,14 +21,18 @@
                 @foreach (var item in ViewBag.Menu)
                 {
                     <li class="l-header">
-                        <a href="@(!string.IsNullOrEmpty(item.Url)?item.Url:("/MenuInfo/Info?MenuId="+item.Id))">@item.Name</a>
-                        <div class="sub-news-head">
-                            @foreach (var child in GameCenter.Core.Service.MenuService.GetList(item.Id, item.GameId))
-                            {
-                                <a href="@child.Url">@child.Name</a>                                
-                            } 
-                        </div>
-                        <span class="sub-more-icon"></span>
+                        <a href="@(!string.IsNullOrEmpty(item.Url) ? item.Url : ("/MenuInfo/Info?MenuId=" + item.Id))">@item.Name</a>
+                        @{ var list = GameCenter.Core.Service.MenuService.GetList(item.Id, item.GameId);}
+                        @if (list.Count > 0)
+                        {
+                            <div class="sub-news-head">
+                                @foreach (var child in list)
+                                {
+                                    <a href="@child.Url">@child.Name</a>
+                                }
+                            </div>
+                            <span class="sub-more-icon"></span>
+                        }
                     </li>
                 }
             </ul>
@@ -76,6 +80,13 @@
                 }
                 <div class="news fl" style="width:30.3%;">
                     <ul>
+                        <h3>
+                            <a href="/News/Info?Id=@ViewBag.HotNews.Id"> @ViewBag.HotNews.Title</a>
+                            <!-- 新加的链接 -->
+                            <a href="/News" class="news-list">
+                                <img src="/content/images/default/news.png" alt="">
+                            </a>
+                        </h3>
                         @foreach (var item in ViewBag.News)
                         {
                             <li><a href="/News/Info?id=@item.Id">@item.Title</a></li>

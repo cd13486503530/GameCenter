@@ -18,7 +18,10 @@ namespace GameCenter.Web.Controllers
             ViewBag.Menu = MenuService.GetListCache().Where(a=>a.ParentId == 0 && a.GameId == 0).ToList();
             ViewBag.Games = GameService.GetGamesCache().Where(a=>a.Top).Take(3).ToList();
             ViewBag.ImageNews = NewsService.GetHotListByGameId(0, 2, false);
-            ViewBag.News = NewsService.GetHotListByGameId(0,7,false);
+
+            var newList = NewsService.GetHotListByGameId(0, 8, false);
+            ViewBag.HotNews = newList.FirstOrDefault();
+            ViewBag.News = newList.Skip(1);
             return View();
         }
     }

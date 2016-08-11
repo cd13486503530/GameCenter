@@ -132,7 +132,9 @@ a{
 	border-bottom:1px solid #3a3a3a;
 	
 }
-
+.news h3 a{
+	color:#dc0000; 	
+}
 .news h3 .news-list{
 	display: block;
 	width: 39px;
