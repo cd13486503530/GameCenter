@@ -8,7 +8,6 @@ body{
 	font-family: "Microsoft Yahei";
 }
 .header{
-    background:#fff;
 	height: 150px;
 }
 .header .header-inner{
@@ -35,25 +34,16 @@ body{
 	line-height: 150px;
 	padding: 0 20px;
 	cursor: pointer;
-    position: relative;
-}
-.header .header-inner .u-header .l-header:hover{
-	background: #cd161c;
-	 
-	height: 170px;
 	position: relative;
 }
-.header .header-inner .u-header .l-header a{
-	color: #8b8b8b;
-}
 
-.header .header-inner .u-header .sel{
+.header .header-inner .u-header .l-header:hover{
 	background: #cd161c;
 	
 	height: 170px;
 	position: relative;
 }
-.header .header-inner .u-header .sel a{
+.header .header-inner .u-header .l-header:hover a{
 	color: #ffffff;
 }
 .header .header-inner .u-header .l-header:hover .sub-more-icon{
@@ -67,19 +57,8 @@ body{
 	margin-left: -10px;
 	display: block;
 }
-.header .header-inner .u-header .sel::after{
-	width:0;    
-	height:0;   
-	border:10px solid transparent;    
-	border-top-color:#fff;
-	content:"";
-	position: absolute;
-	bottom: 12px;
-	left: 50%;
-	margin-left: -10px;
-}
 
- .header .header-inner .u-header .l-header:hover .sub-news-head{
+.header .header-inner .u-header .l-header:hover .sub-news-head{
 	display: block;
 }
 
@@ -120,6 +99,7 @@ body{
 .header .cloud-logo{
 	margin-top: 30px;
 }
+
 
  
 

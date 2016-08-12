@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">新闻类型:</label>
                             <div class="col-md-9">
-                                <select name="NewsType" class="validate[required]" id="form-validation-field-4">
+                                <select name="NewsType" class="validate[required]" id="form-validation-field-4">                                    
                                     @foreach (var item in newsType)
                                     {
                                         if (item.Id == Model.NewsType)
@@ -74,7 +74,8 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏名称:</label>
                             <div class="col-md-9">
-                                <select name="NewsType" class="validate[required]" id="form-validation-field-4">
+                                <select name="GameId" class="validate[required]" id="form-validation-field-4">
+                                    <option value="100">公共</option>
                                     @foreach (var item in gamesList)
                                     {
                                         if (item.Id == Model.GameId)
@@ -139,12 +140,12 @@
     <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
     <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
     <link href="~/Scripts/plugins/umeditor/themes/default/default.css" rel="stylesheet" />
-    <script type="text/javascript" src="~/Scripts/plugins/umeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/umeditor/kindeditor.js"></script>
     <script type="text/javascript" src="~/Scripts/plugins/umeditor/lang/zh_CN.js"></script>
     <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
     <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
-    <script type="text/javascript">
-
+    
+    <script type="text/javascript">     
         KindEditor.ready(function (K) {
             editor = K.create('textarea[name="Contents"]', {
                 resizeType: 1,
