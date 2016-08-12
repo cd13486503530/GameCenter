@@ -492,3 +492,19 @@ body{
 }
 
 
+/* µ×²¿ */
+.footer{
+	padding:20px 0;
+	margin-top:80px;
+	background:#000;
+	text-align:center;
+	color:#fff;
+	line-height:50px;
+}
+.footer i{
+	display:inline-block;
+	width:48px;
+	height:36px;
+	background:url('/Content/images/default/logo2.png');
+	vertical-align:middle;
+}

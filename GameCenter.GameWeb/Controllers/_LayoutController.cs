@@ -25,5 +25,11 @@ namespace GameCenter.GameWeb.Controllers
             ViewBag.Name = name;
             return PartialView();
         }
+
+        public PartialViewResult _RigthFloat()
+        {
+            var info = GameInfoService.GetGameInfo(GameInfo.Id) ?? new Entity.Data.GameInfo();
+            return PartialView(info);
+        }
     }
 }

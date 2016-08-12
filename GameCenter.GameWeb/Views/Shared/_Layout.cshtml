@@ -30,14 +30,7 @@
             <p><i></i>COPYRIGHT © 2016 杭州匀腾网络科技有限公司 ALL RIGHTS RESERVED</p>
         </div>
     </div>
-    <div class="download">
-        <div class="two-d-code">
-            <img src="/content/img/two-d-code.png" alt="" class='two-d-img'>
-            <span class="two-d-notes">(扫描下载匀腾手游)</span>
-        </div>
-        <a href=""><img src="/content/img/d-android.png" alt=""></a>
-        <a href=""><img src="/content/img/d-ios.png" alt=""></a>
-    </div>
+    @{Html.RenderAction("_RigthFloat", "_Layout");}
 
     <script src="/Scripts/jquery.min.js"></script>
     @RenderSection("scripts", required: false)

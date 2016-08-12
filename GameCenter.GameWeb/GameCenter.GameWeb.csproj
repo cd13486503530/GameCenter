@@ -217,6 +217,7 @@
     <None Include="Properties\PublishProfiles\GameWeb.pubxml" />
     <Content Include="Views\News\ResourceList.cshtml" />
     <Content Include="Views\News\ResourceInfo.cshtml" />
+    <Content Include="Views\_Layout\_RigthFloat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameCenter.Core\GameCenter.Core.csproj">
