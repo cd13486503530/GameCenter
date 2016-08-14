@@ -81,6 +81,7 @@
     <Compile Include="Service\NewsService.cs" />
     <Compile Include="Service\NewsTypeService.cs" />
     <Compile Include="Service\PartnerService.cs" />
+    <Compile Include="Service\PrivatePageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -68,6 +68,7 @@
     <Compile Include="Dto\DtoNews.cs" />
     <Compile Include="Dto\DtoNewsType.cs" />
     <Compile Include="Dto\DtoPartner.cs" />
+    <Compile Include="Dto\DtoPrivatePage.cs" />
     <Compile Include="Dto\GameEditForm.cs" />
     <Compile Include="Dto\GameForm.cs" />
     <Compile Include="Dto\GameImagesForm.cs" />

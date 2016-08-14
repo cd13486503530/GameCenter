@@ -136,6 +136,7 @@
     <Compile Include="Controllers\GameImagesController.cs" />
     <Compile Include="Controllers\GameInfoController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
+    <Compile Include="Controllers\PrivatePageController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -572,6 +573,9 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Manage.pubxml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Private\List.cshtml" />
+    <Content Include="Views\Private\Add.cshtml" />
+    <Content Include="Views\Private\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

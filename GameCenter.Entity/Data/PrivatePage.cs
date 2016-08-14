@@ -12,7 +12,7 @@ namespace GameCenter.Entity.Data
     public class PrivatePage
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public int GameId { get; set; }
 

@@ -1,0 +1,127 @@
+﻿@using GameCenter.Core.Service;
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var gamesList = GameService.GetGamesCache();
+}
+
+
+
+<div class="page-title">
+    <h2><span class="fa fa-arrow-circle-o-left"></span> 添加隐私</h2>
+</div>
+
+<div class="page-content-wrap">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- START VALIDATIONENGINE PLUGIN -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form id="validate" method="post" class="form-horizontal" action="/Private/AddForm" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">图片:</label>
+                            <div class="col-md-9">
+                                <a class="file-input-wrapper btn btn-default  fileinput btn-danger">
+                                    <input type="file" class="fileinput btn-danger" name="Filedata" id="form-validation-field-3" data-filename-placement="inside" title="选择新闻图片">
+                                </a>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">游戏名称:</label>
+                            <div class="col-md-9">
+                                <select name="GameId" class="validate[required]" id="form-validation-field-5">
+                                    @foreach (var item in gamesList)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                                <span class="help-block">不能为空</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Android链接:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="AndroidUrl" class="validate[required] form-control" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Ios链接:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="IosUrl" class="validate[required] form-control" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">官方微信:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="WeiXin" class="validate form-control" id="form-validation-field-1">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">官方QQ:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="QQ" class="validate form-control" id="form-validation-field-2">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
+                            <button class="btn btn-primary" type="submit" id="gameSubmit">确认提交</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- END VALIDATIONENGINE PLUGIN -->
+
+        </div>
+    </div>
+</div>
+<div class="message-box message-box-danger animated fadeIn" data-sound="fail" id="message-box-sound-2">
+    <div class="mb-container">
+        <div class="mb-middle">
+            <div class="mb-title"><span class="fa fa-times"></span> <p>错误提示!</p></div>
+            <div class="mb-footer">
+                <button class="btn btn-default btn-lg pull-right mb-control-close">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
+    <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
+    <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
+    <link href="~/Scripts/plugins/umeditor/themes/default/default.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/plugins/umeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/umeditor/lang/zh_CN.js"></script>
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
+
+    <script type="text/javascript">
+
+        $('#validate').ajaxForm({
+            url: '/Private/AddForm',
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if (data.status) {
+                    window.location.href = "/Private/List";
+                } else {
+                    $('#message-box-sound-2 .fa-times').next().html('');
+                    $('#message-box-sound-2 .fa-times').next().html(data.error);
+                    $('#message-box-sound-2').addClass('open')
+                }
+            }
+        });
+    </script>
+}

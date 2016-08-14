@@ -34,6 +34,8 @@ namespace GameCenter.Core.Common
                 cfg.CreateMap<DtoPartner, Partner>();
                 cfg.CreateMap<AdminUser, DtoAdminUser>();
                 cfg.CreateMap<DtoAdminUser, AdminUser>();
+                cfg.CreateMap<DtoPrivatePage, PrivatePage>();
+                cfg.CreateMap<PrivatePage, DtoPrivatePage>();
                 var map = cfg.CreateMap<GameImages, DtoGameImages>();
                 map.ConstructUsing(s => new DtoGameImages
                 {
