@@ -574,10 +574,7 @@
   <ItemGroup>
     <Content Include="Views\Main\Set.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\PublishProfiles\Manage.pubxml" />
-    <Content Include="Views\Login\Index.cshtml" />
-  </ItemGroup>
+ 
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
