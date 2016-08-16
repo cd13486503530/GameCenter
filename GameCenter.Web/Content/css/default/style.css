@@ -324,3 +324,7 @@ a{
 .header .cloud-logo{
 	margin-top: 30px;
 }
+
+.footer a {
+    color:#fff;
+}

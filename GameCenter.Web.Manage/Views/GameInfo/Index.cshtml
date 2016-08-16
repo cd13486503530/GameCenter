@@ -45,7 +45,7 @@
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏Logo:</label>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <input type="file" name="LogoFileData" accept="image/*" />
                                 <input type="hidden" name="Logo" value="@Model.Logo" />
                             </div>
@@ -56,6 +56,27 @@
                             <div class="col-md-4">
                                 <input type="file" name="QrCodeImageFileData" accept="image/*" />
                                 <input type="hidden" name="QrCodeImage" value="@Model.QrCodeImage" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">视频封面</label>
+                            <div class="col-md-4">
+                                <input type="file" name="VedioImageFileData" accept="image/*" />
+                                <input type="hidden" name="VedioImage" value="@Model.VedioImage" />
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"></label>
+                            <div class="col-md-4">
+                                <span class="help-block">备注：图片规格大小140×140</span>
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">视频地址:</label>
+                            <div class="col-md-8">
+                                <input type="text" name="VedioUrl" value="@Model.VedioUrl" class="validate[required] form-control">
+                                <span class="help-block"></span>
                             </div>
                         </div>
 

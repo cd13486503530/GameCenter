@@ -1,0 +1,164 @@
+﻿@model GameCenter.Entity.Dto.DtoPrivatePage
+@using GameCenter.Core.Common
+@{Layout = null;}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>匀腾</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            background: #fff;
+            color: #212121;
+            font-size: 62.5%;
+        }
+
+        body {
+            background: #222c71 url(@(Domain.GetImage(Model.ImagePath))) no-repeat;
+            background-size: 100% 57.4rem;
+            font-family: "Microsoft YaHei";
+            font-size: 1.4rem;
+            min-height: 40rem;
+            padding-bottom: 50rem;
+        }
+
+        .mobile-head {
+            line-height: 7rem;
+            font-size: 2rem;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .mobile-download {
+            padding-top: 51rem;
+            text-align: center;
+        }
+
+            .mobile-download img {
+                display: inline-block;
+                width: 30%;
+                margin: 1rem 2%;
+            }
+
+        .chat-wrap {
+            text-align: center;
+            padding-top: 1rem;
+        }
+
+        .wechat, .qq {
+            width: 34%;
+            text-align: center;
+            display: inline-block;
+            margin: 1rem 2%;
+            clear: both;
+        }
+
+            .wechat img, .qq img {
+                width: 26%;
+                float: left;
+                position: relative;
+                top: 0.8rem;
+                margin-right: 0.4rem;
+            }
+
+        .chat-type {
+            font-size: 2rem;
+            color: #6370c6;
+            float: left;
+            line-height: 2.4rem;
+        }
+
+        .chat-number {
+            font-size: 1.8rem;
+            color: #ffffff;
+            float: left;
+            line-height: 2rem;
+        }
+
+        #download-notes {
+            position: absolute;
+            background: #fff;
+            padding-bottom: 10rem;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 6;
+            background: rgba(255,255,255, 0.8);
+        }
+
+            #download-notes img {
+                width: 100%;
+            }
+
+        #close {
+            position: absolute;
+            bottom: 4rem;
+            font-size: 4rem;
+            color: #333333;
+            text-align: center;
+            display: block;
+            width: 100%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body id="Private">
+
+    <div class="mobile-head">
+       
+    </div>
+    <div class="mobile-download">
+        <div>
+            <img src="~/Content/img/android-no.png" alt="">
+            <img src="~/Content/img/android-no.png" alt="">
+        </div>
+        <div>
+            <a href="@Model.AndroidUrl"><img src="~/Content/img/ios-yes.png" alt=""></a>
+            <a href="@Model.IosUrl"><img src="~/Content/img/android-yes.png" alt=""></a>
+        </div>
+    </div>
+    <div class="chat-wrap">
+        <div class="wechat">
+            <img src="~/Content/img/wechat.png" alt="">
+            <span class="chat-type">官方微信</span>
+            <span class="chat-number">@Model.Weixin</span>
+        </div>
+        <div class="qq">
+            <img src="~/Content/img/qq2.png" alt="">
+            <span class="chat-type">官方Q群</span>
+            <span class="chat-number">@Model.QQ</span>
+        </div>
+    </div>
+
+    <div id="download-notes" style="display :none">
+        <img src="~/Content/img/dn-notes.png" alt="">
+        <div id='close'>关闭</div>
+    </div>
+
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script>
+
+        var dn = document.getElementById("download-notes");
+        var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
+            dn.style.display = 'block';
+        }
+        var close = document.getElementById("close");
+        close.onclick = function () {
+            dn.style.display = 'none';
+        }
+
+
+    </script>
+</body>
+</html>

@@ -27,8 +27,8 @@ namespace GameCenter.GameWeb
             var httpContext = HttpContext.Current;
             if (httpContext.Request.Url.AbsolutePath.EndsWith("/error.html", StringComparison.OrdinalIgnoreCase))
                 return;
-            
-            var domain = GameDoMain.GetDoMain(httpContext);
+
+            var domain =GameDoMain.GetDoMain(httpContext);
             if (string.IsNullOrEmpty(domain))
                 httpContext.Response.Redirect("/404.html");
 

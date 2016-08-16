@@ -136,6 +136,7 @@
     <Compile Include="Controllers\GameImagesController.cs" />
     <Compile Include="Controllers\GameInfoController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
+    <Compile Include="Controllers\PrivateController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -574,7 +575,15 @@
   <ItemGroup>
     <Content Include="Views\Main\Set.cshtml" />
   </ItemGroup>
- 
+  <ItemGroup>
+    <Content Include="Views\Private\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Private\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Private\Edit.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

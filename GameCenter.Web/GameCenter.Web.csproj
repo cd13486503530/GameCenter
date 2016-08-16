@@ -125,6 +125,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\MenuInfoController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PartnerController.cs" />
     <Compile Include="Controllers\_LayoutController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -258,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\web.pubxml" />
+    <Content Include="Views\Partner\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

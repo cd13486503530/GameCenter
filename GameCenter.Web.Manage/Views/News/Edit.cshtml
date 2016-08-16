@@ -42,7 +42,7 @@
                                 <input type="text" name="Tag" value="@Model.Tag" class="validate form-control" id="form-validation-field-2">
                                 <span class="help-block"></span>
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">是否置顶:</label>
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">新闻类型:</label>
                             <div class="col-md-9">
-                                <select name="NewsType" class="validate[required]" id="form-validation-field-4">                                    
+                                <select name="NewsType" class="validate[required]" id="form-validation-field-4">
                                     @foreach (var item in newsType)
                                     {
                                         if (item.Id == Model.NewsType)
@@ -136,7 +136,7 @@
 
 @section scripts{
     <script type='text/javascript' src='/Scripts/plugins/validationengine/languages/jquery.validationEngine-zh_CN.js'></script>
-    <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script> 
+    <script type='text/javascript' src='/Scripts/plugins/validationengine/jquery.validationEngine.js'></script>
     <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
     <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
     <link href="~/Scripts/plugins/umeditor/themes/default/default.css" rel="stylesheet" />
@@ -144,8 +144,8 @@
     <script type="text/javascript" src="~/Scripts/plugins/umeditor/lang/zh_CN.js"></script>
     <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
     <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
-    
-    <script type="text/javascript">     
+
+    <script type="text/javascript">
         KindEditor.ready(function (K) {
             editor = K.create('textarea[name="Contents"]', {
                 resizeType: 1,
