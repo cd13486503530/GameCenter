@@ -24,17 +24,13 @@
         </div>
     </div>
     @RenderBody()
-    <div class="cloud-bottom">
-        <img class="btm-img" src="/content/img/cloud-btm.png" alt="">
-    </div>
-    <div class="download">
-        <div class="two-d-code">
-            <img src="/content/img/two-d-code.png" alt="" class='two-d-img'>
-            <span class="two-d-notes">(扫描下载匀腾手游)</span>
+    <div class="footer">
+        <div class="wrap">
+            <p>健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活</p>
+            <p><i></i>COPYRIGHT © 2016 杭州匀腾网络科技有限公司 ALL RIGHTS RESERVED</p>
         </div>
-        <a href=""><img src="/content/img/d-android.png" alt=""></a>
-        <a href=""><img src="/content/img/d-ios.png" alt=""></a>
     </div>
+    @{Html.RenderAction("_RigthFloat", "_Layout");}
 
     <script src="/Scripts/jquery.min.js"></script>
     @RenderSection("scripts", required: false)

@@ -12,7 +12,7 @@ namespace GameCenter.Web.Manage.Controllers
 {
     [Active("Private")]
     public class PrivateController : Controller
-    { 
+    {
         // GET: Private 
         public ActionResult Info(int id)
         {

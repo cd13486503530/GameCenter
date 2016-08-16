@@ -20,7 +20,7 @@ namespace GameCenter.Core.Service
             using (var db = new PortalContext())
             {
                 var list = db.PrivatePages.OrderBy(a => a.Id).Skip((dPrivatePage.PageIndex - 1) * dPrivatePage.PageSize).Take(dPrivatePage.PageSize).ToList();
-                total = list.Count();
+                total = list.Count(); 
                 return Mapper.Map<List<DtoPrivatePage>>(list);
 
             }
@@ -39,6 +39,20 @@ namespace GameCenter.Core.Service
                 return Mapper.Map<DtoPrivatePage>(info);
             }
         }
+
+        public static DtoPrivatePage GetInfoByGameId(int gameId)
+        {
+            using (var db = new PortalContext())
+            {
+                var info = db.PrivatePages.FirstOrDefault(a => a.GameId == gameId);
+                if (info == null)
+                {
+                    return new DtoPrivatePage();
+                }
+                return Mapper.Map<DtoPrivatePage>(info);
+            }
+        }
+
 
         public static bool AddForm(DtoPrivatePage dPrivatePage, HttpPostedFileBase file, out string msg)
         {
@@ -71,7 +85,7 @@ namespace GameCenter.Core.Service
                 return false;
             }
             using (var db = new PortalContext())
-            { 
+            {
                 try
                 {
                     var pp = Mapper.Map<PrivatePage>(dPrivatePage);

@@ -56,6 +56,7 @@
                             <label class="col-md-2 control-label">游戏名称:</label>
                             <div class="col-md-9">
                                 <select name="GameId" class="validate[required]" id="form-validation-field-5">
+                                    <option value="0">公共</option>
                                     @foreach (var item in gamesList)
                                     {
                                         <option value="@item.Id">@item.Name</option>

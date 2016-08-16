@@ -36,6 +36,11 @@ namespace GameCenter.Core.Common
                 cfg.CreateMap<DtoAdminUser, AdminUser>();
                 cfg.CreateMap<DtoPrivatePage, PrivatePage>();
                 cfg.CreateMap<PrivatePage, DtoPrivatePage>();
+                var privateMap = cfg.CreateMap<PrivatePage, DtoPrivatePage>();
+                privateMap.ConstructUsing(n => new DtoPrivatePage
+                {
+                    GameName = (GameService.GetGamesCache().FirstOrDefault(a => a.Id == n.GameId) ?? new DtoGame()).Name
+                });
                 var map = cfg.CreateMap<GameImages, DtoGameImages>();
                 map.ConstructUsing(s => new DtoGameImages
                 {

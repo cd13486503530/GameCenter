@@ -136,7 +136,7 @@
     <Compile Include="Controllers\GameImagesController.cs" />
     <Compile Include="Controllers\GameInfoController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
-    <Compile Include="Controllers\PrivatePageController.cs" />
+    <Compile Include="Controllers\PrivateController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -257,14 +257,19 @@
     <Content Include="Scripts\plugins\php\php.js" />
     <Content Include="Scripts\plugins\php\test.js" />
     <Content Include="Scripts\plugins\summernote\summernote.js" />
+    <Content Include="Scripts\plugins\umeditor\kindeditor-all-min.js" />
+    <Content Include="Scripts\plugins\umeditor\kindeditor-all.js" />
     <Content Include="Scripts\plugins\umeditor\kindeditor-min.js" />
+    <Content Include="Scripts\plugins\umeditor\kindeditor.js" />
     <Content Include="Scripts\plugins\umeditor\lang\zh_CN.js" />
+    <Content Include="Scripts\plugins\umeditor\plugins\flash\flash.js" />
     <Content Include="Scripts\plugins\umeditor\plugins\image\image.js" />
     <Content Include="Scripts\plugins\umeditor\plugins\image\images\align_left.gif" />
     <Content Include="Scripts\plugins\umeditor\plugins\image\images\align_right.gif" />
     <Content Include="Scripts\plugins\umeditor\plugins\image\images\align_top.gif" />
     <Content Include="Scripts\plugins\umeditor\plugins\image\images\refresh.png" />
     <Content Include="Scripts\plugins\umeditor\plugins\link\link.js" />
+    <Content Include="Scripts\plugins\umeditor\plugins\media\media.js" />
     <Content Include="Scripts\plugins\umeditor\themes\common\anchor.gif" />
     <Content Include="Scripts\plugins\umeditor\themes\common\blank.gif" />
     <Content Include="Scripts\plugins\umeditor\themes\common\flash.gif" />

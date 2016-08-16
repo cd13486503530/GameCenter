@@ -15,11 +15,25 @@
 </head>
 <body>
     <div class="header">
-        <div class="wrap">
-            <ul class="nav clearfix">
+        <div class="header-inner">
+            <img src="/content/images/cloud-logo.png" alt="" class="cloud-logo">
+            <ul class="u-header">
                 @foreach (var item in ViewBag.Menu)
                 {
-                    <li><a href="@(!string.IsNullOrEmpty(item.Url)?item.Url:("/MenuInfo/Info?MenuId="+item.Id))">@item.Name</a></li>
+                    <li class="l-header">
+                        <a href="@(!string.IsNullOrEmpty(item.Url) ? item.Url : ("/MenuInfo/Info?MenuId=" + item.Id))">@item.Name</a>
+                        @{ var list = GameCenter.Core.Service.MenuService.GetList(item.Id, item.GameId);}
+                        @if (list.Count > 0)
+                        {
+                            <div class="sub-news-head">
+                                @foreach (var child in list)
+                                {
+                                    <a href="@child.Url">@child.Name</a>
+                                }
+                            </div>
+                            <span class="sub-more-icon"></span>
+                        }
+                    </li>
                 }
             </ul>
         </div>
@@ -54,22 +68,29 @@
             <a href="javascript:;" id="btn_next" class="arrow"></a>
         </div>
     </div>
-    <div class="middle">    
+    <div class="middle">
         <div class="pos">
             <div class="wrap clearfix">
                 @foreach (var item in ViewBag.ImageNews)
                 {
                     <div class="fl">
                         @*<img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="350">*@
-                       <a href="/News/Info?id=@item.Id"><img src="/content/images/default/mid_1.jpg" alt="" width="335"></a> 
+                        <a href="/News/Info?id=@item.Id"><img src="/content/images/default/mid_1.jpg" alt="" width="335"></a>
                     </div>
-                } 
-                <div class="news fl" style="width:37.3%;"> 
+                }
+                <div class="news fl" style="width:30.3%;">
                     <ul>
+                        <h3>
+                            <a href="/News/Info?Id=@ViewBag.HotNews.Id"> @ViewBag.HotNews.Title</a>
+                            <!-- 新加的链接 -->
+                            <a href="/News" class="news-list">
+                                <img src="/content/images/default/news.png" alt="">
+                            </a>
+                        </h3>
                         @foreach (var item in ViewBag.News)
                         {
                             <li><a href="/News/Info?id=@item.Id">@item.Title</a></li>
-                        } 
+                        }
                     </ul>
                 </div>
             </div>
@@ -78,18 +99,18 @@
     <div class="hot wrap clearfix">
         <h3><i></i>热点手游</h3>
         @{ var count = 1;
-                foreach (var item in ViewBag.Games)
-                {
-                    <div class="game" style='@(count % 2 == 0 ? "margin:0 5%" : "")'>
-                        <img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="@item.Name" width="228" height="97">
-                        <div class="text">
-                            <h4>@(item.Name)<a href="" class="enter">进入官网</a></h4>
-                            <p>@(item.Desc)</p>
-                        </div>
+            foreach (var item in ViewBag.Games)
+            {
+                <div class="game" style='@(count % 2 == 0 ? "margin:0 5%" : "")'>
+                    <img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="@item.Name" width="228" height="97">
+                    <div class="text">
+                        <h4>@(item.Name)<a href="" class="enter">进入官网</a></h4>
+                        <p>@(item.Desc)</p>
                     </div>
-                    count++;
-                }
-            } 
+                </div>
+                count++;
+            }
+        }
     </div>
     <div class="footer">
         <div class="wrap">

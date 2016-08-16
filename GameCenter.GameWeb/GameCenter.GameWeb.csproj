@@ -137,6 +137,7 @@
     <Compile Include="Controllers\MenuInfoController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\PartnerController.cs" />
+    <Compile Include="Controllers\PrivateController.cs" />
     <Compile Include="Controllers\StrategyController.cs" />
     <Compile Include="Controllers\_LayoutController.cs" />
     <Compile Include="Global.asax.cs">
@@ -165,6 +166,7 @@
     <Content Include="Content\img\ling-btm.png" />
     <Content Include="Content\img\ling-content.png" />
     <Content Include="Content\img\ling-logo.png" />
+    <Content Include="Content\img\logo2.png" />
     <Content Include="Content\img\mobile-head.png" />
     <Content Include="Content\img\next.png" />
     <Content Include="Content\img\prev.png" />
@@ -216,6 +218,8 @@
     <None Include="Properties\PublishProfiles\GameWeb.pubxml" />
     <Content Include="Views\News\ResourceList.cshtml" />
     <Content Include="Views\News\ResourceInfo.cshtml" />
+    <Content Include="Views\_Layout\_RigthFloat.cshtml" />
+    <Content Include="Views\Private\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameCenter.Core\GameCenter.Core.csproj">

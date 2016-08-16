@@ -1,0 +1,10 @@
+﻿@model GameCenter.Entity.Data.GameInfo
+
+<div class="download">
+    <div class="two-d-code">
+        <img src="@(GameCenter.Core.Common.Domain.GetImage(Model.QrCodeImage))" alt="" class='two-d-img'>
+        <span class="two-d-notes">(扫描下载匀腾手游)</span>
+    </div>
+    <a href="@(GameCenter.Core.Common.Domain.GetImage(Model.AndriodDl))"><img src="/content/img/d-android.png" alt=""></a>
+    <a href="@Model.IosDl"><img src="/content/img/d-ios.png" alt=""></a>
+</div>
