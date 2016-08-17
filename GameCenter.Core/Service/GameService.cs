@@ -218,7 +218,7 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                var info = db.Games.FirstOrDefault(a=>a.Code == name);
+                var info = db.Games.FirstOrDefault(a => a.Code == name);
                 if (info == null)
                     return null;
 
@@ -289,6 +289,29 @@ namespace GameCenter.Core.Service
             }
 
             return true;
+        }
+
+        public static bool Disable(int id)
+        {
+            using (var db = new PortalContext())
+            {
+                var info = db.Games.FirstOrDefault(a => a.Id == id);
+                info.Disable = true;
+                db.Set<Game>().Attach(info);
+                db.Entry(info).State = System.Data.Entity.EntityState.Modified;
+                return db.SaveChanges() > 0;
+            }
+        }
+        public static bool Enabled(int id)
+        {
+            using (var db = new PortalContext())
+            {
+                var info = db.Games.FirstOrDefault(a => a.Id == id);
+                info.Disable = false;
+                db.Set<Game>().Attach(info);
+                db.Entry(info).State = System.Data.Entity.EntityState.Modified;
+                return db.SaveChanges() > 0;
+            }
         }
     }
 }
