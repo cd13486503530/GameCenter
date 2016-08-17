@@ -17,7 +17,7 @@ namespace GameCenter.GameWeb.Controllers
             ViewBag.Name = "游戏首页";
             ViewBag.Title = GameInfo.Name + "游戏首页";
             ViewBag.MainBgImages = GameInfoService.GetGameInfo(GameInfo.Id) ?? new GameInfo();
-            ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == GameInfo.Id).ToList();
+            ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == GameInfo.Id).OrderBy(a=>a.Sort).ToList();
             
             //新闻
             ViewBag.Type1 = NewsService.GetHotListByGameId(NewsTypeService.GetOneByName("综合").Id, 7, false); // 综合

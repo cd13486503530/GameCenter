@@ -1,5 +1,7 @@
 ﻿using GameCenter.Core.Cache;
 using GameCenter.Core.Common;
+using GameCenter.Core.Service;
+using GameCenter.Entity.Dto;
 using GameCenter.GameWeb.App_Start;
 using System;
 using System.Collections.Generic;
@@ -28,11 +30,21 @@ namespace GameCenter.GameWeb
             if (httpContext.Request.Url.AbsolutePath.EndsWith("/error.html", StringComparison.OrdinalIgnoreCase))
                 return;
 
-            var domain =GameDoMain.GetDoMain(httpContext);
+            var domain = GameDoMain.GetDoMain(httpContext);
+            var gameInfoCache = LocalCache.Instance().Get<DtoGame>(domain);
+            if (gameInfoCache == null)
+            {
+                gameInfoCache = GameService.GetOneByName(domain) ?? new DtoGame();
+                LocalCache.Instance().Set(domain,gameInfoCache, DateTime.Now.AddMinutes(10).TimeOfDay);
+            }
+
+            if (gameInfoCache.Disable)
+                httpContext.Response.Redirect("/404.html");
+
             if (string.IsNullOrEmpty(domain))
                 httpContext.Response.Redirect("/404.html");
 
-            
+
         }
     }
 }

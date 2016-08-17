@@ -239,6 +239,7 @@ a{
 	width: 1000px;
 	margin: 0 auto;
 	position: relative;
+    overflow: hidden;
 }
 
 .header .header-inner .ling-logo{
@@ -260,6 +261,7 @@ a{
 	padding: 0 20px;
 	cursor: pointer;
 	position: relative;
+    padding: 0 10px;
 }
 
 .header .header-inner .u-header .l-header:hover{
@@ -323,6 +325,9 @@ a{
 
 .header .cloud-logo{
 	margin-top: 30px;
+     position: absolute; 
+     top: 0; 
+     left: 0;
 }
 
 .footer a {

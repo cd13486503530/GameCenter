@@ -1,5 +1,7 @@
 ﻿@model GameCenter.Entity.Data.GameImages
- 
+@{
+    ViewBag.Title = "英雄介绍-"+ Model.Name;
+}
 <div class="ling-banner">
     <div class="ling-type">资料站 <span class="sub-ling-type">> <a href="/Hero/List">英雄介绍</a></span><span class="sub-ling-type">> @Model.Name</span></div>
 </div>

@@ -1,10 +1,12 @@
 ﻿@model GameCenter.Entity.Data.MenuInformation
 @{
     Layout = "~/Views/Shared/_DefaultLayout.cshtml";
+    var name = (GameCenter.Core.Service.MenuService.GetOne(Model.MenuId) ?? new GameCenter.Entity.Dto.DtoMenu()).Name;
+    ViewBag.Title = name;
 }
 
     <div class="cloud-banner">
-        <div class="cloud-type">@((GameCenter.Core.Service.MenuService.GetOne(Model.MenuId)??new GameCenter.Entity.Dto.DtoMenu ()).Name)</div>
+        <div class="cloud-type">@name</div>
     </div>
     <div class="main main-culture">
         <div class="culture-cxt">

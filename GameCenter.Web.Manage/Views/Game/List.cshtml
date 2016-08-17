@@ -63,7 +63,15 @@
                                 <td>
                                     <a href="/Game/Edit?id=@item.Id" class="btn btn-rounded">修改</a>
                                     <a href="/GameInfo/Index?gameId=@item.Id" class="btn btn-rounded">设置详情</a>
-                                    <a href="/Game/"></a>
+                                    @if (item.Disable)
+                                    {
+                                        <a href="/Game/Enabled?id=@item.Id" class="btn btn-rounded">启用</a>
+                                    }
+                                    else
+                                    {
+                                        <a href="/Game/Disable?id=@item.Id" class="btn btn-rounded">禁用</a>
+                                    }
+
                                 </td>
                             </tr>
                         </tbody>

@@ -59,12 +59,14 @@ namespace GameCenter.Web.Manage.Controllers
 
         public ActionResult Disable(int id)
         {
-            var b = GameService.Disable(id);
-            if(b)
-            {
-                return Redirect("/");
-            }
-            return Redirect("/");
+            GameService.Disable(id);
+            return Redirect("/Game/List");
+        }
+
+        public ActionResult Enabled(int id)
+        {
+            GameService.Enabled(id);
+            return Redirect("/Game/List");
         }
     }
 }
