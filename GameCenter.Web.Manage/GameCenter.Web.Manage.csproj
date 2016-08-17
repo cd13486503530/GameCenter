@@ -576,10 +576,12 @@
     <Content Include="Views\Main\Set.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\Manage.pubxml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Private\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\Private\Add.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\Private\Edit.cshtml" />
   </ItemGroup>
   <PropertyGroup>

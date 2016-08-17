@@ -1,4 +1,16 @@
 ﻿@model GameCenter.Entity.Data.GameInfo
+@section headscripts{
+    <link rel="stylesheet" href="~/Content/css/video-js.css" />
+    <script src="~/Scripts/video.js"></script>
+}
+<div class="popup" style="display: none">
+    <div class="popup-shade"></div>
+    <div class="popup-info">
+        <video id="xlplayer" class="video-js vjs-default-skin" controls preload="preload" width="600" height="400">
+            <source src="@Model.VedioUrl" type="video/mp4" />
+        </video>
+    </div>
+</div>
 
 <div class="index-top">
     <div class="bg-wrap">
@@ -36,6 +48,7 @@
                 <a href="@Model.IosDl"><img src="/Content/img/d-ios.png" alt=""></a>
                 @*<a href=""><img src="/Content/img/d-ios-s.png" alt=""></a>*@
             </div>
+            <img width="140" height="140" src="@(GameCenter.Core.Common.Domain.GetImage(Model.VedioImage))" class="video-img">
         </div>
         <div class="img-wrap">
             <div class="imgs">
@@ -193,8 +206,34 @@
                     })
                 }()
             })
+            // 视频播放
+            !function () {
+                var $video = $("video");
+                var player = null;
+                var changeSize = function () {
+                    $(".popup").height($(window).height())
+                    $(".popup-info").css({
+                        width: $video.attr("width"),
+                        height: $video.attr("height"),
+                        "margin-left": (-1) * ($video.attr("width") / 2),
+                        "margin-top": (-1) * ($video.attr("height") / 2)
+                    })
+                }
+                $(document).on("click", ".video-img", function () {
+                    $(".popup").show();
+                    changeSize();
+                    videojs.options.flash.swf = "../js/video-js.swf";
+                    player = videojs("xlplayer");
+                })
 
-        })
+                $(document).on("click", ".popup-shade", function () {
+                    player.pause();
+                    $(".popup").hide();
+                })
+                $(window).resize(function () {
+                    changeSize();
+                });
+            }()        })
     </script>
 }
 

@@ -29,7 +29,7 @@ namespace GameCenter.Core.Common
                 });
                 cfg.CreateMap<DtoNews, News>();
                 cfg.CreateMap<NewsType, DtoNewsType>();
-                cfg.CreateMap<GameInfoForm, GameInfo>();
+                //cfg.CreateMap<GameInfoForm, GameInfo>();
                 cfg.CreateMap<Partner, DtoPartner>();
                 cfg.CreateMap<DtoPartner, Partner>();
                 cfg.CreateMap<AdminUser, DtoAdminUser>();

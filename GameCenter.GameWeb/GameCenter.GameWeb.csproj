@@ -148,6 +148,7 @@
   <ItemGroup>
     <Content Include="404.html" />
     <Content Include="Content\css\ling.css" />
+    <Content Include="Content\css\video-js.css" />
     <Content Include="Content\img\android-no.png" />
     <Content Include="Content\img\android-yes.png" />
     <Content Include="Content\img\cloud-banner.png" />
@@ -182,6 +183,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\video-js.swf" />
+    <Content Include="Scripts\video.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

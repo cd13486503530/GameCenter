@@ -51,5 +51,9 @@ namespace GameCenter.Entity.Dto
         public string Version { get; set; } 
     
         public string FileName { get; set; }
+
+        public string VedioImage { get; set; } 
+         
+        public string VedioUrl { get; set; }
     }
 }

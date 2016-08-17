@@ -43,7 +43,7 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                var list = db.Partners.Where(a => a.Disable == false).OrderByDescending(a => a.Sort).Take(20);
+                var list = db.Partners.Where(a => a.Disable == false).OrderByDescending(a => a.Sort);
                 return Mapper.Map<List<DtoPartner>>(list.ToList());
             }
         }
@@ -76,7 +76,6 @@ namespace GameCenter.Core.Service
             {
                 var p = Mapper.Map<Partner>(dPartner);
                 p.ImagePath = imagePath;
-                p.Disable = true;
                 db.Partners.Add(p);
                 return db.SaveChanges() > 0;
             }
