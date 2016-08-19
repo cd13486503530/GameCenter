@@ -76,7 +76,7 @@ namespace GameCenter.Entity.Data
         [Column(TypeName = "varchar")]
         public string VedioImage { get; set; }
 
-        [MaxLength(128)]
+        [MaxLength(512)]
         [Column(TypeName = "varchar")]
         public string VedioUrl { get; set; }
     }

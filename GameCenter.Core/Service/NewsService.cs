@@ -30,7 +30,7 @@ namespace GameCenter.Core.Service
                 msg = "新闻内容不能为空";
                 return false;
             }
-            var imagePath = UploadFile.SaveImage(file, tag, 280, 95);
+            var imagePath = UploadFile.SaveImage(file, tag, 335, 190);
             using (var db = new PortalContext())
             {
                 News n = Mapper.Map<News>(dNews);
@@ -121,7 +121,7 @@ namespace GameCenter.Core.Service
             }
             if (file != null)
             {
-                var imagePath = UploadFile.SaveImage(file, tag, 280, 95);
+                var imagePath = UploadFile.SaveImage(file, tag, 335, 190);
                 dNews.ImagePath = imagePath;
             }
             using (var db = new PortalContext())

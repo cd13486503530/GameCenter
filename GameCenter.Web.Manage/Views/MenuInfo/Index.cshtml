@@ -76,16 +76,10 @@
                         'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
                         'insertunorderedlist', '|', 'image', 'link', '|', 'fullscreen', 'source'],
                 afterCreate: function (e) {
-                    console.log(e);
+                    //console.log(e);
                 },
                 afterUpload: function (url) {
-                    var a = $("#uppics").val();
-                    if (a.length > 0) {
-                        $("#uppics").val(a + "," + url);
-                    } else {
-                        $("#uppics").val(url);
-                    }
-                    //alert($("#uppics").val())
+                    
                 },
                 afterBlur: function () { this.sync(); }
             });

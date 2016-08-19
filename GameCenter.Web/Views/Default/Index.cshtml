@@ -75,7 +75,7 @@
                 {
                     <div class="fl">
                         @*<img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="350">*@
-                        <a href="/News/Info?id=@item.Id"><img src="/content/images/default/mid_1.jpg" alt="" width="335"></a>
+                        <a href="/News/Info?id=@item.Id"><img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="335"></a>
                     </div>
                 }
                 <div class="news fl" style="width:30.3%;">
@@ -104,7 +104,7 @@
                 <div class="game" style='@(count % 2 == 0 ? "margin:0 5%" : "")'>
                     <img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="@item.Name" width="228" height="97">
                     <div class="text">
-                        <h4>@(item.Name)<a href="" class="enter">进入官网</a></h4>
+                        <h4>@(item.Name)<a href="@("http://"+item.Code+".zjwinturn.com")" class="enter">进入官网</a></h4>
                         <p>@(item.Desc)</p>
                     </div>
                 </div>
