@@ -29,7 +29,7 @@ namespace GameCenter.Web.Manage.Controllers
             string msg = string.Empty;
             var result = false;
             var gameInfo = GameInfoService.GetGameInfo(req.GameId);
-           
+
             if (gameInfo == null)
                 result = GameInfoService.Add(req, out msg);
             else
@@ -63,20 +63,24 @@ namespace GameCenter.Web.Manage.Controllers
             {
                 fileName = GameCenter.Core.Common.UploadFile.SaveFile(file, "apks");
             }
+            else if (fileInputName.Contains("VedioUrl"))
+            {
+                fileName = GameCenter.Core.Common.UploadFile.SaveFile(file, "media");
+            }
             else
             {
                 fileName = GameCenter.Core.Common.UploadFile.SaveImage(file, fileInputName.Replace("FileData", ""), req.Width, req.Heigth);
             }
 
 
-            if(t == "kindeditor")
+            if (t == "kindeditor")
             {
                 // error、messag、url 为kindeditor返回参数
                 return Json(new { error = 0, filename = fileName, name = name, message = "", url = GameCenter.Core.Common.Domain.GetImage(fileName) });
             }
             else
             {
-                return Json(new {filename = fileName, name = name });
+                return Json(new { filename = fileName, name = name });
             }
         }
 

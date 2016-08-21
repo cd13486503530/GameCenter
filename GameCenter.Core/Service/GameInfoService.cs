@@ -66,17 +66,17 @@ namespace GameCenter.Core.Service
         {
             msg = string.Empty;
 
-            if (string.IsNullOrEmpty(form.AndriodDl))
-            {
-                msg = "安卓下载地址不能为空";
-                return false;
-            }
+            //if (string.IsNullOrEmpty(form.AndriodDl))
+            //{
+            //    msg = "安卓下载地址不能为空";
+            //    return false;
+            //}
 
-            if (string.IsNullOrEmpty(form.IosDl))
-            {
-                msg = "AppStore下载地址不能为空";
-                return false;
-            }
+            //if (string.IsNullOrEmpty(form.IosDl))
+            //{
+            //    msg = "AppStore下载地址不能为空";
+            //    return false;
+            //}
 
             if (string.IsNullOrEmpty(form.QrCodeImage))
             {

@@ -55,5 +55,11 @@ namespace GameCenter.Entity.Dto
         public string VedioImage { get; set; } 
          
         public string VedioUrl { get; set; }
+
+        public string BgImageUrl0 { get; set; }
+        public string BgImageUrl1 { get; set; }
+        public string BgImageUrl2 { get; set; }
+        public string BgImageUrl3 { get; set; }
+
     }
 }

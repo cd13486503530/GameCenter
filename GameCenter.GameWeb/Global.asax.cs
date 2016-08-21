@@ -35,7 +35,7 @@ namespace GameCenter.GameWeb
             if (gameInfoCache == null)
             {
                 gameInfoCache = GameService.GetOneByName(domain) ?? new DtoGame();
-                LocalCache.Instance().Set(domain,gameInfoCache, DateTime.Now.AddMinutes(10).TimeOfDay);
+                LocalCache.Instance().Set(domain,gameInfoCache, DateTime.Now.AddMinutes(10));
             }
 
             if (gameInfoCache.Disable)

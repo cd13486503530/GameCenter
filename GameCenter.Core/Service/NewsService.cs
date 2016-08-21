@@ -85,7 +85,7 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                return Mapper.Map<List<DtoNews>>(db.News.OrderByDescending(a=>a.CreateTime).Where(a => a.NewsType == typeId).Take(top));
+                return Mapper.Map<List<DtoNews>>(db.News.OrderByDescending(a=>a.CreateTime).Where(a => a.NewsType == typeId && a.Status==0).Take(top));
             }
         }
 
@@ -93,7 +93,7 @@ namespace GameCenter.Core.Service
         {
             using (var db = new PortalContext())
             {
-                var list = db.News.Where(a => a.Id > 0);
+                var list = db.News.Where(a => a.Status == 0);
                 if (gameId > 0)
                     list = list.Where(a => a.GameId == gameId);
                 if (imgNews)

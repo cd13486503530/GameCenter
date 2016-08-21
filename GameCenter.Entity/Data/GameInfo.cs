@@ -79,5 +79,21 @@ namespace GameCenter.Entity.Data
         [MaxLength(512)]
         [Column(TypeName = "varchar")]
         public string VedioUrl { get; set; }
+
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
+        public string BgImageUrl0 { get; set; }
+
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
+        public string BgImageUrl1 { get; set; }
+
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
+        public string BgImageUrl2 { get; set; }
+
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
+        public string BgImageUrl3 { get; set; }
     }
 }

@@ -150,6 +150,7 @@
     <Content Include="Content\css\ling.css" />
     <Content Include="Content\css\video-js.css" />
     <Content Include="Content\img\404.jpg" />
+    <Content Include="Content\img\andriod_awaiting.png" />
     <Content Include="Content\img\android-no.png" />
     <Content Include="Content\img\android-yes.png" />
     <Content Include="Content\img\cloud-banner.png" />
@@ -161,6 +162,7 @@
     <Content Include="Content\img\dn-notes.png" />
     <Content Include="Content\img\ios-no.png" />
     <Content Include="Content\img\ios-yes.png" />
+    <Content Include="Content\img\ios_awaiting.png" />
     <Content Include="Content\img\iphone1.png" />
     <Content Include="Content\img\left-icon.png" />
     <Content Include="Content\img\ling-banner.png" />

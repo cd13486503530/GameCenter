@@ -49,19 +49,19 @@
             <ul>
                 @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage0))
                 {
-                    <li><a href="#"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage0))" /></a></li>
+                    <li><a href="@ViewBag.MainBgImages.BgImageUrl0" target="_blank"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage0))" /></a></li>
                 }
                 @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage1))
                 {
-                    <li><a href="#"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage1))" /></a></li>
+                    <li><a href="@ViewBag.MainBgImages.BgImageUrl1" target="_blank"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage1))" /></a></li>
                 }
                 @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage2))
                 {
-                    <li><a href="#"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage2))" /></a></li>
+                    <li><a href="@ViewBag.MainBgImages.BgImageUrl2" target="_blank"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage2))" /></a></li>
                 }
                 @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage3))
                 {
-                    <li><a href="#"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage3))" /></a></li>
+                    <li><a href="@ViewBag.MainBgImages.BgImageUrl3" target="_blank"><img src="@(GameCenter.Core.Common.Domain.GetImage(ViewBag.MainBgImages.BgImage3))" /></a></li>
                 }
             </ul>
             <a href="javascript:;" id="btn_prev" class="arrow"></a>

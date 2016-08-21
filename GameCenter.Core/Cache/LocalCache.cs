@@ -40,13 +40,23 @@ namespace GameCenter.Core.Cache
             return default(T);
         }
 
-        public void Set<T>(string key, T t, TimeSpan expires)
+        //public void Set<T>(string key, T t, TimeSpan expires)
+        //{
+        //    //创建缓存策略
+        //    CacheItemPolicy policy = new CacheItemPolicy();
+        //    //缓存优先级
+        //    policy.Priority = CacheItemPriority.Default;
+        //    policy.SlidingExpiration = expires; 
+        //    _memoryCache.Set(key, t, policy);
+        //}
+
+        public void Set<T>(string key, T t, DateTime expires)
         {
             //创建缓存策略
             CacheItemPolicy policy = new CacheItemPolicy();
             //缓存优先级
             policy.Priority = CacheItemPriority.Default;
-            policy.SlidingExpiration = expires; 
+            policy.AbsoluteExpiration = expires;
             _memoryCache.Set(key, t, policy);
         }
 

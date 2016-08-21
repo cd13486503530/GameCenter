@@ -565,6 +565,13 @@ body{
 	display: block;
 }
 
+.index-download span img{
+	width: 160px;
+	display: block;
+    margin-left: 30px;
+	margin-bottom: 10px;
+}
+
 .index-download video{
 	float: left;
 	width: 140px;
@@ -576,8 +583,7 @@ body{
 .index-download .video-img{
 	float: left;
 	width: 140px;
-	height: 140px;
-	border: 1px solid #ccc;
+	height: 140px; 
 	margin-left: 30px;
 }
 

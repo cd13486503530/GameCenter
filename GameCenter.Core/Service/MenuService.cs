@@ -45,8 +45,8 @@ namespace GameCenter.Core.Service
 
             using (var db = new PortalContext())
             {
-                var list = Mapper.Map<List<DtoMenu>>(db.Menus.Take(1000).ToList());
-                LocalCache.Instance().Set(key, list, DateTime.Now.AddMinutes(10).TimeOfDay);
+                var list = Mapper.Map<List<DtoMenu>>(db.Menus.Where(a=>!a.Disable).Take(1000).ToList());
+                LocalCache.Instance().Set(key, list, DateTime.Now.AddMinutes(10));
                 return list;
             }
         }

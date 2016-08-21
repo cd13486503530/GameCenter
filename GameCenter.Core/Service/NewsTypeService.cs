@@ -43,7 +43,7 @@ namespace GameCenter.Core.Service
             if (getCache == null)
             {
                 var newsType = GetTypeList();
-                LocalCache.Instance().Set(key, newsType, DateTime.Now.AddDays(1).TimeOfDay);
+                LocalCache.Instance().Set(key, newsType, DateTime.Now.AddDays(1));
                 return newsType;
             }
             return getCache;

@@ -21,7 +21,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">App Store地址:</label>
                             <div class="col-md-6">
-                                <input type="text" name="IosDl" value="@Model.IosDl" class="validate[required] form-control" id="form-validation-field-1">
+                                <input type="text" name="IosDl" value="@Model.IosDl" class="form-control" />
                                 <span class="help-block">App Store地址不能为空,下载地址带上https://</span>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏版本:</label>
                             <div class="col-md-2">
-                                <input type="text" name="Version" value="@Model.Version" class="validate[required] form-control" id="form-validation-field-2">
+                                <input type="text" name="Version" value="@Model.Version" class="form-control" >
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -37,12 +37,20 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">安卓Apk上传:</label>
                             <div class="col-md-6">
-                                <input type="file" name="AndriodDlFileData" title="12312" />
+                                <input type="file" name="AndriodDlFileData" />
+                              
                                 <input type="hidden" name="AndriodDl" value="@Model.AndriodDl" />
                                 <input type="hidden" name="FileName" value="@Model.FileName" />
                             </div>
                         </div>
-
+                        
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">安卓下载地址:</label>
+                            <div class="col-md-6">
+                                <label class="col-md-8 control-label" id="AndriodDl">@(GameCenter.Core.Common.Domain.GetImage(Model.AndriodDl))</label> 
+                            </div>
+                        </div>
+                      
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏Logo:</label>
                             <div class="col-md-6">
@@ -75,8 +83,9 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">视频地址:</label>
                             <div class="col-md-8">
-                                <input type="text" name="VedioUrl" value="@Model.VedioUrl" class="validate[required] form-control">
-                                <span class="help-block"></span>
+                                <input type="file" name="VedioUrlFileData"/>
+                                <input type="hidden" name="VedioUrl" value="@Model.VedioUrl" />
+                                @*<input type="text" name="VedioUrl" value="@Model.VedioUrl" class="validate[required] form-control">*@
                             </div>
                         </div>
                         <div class="form-group">
@@ -91,13 +100,13 @@
                                 <input type="file" name="BgImage0FileData" accept="image/*" />
                                 <input type="hidden" name="BgImage0" value="@Model.BgImage0" />
                             </div>
-                            <div class="col-md-4">
+                            @*<div class="col-md-4">
                                 <input type="file" name="BgImage1FileData" accept="image/*" />
                                 <input type="hidden" name="BgImage1" value="@Model.BgImage1" />
-                            </div>
+                            </div>*@
                         </div>
 
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label class="col-md-2 control-label"></label>
                             <div class="col-md-4">
                                 <input type="file" name="BgImage2FileData" accept="image/*" />
@@ -107,7 +116,7 @@
                                 <input type="file" name="BgImage3FileData" accept="image/*" />
                                 <input type="hidden" name="BgImage3" value="@Model.BgImage3" />
                             </div>
-                        </div>
+                        </div>*@
 
                         <div class="form-group">
                             <label class="col-md-2 control-label"></label>
@@ -195,7 +204,7 @@
     </script>
 
     <script type="text/javascript">
-        $("input[type=file]").not("input[name=AndriodDlFileData]").fileinput({
+        $("input[type=file]").not("input[name=AndriodDlFileData]").not("input[name=VedioUrlFileData]").fileinput({
             showUpload: false,
             showRemove: true,
             showCaption: false,
@@ -213,7 +222,7 @@
             }
         });
 
-        $('input[type=file]').not("input[name=AndriodDlFileData]").on('fileuploaded', function (data, r, a) {
+        $('input[type=file]').not("input[name=AndriodDlFileData]").not("input[name=VedioUrlFileData]").on('fileuploaded', function (data, r, a) {
             var _this = $(this);
             var hiddenInputName = _this.attr("name").replace("FileData", "");
             $("input[name=" + hiddenInputName + "]").val(r.response.filename);
@@ -223,16 +232,25 @@
             showUpload: false,
             showRemove: true,
             showCaption: true,
-            //autoReplace: true,
             uploadUrl: '/GameInfo/UploadFile',
             uploadRightNow: true,
-            //allowedFileExtensions: ['apk'],
-            //maxFileSize: 2000,
             maxFilesCount: 1,
-            //allowedFileTypes: ['image'],
             previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
             showPreview: false,
-            //language: 'zh',
+            slugCallback: function (filename) {
+                return filename.replace(/\(|\)|\[|\]/g, '_');
+            }
+        });
+
+        $("input[name=VedioUrlFileData]").fileinput({
+            showUpload: false,
+            showRemove: true,
+            showCaption: true,
+            uploadUrl: '/GameInfo/UploadFile',
+            uploadRightNow: true,
+            maxFilesCount: 1,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            showPreview: false,
             slugCallback: function (filename) {
                 return filename.replace(/\(|\)|\[|\]/g, '_');
             }
@@ -243,10 +261,15 @@
             var hiddenInputName = _this.attr("name").replace("FileData", "");
             $("input[name=" + hiddenInputName + "]").val(r.response.filename);
             $("input[name=FileName]").val(r.response.name);
-
+            $("#AndriodDl").html('');
+            $('#AndriodDl').html('@GameCenter.Core.Common.Domain.GetImage("")' + r.response.filename);
         });
 
-
+        $("input[name=VedioUrlFileData]").on('fileuploaded', function (data, r, a) {
+            var _this = $(this);
+            var hiddenInputName = _this.attr("name").replace("FileData", "");
+            $("input[name=" + hiddenInputName + "]").val(r.response.filename);
+        });
 
         $("input[type=file]").fileinput('refresh', {
             refreshCallback: function ($el) {
