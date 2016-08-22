@@ -9,7 +9,7 @@ namespace GameCenter.GameWeb.Controllers
 {
     public class StrategyController : Controller
     {
-        // GET: Strategy
+        // GET: Strategy 不使用
         public ActionResult Index()
         {
             var list = NewsService.GetListByTypeId(1, 10);

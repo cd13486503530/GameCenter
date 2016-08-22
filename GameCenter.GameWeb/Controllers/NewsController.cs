@@ -34,9 +34,18 @@ namespace GameCenter.GameWeb.Controllers
 
         public ActionResult ResourceInfo(int id)
         {
-
             var info = NewsService.GetOneById(id);
             return View(info);
+        }
+
+        /// <summary>
+        /// 游戏攻略
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Strategy()
+        {
+            ViewBag.News = NewsService.GetListByTypeId(5, 20);
+            return View();
         }
     }
 }

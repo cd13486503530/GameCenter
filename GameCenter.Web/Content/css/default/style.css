@@ -238,8 +238,7 @@ a{
 .header .header-inner{
 	width: 1000px;
 	margin: 0 auto;
-	position: relative;
-    overflow: hidden;
+	position: relative; 
 }
 
 .header .header-inner .ling-logo{

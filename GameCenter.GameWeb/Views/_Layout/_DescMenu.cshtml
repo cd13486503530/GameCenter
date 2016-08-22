@@ -1,6 +1,6 @@
 ﻿@foreach (var item in ViewBag.Menu)
 {
-    <li class="l-header @(item.Name == ViewBag.Model.Name?"sel":"")">
+    <li class="l-header">
         <a href="@(!string.IsNullOrEmpty(item.Url)?item.Url:("/MenuInfo/Info?MenuId="+item.Id))">@item.Name</a>
         @{ var list = GameCenter.Core.Service.MenuService.GetList(item.Id, item.GameId);}
         @if (list.Count > 0)

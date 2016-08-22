@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "游戏攻略";
+}
+<div class="ling-banner">
+    <div class="ling-type">新闻中心</div>
+</div>
+<div class="ling-content">
+    <div class="main">
+        <div class="main-content main-content-comprehensive">
+            <ul class="u-content-type">
+                <li class="l-content-type sel">游戏攻略</li>
+            </ul>
+            <div class="d-lists-wrap">
+                <ul class="u-content-lists  u-comprehensive">
+                    @foreach (var item in ViewBag.News)
+                    {
+                        <li class="l-content-list">
+                            <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                            <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <img class="btm-img" src="/content/img/ling-btm.png" alt="">
+</div>
+@section scripts{
+    <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var typeArr = ['main-content-comprehensive', 'main-content-news', 'main-content-report', 'main-content-acti'];
+            var $obj = $(".main-content");
+            $(document).on("click", ".u-content-type .l-content-type", function () {
+                if ($(this).hasClass("sel")) return;
+                $(this).addClass("sel").siblings(".sel").removeClass("sel");
+                $obj.removeClass(typeArr.join(" ")).addClass(typeArr[$(this).index()]);
+            })
+        })
+    </script>
+}

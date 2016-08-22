@@ -226,6 +226,7 @@
     <Content Include="Views\News\ResourceInfo.cshtml" />
     <Content Include="Views\_Layout\_RigthFloat.cshtml" />
     <Content Include="Views\Private\Index.cshtml" />
+    <Content Include="Views\News\Strategy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameCenter.Core\GameCenter.Core.csproj">
