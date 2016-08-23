@@ -3,7 +3,7 @@
     ViewBag.Title = "游戏地图";
 }
 <div class="ling-banner">
-    <div class="ling-type">游戏介绍 <span class="sub-ling-type">> 游戏地图</span></div>
+    <div class="ling-type">游戏介绍 <span class="sub-ling-type">> @ViewBag.TypeName</span></div>
 </div>
 <div class="ling-content">
     <div class="main tch-main">
@@ -18,7 +18,6 @@
             @Html.Raw(ViewBag.HtmlPage)
         </div>
     </div>
-    <img class="btm-img" src="/content/img/ling-btm.png" alt="">
 </div>
 
 @section scripts{

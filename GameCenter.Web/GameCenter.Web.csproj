@@ -176,6 +176,7 @@
     <Content Include="Content\images\right_pic_3.png" />
     <Content Include="Content\images\two-d-code.png" />
     <Content Include="Content\images\wechat.png" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\default\index.js" />
     <Content Include="Scripts\default\jquery.min.js" />
