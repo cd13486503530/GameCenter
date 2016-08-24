@@ -8,7 +8,7 @@
             <div class="sub-news-head">
                 @foreach (var child in list)
                 {
-                    <a href="@child.Url">@child.Name</a>
+                    <a href="@(!string.IsNullOrEmpty(child.Url)?item.Url:("/MenuInfo/Info?MenuId="+child.Id))">@child.Name</a>
                 }
             </div>
             <span class="sub-more-icon"></span>
