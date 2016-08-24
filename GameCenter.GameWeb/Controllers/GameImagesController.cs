@@ -14,14 +14,15 @@ namespace GameCenter.GameWeb.Controllers
     public class GameImagesController : BaseController
     {
         // GET: GameImages
-        public ActionResult Info(int type = 0)
+        public ActionResult Info(int type = 0,int menuId=0)
         {
             if (type == 0)
                 return View(new GameImages());
 
             ViewBag.Name = "游戏介绍";
             var image = GameImagesService.GetOneByTypeId(type, this.GameInfo.Id) ?? new GameImages();
-            ViewBag.TypeName = ((GameImageType)type).ToString();
+            var info = MenuService.GetOne(menuId) ?? new DtoMenu();
+            ViewBag.TypeName = info.Name;
             return View(image);
         }
 

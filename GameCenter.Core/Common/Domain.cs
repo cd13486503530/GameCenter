@@ -66,7 +66,9 @@ namespace GameCenter.Core.Common
         public static string GetImage(string imagePath)
         {
 
-            imagePath = imagePath ?? "";
+            if (string.IsNullOrEmpty(imagePath))
+                imagePath = "";
+
             return _imageSite + imagePath.Replace("\\", "/");
         }
     }

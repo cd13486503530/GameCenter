@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿@model GameCenter.Entity.Data.GameInfo
 @section headscripts{
     <link rel="stylesheet" href="~/Content/css/video-js.css" />
@@ -257,3 +258,260 @@
     </script>
 }
 
+=======
+﻿@model GameCenter.Entity.Data.GameInfo
+@{ 
+    ViewBag.Title = "游戏首页";
+}
+@section headscripts{
+    <link rel="stylesheet" href="~/Content/css/video-js.css" />
+    <script src="~/Scripts/video.js"></script>
+}
+<div class="popup" style="display: none">
+    <div class="popup-shade"></div>
+    <div class="popup-info">
+        <video id="xlplayer" class="video-js vjs-default-skin" controls preload="preload" width="600" height="400">
+            <source src="@(GameCenter.Core.Common.Domain.GetImage(Model.VedioUrl))" type="video/mp4" />
+        </video>
+    </div>
+</div>
+
+<div class="index-top">
+    <div class="bg-wrap">
+        <div class="bg-imgs-wrap">
+            @if (!string.IsNullOrEmpty(Model.BgImage0))
+            {
+                <img class="cur-bg-img" src="@GameCenter.Core.Common.Domain.GetImage(Model.BgImage0)" />
+            }
+            @*@if (!string.IsNullOrEmpty(Model.BgImage1))
+            {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.BgImage1)" />
+            }
+
+            @if (!string.IsNullOrEmpty(Model.BgImage2))
+            {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.BgImage2)" />
+            }
+            @if (!string.IsNullOrEmpty(Model.BgImage3))
+            {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.BgImage3)" />
+            }*@
+        </div>
+        @*<img src="/Content/img/prev.png" alt="" class="bg-prev-img">
+        <img src="/Content/img/next.png" alt="" class="bg-next-img">*@
+    </div>
+
+    <div class="index-top-inner">
+        <div class="index-download">
+            <div class="two-d-code">
+                <img src="@(GameCenter.Core.Common.Domain.GetImage(Model.QrCodeImage))" alt="" class='two-d-img'>
+                <span class="two-d-notes">(扫描下载匀腾手游)</span>
+            </div>
+            <div class="dn-img-wrap">
+                @if (!string.IsNullOrEmpty(Model.AndriodDl))
+                {
+                    <a href="@GameCenter.Core.Common.Domain.GetImage(Model.AndriodDl)"><img src="/Content/img/d-android.png" alt=""></a>
+                }
+                else
+                {
+                    <span><img src="/Content/img/andriod_awaiting.png" alt="敬请期待"></span>
+                }
+                @if (!string.IsNullOrEmpty(Model.IosDl))
+                {
+                    <a href="@Model.IosDl"><img src="/Content/img/d-ios.png" alt=""></a>
+                }
+                else
+                {
+                    <span> <img src="/Content/img/ios_awaiting.png" alt="敬请期待"></span>
+                } 
+            </div>
+            <img width="140" height="140" src="@(GameCenter.Core.Common.Domain.GetImage(Model.VedioImage))" class="video-img">
+        </div>
+        <div class="img-wrap">
+            <div class="imgs">
+                @if (!string.IsNullOrEmpty(Model.FocusImage0))
+                {
+                <img class="J-curImg" src="@GameCenter.Core.Common.Domain.GetImage(Model.FocusImage0)" alt="">
+                }
+                @if (!string.IsNullOrEmpty(Model.FocusImage1))
+                {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.FocusImage1)" alt="">
+                }
+                @if (!string.IsNullOrEmpty(Model.FocusImage2))
+                {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.FocusImage2)" alt="">
+                }
+                @if (!string.IsNullOrEmpty(Model.FocusImage3))
+                {
+                <img src="@GameCenter.Core.Common.Domain.GetImage(Model.FocusImage3)" alt="">
+                }
+            </div>
+            <div class="img-nav">
+                <span class="s-nav cur-nav"></span>
+                <span class="s-nav"></span>
+                <span class="s-nav"></span>
+                <span class="s-nav"></span>
+            </div>
+        </div>
+        <div class="indexs-info indexs-info-conprehensive">
+            <ul class="u-info-head">
+                <li class="l-info-head sel">综合</li>
+                <li class="l-info-head">新闻</li>
+                <li class="l-info-head">公告</li>
+                <li class="l-info-head">通知</li>
+            </ul>
+            <div class="indexs-info-content">
+                <ul class="u-info-conprehensive">
+                    @foreach (var item in ViewBag.Type1)
+                    {
+                        <li class="l-info">
+                            <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                        </li>
+                    }
+                </ul>
+                <ul class="u-info-news">
+                    @foreach (var item in ViewBag.Type2)
+                    {
+                        <li class="l-info">
+                            <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                        </li>
+                    }
+                </ul>
+                <ul class="u-info-abroad">
+                    @foreach (var item in ViewBag.Type3)
+                    {
+                    <li class="l-info">
+                        <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                    </li>
+                    }
+                </ul>
+                <ul class="u-info-notice">
+                    @foreach (var item in ViewBag.Type4)
+                    {
+                        <li class="l-info">
+                            <span><a href="/News/Info?id=@item.Id">[@item.Tag]@item.Title</a></span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(function () {      
+            $(function () {
+                // 新闻等切换
+                !function () {
+                    var typeArr = ['indexs-info-conprehensive', 'indexs-info-news', 'indexs-info-abroad', 'indexs-info-notice'];
+                    var $obj = $(".indexs-info");
+                    $(document).on("click", ".u-info-head .l-info-head", function () {
+                        if ($(this).hasClass("sel")) return;
+                        $(this).addClass("sel").siblings(".sel").removeClass("sel");
+                        $obj.removeClass(typeArr.join(" ")).addClass(typeArr[$(this).index()]);
+                    })
+                }()
+
+                // 小图切换
+                !function () {
+                    var imgChange = function (total) {
+                        setTimeout(function () {
+                            var index = $(".img-wrap .J-curImg").index();
+                            var nIndex = index < total - 1 ? index + 1 : 0;
+                            var $cur = $(".img-wrap .J-curImg");
+                            var $next = $(".img-wrap a").eq(nIndex);
+                            $cur.animate({
+                                'left': '-490px'
+                            })
+                            $next.animate({
+                                'left': '0'
+                            }, function () {
+                                $cur.removeClass("J-curImg");
+                                $next.addClass("J-curImg");
+                                $cur.css({ "left": "490px" })
+                                $(".img-nav .s-nav").eq(nIndex).addClass("cur-nav").siblings(".cur-nav").removeClass("cur-nav")
+
+                                imgChange(total);
+                            })
+
+                        }, 2000)
+                    }
+                    var totalImgNum = $(".img-wrap img").size();
+                    imgChange(totalImgNum);
+                }()
+
+                // 北京大图切换
+            //    !function () {
+            //        var $prev = null;
+            //        var $next = null;
+            //        var $cur = null;
+            //        $(".bg-imgs-wrap img").eq(1).addClass("next-bg-img");
+            //        $(".bg-imgs-wrap img:last").addClass("prev-bg-img");
+            //        $(document).on("click", ".bg-wrap .bg-prev-img, .bg-wrap .bg-next-img", function () {
+
+            //            $cur && $cur.stop(true, true);
+            //            $prev && $prev.stop(true, true);
+            //            $next && $next.stop(true, true);
+
+            //            $cur = $(".bg-imgs-wrap .cur-bg-img");
+            //            $prev = $(".bg-imgs-wrap .prev-bg-img");
+            //            $next = $(".bg-imgs-wrap .next-bg-img");
+
+            //            types = [
+            //                { $obj: $prev, curAfterCls: 'next-bg-img', nextAniCls: 'prev-bg-img', oritation: -1 },
+            //                { $obj: $next, curAfterCls: 'prev-bg-img', nextAniCls: 'next-bg-img', oritation: 1 }
+            //            ];
+            //            tar = $(this).hasClass("bg-prev-img") ? types[0] : types[1];
+
+            //            $cur.animate({ "left": -100 * tar.oritation + "%" }, function () {
+            //                $cur.removeClass("cur-bg-img").addClass(tar.curAfterCls);
+            //                tar.$obj.removeClass(tar.nextAniCls);
+            //            })
+
+            //            tar.$obj.animate({ "left": "0" }, function () {
+            //                if (tar.oritation == -1) {
+            //                    $afterObj = tar.$obj.prev("img").size() ? tar.$obj.prev("img") : $(".bg-imgs-wrap img").last();
+            //                    $next.removeClass("next-bg-img");
+            //                } else {
+            //                    $afterObj = tar.$obj.next("img").size() ? tar.$obj.next("img") : $(".bg-imgs-wrap img").eq(0);
+            //                    $prev.removeClass("prev-bg-img");
+            //                }
+            //                tar.$obj.addClass("cur-bg-img");
+            //                $afterObj.addClass(tar.nextAniCls);
+            //                $(".bg-imgs-wrap ." + tar.nextAniCls).css({ "left": tar.oritation * 100 + "%" });
+            //            })
+            //        })
+            //    }()
+            })
+            // 视频播放
+            !function () {
+                var $video = $("video");
+                var player = null;
+                var changeSize = function () {
+                    $(".popup").height($(window).height())
+                    $(".popup-info").css({
+                        width: $video.attr("width"),
+                        height: $video.attr("height"),
+                        "margin-left": (-1) * ($video.attr("width") / 2),
+                        "margin-top": (-1) * ($video.attr("height") / 2)
+                    })
+                }
+                $(document).on("click", ".video-img", function () {
+                    $(".popup").show();
+                    changeSize();
+                    videojs.options.flash.swf = "../js/video-js.swf";
+                    player = videojs("xlplayer");
+                })
+
+                $(document).on("click", ".popup-shade", function () {
+                    player.pause();
+                    $(".popup").hide();
+                })
+                $(window).resize(function () {
+                    changeSize();
+                });
+            }()        })
+    </script>
+}
+
+>>>>>>> acb01999979830e662a5d4ffe398c8fb480c2e9e

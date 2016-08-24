@@ -19,5 +19,7 @@ namespace GameCenter.Entity.Dto
         public int PageIndex { get; set; } = 1;
 
         public int PageSize { get; set; } = 20;
+
+        public int MenuId { get; set; }
     }
 }

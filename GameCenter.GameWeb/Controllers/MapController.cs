@@ -19,8 +19,9 @@ namespace GameCenter.GameWeb.Controllers
             req.PageSize = 1;
             req.Type = 2;
             req.GameId = this.GameInfo.Id;
+            var info = MenuService.GetOne(req.MenuId) ?? new DtoMenu();
             ViewBag.Name = "游戏介绍";
-            ViewBag.Title = "游戏地图";
+            ViewBag.Title = info.Name;
             var list = GameImagesService.GetPageList(req, out total);
             ViewBag.HtmlPage = HtmlPage(req,total);
             return View(list.FirstOrDefault() ?? new DtoGameImages());
