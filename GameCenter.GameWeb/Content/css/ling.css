@@ -126,9 +126,13 @@ body{
 
 .ling-content{
 	background: url(/Content/img/ling-content.png) no-repeat top center;
-	background-size: 100% 100%; 
+	background-size: 100% 100%;  
 }
-
+.ling-newslist{
+	background: url(/Content/img/ling-content.png) no-repeat top center;
+	background-size: 100% 100%; 
+    height:1300px;
+}
 .main{
 	width: 1000px;
 	margin: 0 auto;

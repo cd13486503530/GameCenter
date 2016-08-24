@@ -61,5 +61,10 @@ namespace GameCenter.Entity.Dto
         public string BgImageUrl2 { get; set; }
         public string BgImageUrl3 { get; set; }
 
+        public string FocusImageUrl0 { get; set; }
+        public string FocusImageUrl1 { get; set; }
+        public string FocusImageUrl2 { get; set; }
+        public string FocusImageUrl3 { get; set; }
+
     }
 }

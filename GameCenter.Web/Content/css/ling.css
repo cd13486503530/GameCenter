@@ -35,6 +35,7 @@ body{
 	padding: 0 20px;
 	cursor: pointer;
 	position: relative;
+    padding: 0 10px;
 }
 
 .header .header-inner .u-header .l-header:hover{
@@ -98,10 +99,10 @@ body{
 
 .header .cloud-logo{
 	margin-top: 30px;
-}
-
-
-
+    position: absolute;
+    top: 0;
+    left: 0;
+} 
 
 .ling-banner{
 	padding-top: 90px;

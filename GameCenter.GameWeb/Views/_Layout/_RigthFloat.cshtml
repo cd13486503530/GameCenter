@@ -5,6 +5,20 @@
         <img src="@(GameCenter.Core.Common.Domain.GetImage(Model.QrCodeImage))" alt="" class='two-d-img'>
         <span class="two-d-notes">(扫描下载匀腾手游)</span>
     </div>
-    <a href="@(GameCenter.Core.Common.Domain.GetImage(Model.AndriodDl))"><img src="/content/img/d-android.png" alt=""></a>
-    <a href="@Model.IosDl"><img src="/content/img/d-ios.png" alt=""></a>
+    @if (!string.IsNullOrEmpty(Model.AndriodDl))
+    {
+        <a href="@(GameCenter.Core.Common.Domain.GetImage(Model.AndriodDl))"><img src="/content/img/d-android.png" alt=""></a>
+    }
+    else
+    {
+        <span><img src="/Content/img/andriod_awaiting.png" alt="敬请期待" width="142"></span>
+    }
+    @if (!string.IsNullOrEmpty(Model.IosDl))
+    {
+        <a href="@Model.IosDl"><img src="/content/img/d-ios.png" alt=""></a>
+    }
+    else
+    {
+        <span> <img src="/Content/img/ios_awaiting.png" alt="敬请期待" width="142"></span>
+    }
 </div>

@@ -15,7 +15,7 @@ namespace GameCenter.GameWeb.Controllers
         public ActionResult Index()
         {
             ViewBag.Name = "游戏首页";
-            ViewBag.Title = GameInfo.Name + "游戏首页";
+            ViewBag.Title = GameInfo.Name + "官方网站";
             ViewBag.MainBgImages = GameInfoService.GetGameInfo(GameInfo.Id) ?? new GameInfo();
             ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == GameInfo.Id).OrderBy(a=>a.Sort).ToList();
             

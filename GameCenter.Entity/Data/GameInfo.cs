@@ -95,5 +95,21 @@ namespace GameCenter.Entity.Data
         [MaxLength(128)]
         [Column(TypeName = "varchar")]
         public string BgImageUrl3 { get; set; }
+
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
+        public string FocusImageUrl0 { get; set; }
+
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
+        public string FocusImageUrl1 { get; set; }
+
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
+        public string FocusImageUrl2 { get; set; }
+
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
+        public string FocusImageUrl3 { get; set; }
     }
 }

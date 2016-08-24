@@ -41,10 +41,13 @@
     </div>
     <div class="main_visual">
         <div class="flicking_con">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
+@if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage0)){<a href="#">1</a> }
+@if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage1))
+{<a href="#">2</a> }
+@if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage2))
+{<a href="#">3</a> }
+@if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage3))
+{<a href="#">4</a> }
         </div>
         <div class="main_image">
             <ul>
@@ -76,7 +79,7 @@
                 {
                     <div class="fl">
                         @*<img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="350">*@
-                        <a href="/News/Info?id=@item.Id"><img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="335"></a>
+                        <a href="/News/Info?id=@item.Id"><img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath.Replace("small","big")))" alt="" width="335"></a>
                     </div>
                 }
                 <div class="news fl" style="width:30.3%;">
