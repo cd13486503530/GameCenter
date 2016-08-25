@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NeedIndex.Utility.Extensions;
+using GameCenter.Core.Common;
 
 namespace GameCenter.GameWeb.Controllers
 {
@@ -23,6 +25,7 @@ namespace GameCenter.GameWeb.Controllers
         public ActionResult Info(int id)
         {
             var info = NewsService.GetOneById(id);
+           
             return View(info);
         }
 

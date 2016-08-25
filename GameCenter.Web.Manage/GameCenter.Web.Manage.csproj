@@ -254,6 +254,7 @@
     <Content Include="Scripts\plugins\jquery\jquery.min.js" />
     <Content Include="Scripts\plugins\mcustomscrollbar\jquery.mCustomScrollbar.min.js" />
     <Content Include="Scripts\plugins.js" />
+    <Content Include="Scripts\plugins\umeditor\plugins\pagebreak\pagebreak.js" />
     <Content Include="Scripts\plugins\php\php.js" />
     <Content Include="Scripts\plugins\php\test.js" />
     <Content Include="Scripts\plugins\summernote\summernote.js" />
@@ -598,7 +599,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1322</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
