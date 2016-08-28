@@ -14,6 +14,7 @@ namespace GameCenter.GameWeb.Controllers
         public ActionResult Index()
         {
             var info = PrivatePageService.GetInfoByGameId(GameInfo.Id);
+            ViewBag.GameName = this.GameInfo.Name;
             return View(info);
         }
     }

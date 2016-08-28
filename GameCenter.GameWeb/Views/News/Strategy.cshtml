@@ -1,14 +1,17 @@
 ﻿@{
-    ViewBag.Title = "游戏攻略";
+    ViewBag.Title = ViewBag.TypeName;
 }
 <div class="ling-banner">
-    <div class="ling-type">新闻中心</div>
+    <div class="ling-type">资料站<span class="sub-ling-type">> @ViewBag.TypeName</span></div>
 </div>
 <div class="ling-newslist">
     <div class="main">
         <div class="main-content main-content-comprehensive">
             <ul class="u-content-type">
-                <li class="l-content-type sel">游戏攻略</li>
+                <li class="l-content-type sel">新手攻略</li>
+                <li class="l-content-type">进阶攻略</li>
+                <li class="l-content-type">玩家攻略</li>
+                <li class="l-content-type"></li>
             </ul>
             <div class="d-lists-wrap">
                 <ul class="u-content-lists  u-comprehensive">
@@ -20,14 +23,28 @@
                         </li>
                     }
                 </ul>
+                <ul class="u-content-lists  u-news">
+                    @foreach (var item in ViewBag.News1)
+                    {
+                        <li class="l-content-list">
+                            <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                            <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                        </li>
+                    }
+                </ul>
+                <ul class="u-content-lists  u-report">
+                    @foreach (var item in ViewBag.News2)
+                    {
+                        <li class="l-content-list">
+                            <span class="list-title"><a href="/News/Info?id=@item.Id">@item.Title</a></span>
+                            <span class="list-time">@item.CreateTime.ToString("yyyy年MM月dd日")</span>
+                        </li>
+                    }
+                </ul>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
   
-=======
-     
->>>>>>> acb01999979830e662a5d4ffe398c8fb480c2e9e
 </div>
 @section scripts{
     <script type="text/javascript" src="~/Scripts/jquery.min.js"></script>

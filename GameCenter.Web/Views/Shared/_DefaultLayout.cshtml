@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="/content/css/ling.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <title>@ViewBag.Title</title>
@@ -19,7 +19,7 @@
                 else
                 {
                     Html.RenderAction("_Menu", "_Layout", new { name = ViewBag.Name });
-                }  
+                }
             </ul>
         </div>
     </div>
@@ -28,7 +28,12 @@
         <div class="wrap">
             <p><a href="/Partner">合作伙伴</a></p>
             <p>健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活</p>
-            <p><i></i>COPYRIGHT © 2016 杭州匀腾网络科技有限公司 ALL RIGHTS RESERVED</p>
+            <p><i></i>COPYRIGHT © 2016 杭州匀腾网络科技有限公司 ALL RIGHTS RESERVED</p>           
+            <p>
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602006168">
+                    <img src="~/Content/images/beian.png" />浙公网安备 33010602006168号
+                </a>
+            </p> 
         </div>
     </div>
     <script src="/scripts/jquery.min.js"></script>

@@ -6,7 +6,8 @@
 <div class="cloud-banner">
     <div class="cloud-type">@Model.Title</div>
 </div>
-<div class="main main-culture">
+<div class="main main-culture">    
+    <p class="artInfo"><span class="artDate">@(Model.CreateTime.ToString("yyyy-MM-dd"))</span></p>
     <div class="culture-cxt">
         @Html.Raw(Model.Contents)
     </div>

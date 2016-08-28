@@ -36,7 +36,7 @@ a{
 	float:right;
 }
 .wrap{
-	width: 1000px;
+	width: 1260px;
 	margin:0 auto;
 }
 
@@ -178,10 +178,11 @@ a{
 }
 .hot .game{
 	float:left;
-	width:30%;
+	width:400px;
+    margin: 0 20px 0 0;
 }
 .hot .game img{
-	width:100%;
+	width:400px;
 	vertical-align:bottom;
 }
 .text{
@@ -214,7 +215,7 @@ a{
 .footer{
 	padding:20px 0;
 	margin-top:80px;
-	background:#000;
+	background:#272a2c;
 	text-align:center;
 	color:#fff;
 	line-height:50px;

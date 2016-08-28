@@ -70,11 +70,11 @@ namespace GameCenter.Core.Service
         private static bool Check(DtoGameImages form, out string msg)
         {
             msg = string.Empty;
-            if (string.IsNullOrEmpty(form.ImagePath))
-            {
-                msg = "请上传图片";
-                return false;
-            }
+            //if (string.IsNullOrEmpty(form.ImagePath))
+            //{
+            //    msg = "请上传图片";
+            //    return false;
+            //}
 
             if (form.Type < 1)
             {

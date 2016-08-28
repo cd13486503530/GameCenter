@@ -7,7 +7,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>匀腾游戏首页</title>
+    <title>杭州匀腾网络科技有限公司</title>
+    <meta name="keywords" content="匀腾,匀腾游戏,匀腾网络,杭州匀腾,灵文对决,游戏开发商,点点萌萌哒,winturn,zjwinturn" />
+    <meta name="description" content="杭州匀腾游戏是始终以事业长期发展为目标的游戏创始团队，本着创新开拓精神完成了《灵文对决》、《点点萌萌哒》、《魔幻双消》、《AT英雄》等TCG,CCG,多款集换式卡牌手机网络游戏。" />
     <link rel="stylesheet" href="~/Content/css/default/style.css">
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <script type="text/javascript" src="/Scripts/default/jquery.min.js"></script>
@@ -35,19 +37,20 @@
                             <span class="sub-more-icon"></span>
                         }
                     </li>
-                }
+                            }
             </ul>
         </div>
     </div>
     <div class="main_visual">
         <div class="flicking_con">
-@if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage0)){<a href="#">1</a> }
-@if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage1))
-{<a href="#">2</a> }
-@if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage2))
-{<a href="#">3</a> }
-@if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage3))
-{<a href="#">4</a> }
+            @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage0))
+            {<a href="#">1</a> }
+            @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage1))
+            {<a href="#">2</a> }
+            @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage2))
+            {<a href="#">3</a> }
+            @if (!string.IsNullOrEmpty(ViewBag.MainBgImages.BgImage3))
+            {<a href="#">4</a> }
         </div>
         <div class="main_image">
             <ul>
@@ -79,10 +82,10 @@
                 {
                     <div class="fl">
                         @*<img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="350">*@
-                        <a href="/News/Info?id=@item.Id"><img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath.Replace("small","big")))" alt="" width="335"></a>
+                        <a href="/News/Info?id=@item.Id"><img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath.Replace("small","big")))" alt="" width="390" height="320"></a>
                     </div>
                 }
-                <div class="news fl" style="width:30.3%;">
+                <div class="news fl" style="width:480px;height:320px;">
                     <ul>
                         <h3>
                             <a href="/News/Info?Id=@ViewBag.HotNews.Id"> @ViewBag.HotNews.Title</a>
@@ -106,7 +109,7 @@
             foreach (var item in ViewBag.Games)
             {
                 <div class="game" style='@(count % 2 == 0 ? "margin:0 5%" : "")'>
-                    <img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="@item.Name" width="228" height="97">
+                    <img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="@item.Name" width="400" height="176">
                     <div class="text">
                         <h4>@(item.Name)<a href="@("http://"+item.Code+".zjwinturn.com")" class="enter">进入官网</a></h4>
                         <p>@(item.Desc)</p>
@@ -121,6 +124,11 @@
             <p><a href="/Partner">合作伙伴</a></p>
             <p>健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活</p>
             <p><i></i>COPYRIGHT © 2016 杭州匀腾网络科技有限公司 ALL RIGHTS RESERVED</p>
+            <p>
+                <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602006168">
+                    <img src="~/Content/images/beian.png" />浙公网安备 33010602006168号
+                </a>
+            </p>
         </div>
     </div>
     <script>

@@ -137,6 +137,7 @@
     <Content Include="Content\css\ling.css" />
     <Content Include="Content\images\android-no.png" />
     <Content Include="Content\images\android-yes.png" />
+    <Content Include="Content\images\beian.png" />
     <Content Include="Content\images\cloud-banner.png" />
     <Content Include="Content\images\cloud-btm.png" />
     <Content Include="Content\images\cloud-logo.png" />
@@ -174,6 +175,7 @@
     <Content Include="Content\images\right_pic.png" />
     <Content Include="Content\images\right_pic_2.png" />
     <Content Include="Content\images\right_pic_3.png" />
+    <Content Include="Content\images\time_29d2535.png" />
     <Content Include="Content\images\two-d-code.png" />
     <Content Include="Content\images\wechat.png" />
     <Content Include="favicon.ico" />

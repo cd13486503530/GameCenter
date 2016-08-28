@@ -96,6 +96,18 @@ body{
 	color: #ffffff;
 }
 
+.artInfo .artDate {
+    padding: 0 0 0 20px;
+    background: url(/Content/images/time_29d2535.png) no-repeat 0 1px;
+}
+
+Inherited from p.artInfo
+.artInfo {
+    color: #626262;
+    font-size: 14px;
+    text-align: right;
+    margin-right: 2cm;
+}
 
 .header .cloud-logo{
 	margin-top: 30px;
@@ -103,6 +115,14 @@ body{
     top: 0;
     left: 0;
 } 
+
+
+.artInfo {
+    color: #626262;
+    font-size: 14px;
+    text-align: right;
+    margin-right: 2cm;
+}
 
 .ling-banner{
 	padding-top: 90px;
@@ -496,10 +516,9 @@ body{
 /* µ×²¿ */
 .footer{
 	padding:20px 0; 
-	background:#000;
+	background:#272a2c;
 	text-align:center;
-	color:#fff;
-	line-height:50px;
+	color:#fff; 
 }
 .footer margin{
 	padding:20px 0;

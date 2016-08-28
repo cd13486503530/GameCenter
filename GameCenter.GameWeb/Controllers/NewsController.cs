@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using NeedIndex.Utility.Extensions;
 using GameCenter.Core.Common;
+using GameCenter.Entity.Dto;
 
 namespace GameCenter.GameWeb.Controllers
 {
@@ -45,9 +46,13 @@ namespace GameCenter.GameWeb.Controllers
         /// 游戏攻略
         /// </summary>
         /// <returns></returns>
-        public ActionResult Strategy()
+        public ActionResult Strategy(int menuId=0)
         {
-            ViewBag.News = NewsService.GetListByTypeId(5, 20);
+            ViewBag.News = NewsService.GetListByTypeId(5, 20)??new List<DtoNews> ();
+            ViewBag.News1 = NewsService.GetListByTypeId(6, 20) ?? new List<DtoNews>();
+            ViewBag.News2 = NewsService.GetListByTypeId(7, 20) ?? new List<DtoNews>();
+            var info = MenuService.GetOne(menuId) ?? new DtoMenu();
+            ViewBag.TypeName = info.Name;
             return View();
         }
     }
