@@ -47,8 +47,8 @@ namespace GameCenter.GameWeb.Controllers
             }
            
 
-            sb.Append("<a href=\"/Map?pageindex=" + pre + "\"><img src=\"/content/img/left-icon.png\" class=\"prev-img\"></a>");
-            sb.Append("<a href=\"/Map?pageindex=" + next + "\"><img src=\"/content/img/right-icon.png\" class=\"next-img\"></a>");
+            sb.Append("<a href=\"/Map?pageindex=" + pre + "&MenuId="+req.MenuId + "\"><img src=\"/content/img/left-icon.png\" class=\"prev-img\"></a>");
+            sb.Append("<a href=\"/Map?pageindex=" + next + "&MenuId="+req.MenuId + "\"><img src=\"/content/img/right-icon.png\" class=\"next-img\"></a>");
 
             return sb.ToString();
         }
