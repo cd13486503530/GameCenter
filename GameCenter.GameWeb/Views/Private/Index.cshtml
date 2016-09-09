@@ -110,10 +110,19 @@
             width: 100%;
             margin: 0 auto;
         }
+
+         .ling-logo{
+			//width: 8rem;
+			//height: 8rem;
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+		}
     </style>
 </head>
 <body id="Private">
     <div class="mobile-head"></div>
+    <img src="@ViewBag.Logo" class="ling-logo">   
     <div class="mobile-download"> 
         <div>
             @if (string.IsNullOrEmpty(Model.AndroidUrl))
