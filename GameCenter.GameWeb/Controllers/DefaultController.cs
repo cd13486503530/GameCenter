@@ -14,8 +14,12 @@ namespace GameCenter.GameWeb.Controllers
         // GET: Default
         public ActionResult Index()
         {
+            var seoInfo = SeoService.GetInfo(this.GameInfo.Id, 12);
+
             ViewBag.Name = "游戏首页";
-            ViewBag.Title = GameInfo.Name + "官方网站";
+            ViewBag.Title = seoInfo.Title;
+            ViewBag.Keywords = seoInfo.Keywords;
+            ViewBag.Description = seoInfo.Description;
             ViewBag.MainBgImages = GameInfoService.GetGameInfo(GameInfo.Id) ?? new GameInfo();
             ViewBag.Menu = MenuService.GetListCache().Where(a => a.ParentId == 0 && a.GameId == GameInfo.Id).OrderBy(a=>a.Sort).ToList();
             

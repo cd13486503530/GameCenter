@@ -47,6 +47,8 @@ namespace GameCenter.Data
 
         public virtual DbSet<PrivatePage> PrivatePages { get; set; }
 
+        public virtual DbSet<SeoInfo> Seos { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
