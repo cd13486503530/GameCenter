@@ -24,6 +24,7 @@ namespace GameCenter.Entity.Dto
 
         public string AndriodDl { get; set; }
 
+        public string AndriodDl1 { get; set; }
 
         public string BgImage0 { get; set; }
 
@@ -48,12 +49,12 @@ namespace GameCenter.Entity.Dto
 
         public string FocusImage3 { get; set; }
 
-        public string Version { get; set; } 
-    
+        public string Version { get; set; }
+
         public string FileName { get; set; }
 
-        public string VedioImage { get; set; } 
-         
+        public string VedioImage { get; set; }
+
         public string VedioUrl { get; set; }
 
         public string BgImageUrl0 { get; set; }

@@ -61,7 +61,7 @@ namespace GameCenter.Web.Manage.Controllers
 
             if (fileInputName.Contains("AndriodDl"))
             {
-                fileName = GameCenter.Core.Common.UploadFile.SaveFile(file, "apks");
+                fileName = GameCenter.Core.Common.UploadFile.SaveFile(file, "apks").Replace("\\","/");
             }
             else if (fileInputName.Contains("VedioUrl"))
             {
