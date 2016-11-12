@@ -53,10 +53,9 @@ namespace GameCenter.Core.Service
                     return false;
             }
 
-
             using (var db = new PortalContext())
             {
-                var info = Mapper.Map<GameInfo>(form);
+                var info = Mapper.Map<GameInfo>(form); 
                 db.GameInfos.Add(info);
                 return db.SaveChanges() > 0;
             }

@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏版本:</label>
                             <div class="col-md-2">
-                                <input type="text" name="Version" value="@Model.Version" class="form-control" >
+                                <input type="text" name="Version" value="@Model.Version" class="form-control">
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -38,19 +38,25 @@
                             <label class="col-md-2 control-label">安卓Apk上传:</label>
                             <div class="col-md-6">
                                 <input type="file" name="AndriodDlFileData" />
-                              
-                                <input type="hidden" name="AndriodDl" value="@Model.AndriodDl" />
-                                <input type="hidden" name="FileName" value="@Model.FileName" />
+
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label class="col-md-2 control-label">安卓下载地址:</label>
+                            <label class="col-md-2 control-label">手动填写:</label>
                             <div class="col-md-6">
-                                <label class="col-md-8 control-label" id="AndriodDl">@(GameCenter.Core.Common.Domain.GetImage(Model.AndriodDl))</label> 
+                                <input type="text" name="AndriodDl" value="@Model.AndriodDl" class="form-control">
+                                <span class="help-block"></span>
                             </div>
                         </div>
-                      
+
+                        @*<div class="form-group">
+                                <label class="col-md-2 control-label">安卓下载地址:</label>
+                                <div class="col-md-6">
+                                    <label class="col-md-8 control-label" id="AndriodDl">@(GameCenter.Core.Common.Domain.GetImage(Model.AndriodDl))</label>
+                                </div>
+                            </div>*@
+
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏Logo:</label>
                             <div class="col-md-6">
@@ -72,18 +78,18 @@
                             <div class="col-md-4">
                                 <input type="file" name="VedioImageFileData" accept="image/*" />
                                 <input type="hidden" name="VedioImage" value="@Model.VedioImage" />
-                            </div> 
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label"></label>
                             <div class="col-md-4">
                                 <span class="help-block">备注：图片规格大小140×140</span>
                             </div>
-                        </div> 
+                        </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">视频地址:</label>
                             <div class="col-md-8">
-                                <input type="file" name="VedioUrlFileData"/>
+                                <input type="file" name="VedioUrlFileData" />
                                 <input type="hidden" name="VedioUrl" value="@Model.VedioUrl" />
                                 @*<input type="text" name="VedioUrl" value="@Model.VedioUrl" class="validate[required] form-control">*@
                             </div>
@@ -93,7 +99,7 @@
                             <div class="col-md-4">
                                 <span class="help-block">支持格式flv/mp4/swf</span>
                             </div>
-                        </div> 
+                        </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">背景图片</label>
                             <div class="col-md-4">
@@ -101,28 +107,28 @@
                                 <input type="hidden" name="BgImage0" value="@Model.BgImage0" />
                             </div>
                             @*<div class="col-md-4">
-                                <input type="file" name="BgImage1FileData" accept="image/*" />
-                                <input type="hidden" name="BgImage1" value="@Model.BgImage1" />
-                            </div>*@
+                                    <input type="file" name="BgImage1FileData" accept="image/*" />
+                                    <input type="hidden" name="BgImage1" value="@Model.BgImage1" />
+                                </div>*@
                         </div>
 
                         @*<div class="form-group">
-                            <label class="col-md-2 control-label"></label>
-                            <div class="col-md-4">
-                                <input type="file" name="BgImage2FileData" accept="image/*" />
-                                <input type="hidden" name="BgImage2" value="@Model.BgImage2" />
-                            </div>
-                            <div class="col-md-4">
-                                <input type="file" name="BgImage3FileData" accept="image/*" />
-                                <input type="hidden" name="BgImage3" value="@Model.BgImage3" />
-                            </div>
-                        </div>*@
+                                <label class="col-md-2 control-label"></label>
+                                <div class="col-md-4">
+                                    <input type="file" name="BgImage2FileData" accept="image/*" />
+                                    <input type="hidden" name="BgImage2" value="@Model.BgImage2" />
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="file" name="BgImage3FileData" accept="image/*" />
+                                    <input type="hidden" name="BgImage3" value="@Model.BgImage3" />
+                                </div>
+                            </div>*@
                         <div class="form-group">
                             <label class="col-md-2 control-label"></label>
                             <div class="col-md-4">
                                 <span class="help-block">备注：背景图片规格大小1920×900</span>
                             </div>
-                        </div>  
+                        </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">焦点图</label>
@@ -156,7 +162,7 @@
                             <div class="col-md-4">
                                 <span class="help-block">备注：图片规格大小490×320</span>
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="btn-group pull-right">
                             <button class="btn btn-primary" type="button" onclick="$('#validate').validationEngine('hide');">隐藏提示</button>
@@ -262,10 +268,10 @@
         $("input[name=AndriodDlFileData]").on('fileuploaded', function (data, r, a) {
             var _this = $(this);
             var hiddenInputName = _this.attr("name").replace("FileData", "");
-            $("input[name=" + hiddenInputName + "]").val(r.response.filename);
+            $("input[name=" + hiddenInputName + "]").val('@GameCenter.Core.Common.Domain.GetImage("")' + r.response.filename.replace('\\', '/'));
             $("input[name=FileName]").val(r.response.name);
-            $("#AndriodDl").html('');
-            $('#AndriodDl').html('@GameCenter.Core.Common.Domain.GetImage("")' + r.response.filename);
+            @*$("#AndriodDl").html('');
+            $('#AndriodDl').html( r.response.filename);*@
         });
 
         $("input[name=VedioUrlFileData]").on('fileuploaded', function (data, r, a) {
