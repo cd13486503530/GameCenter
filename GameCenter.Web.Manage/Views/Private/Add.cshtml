@@ -3,6 +3,7 @@
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var gamesList = GameService.GetGamesCache();
+    var chaneelList = ChannelService.GetListALL();
 }
 
 
@@ -22,9 +23,36 @@
                             <label class="col-md-2 control-label">图片:</label>
                             <div class="col-md-9">
                                 <a class="file-input-wrapper btn btn-default  fileinput btn-danger">
-                                    <input type="file" class="fileinput btn-danger" name="Filedata" id="form-validation-field-3" data-filename-placement="inside" title="选择新闻图片">
+                                    <input type="file" class="fileinput btn-danger" name="Filedata" id="form-validation-field-3" data-filename-placement="inside" title="选择图片">
                                 </a>
                                 <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">渠道名称:</label>
+                            <div class="col-md-3">
+                                <select name="Channel" class="form-control select">
+                                    <option value="0">无渠道</option>
+                                    @foreach (var item in chaneelList)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                                <span class="help-block">不能为空</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">游戏名称:</label>
+                            <div class="col-md-3">
+                                <select name="GameId" class="form-control select">
+                                    @foreach (var item in gamesList)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                                <span class="help-block">不能为空</span>
                             </div>
                         </div>
 
@@ -44,7 +72,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Android链接:</label>
                             <div class="col-md-6">
-                                <input type="text" name="AndroidUrl" class="validate[required] form-control" />
+                                <input type="text" name="AndroidUrl" class="form-control" />
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -52,22 +80,57 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Ios链接:</label>
                             <div class="col-md-6">
-                                <input type="text" name="IosUrl" class="validate[required] form-control" />
+                                <input type="text" name="IosUrl" class="form-control" />
                                 <span class="help-block"></span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">官方微信:</label>
-                            <div class="col-md-9">
-                                <input type="text" name="WeiXin" class="validate form-control" id="form-validation-field-1">
+                            <div class="col-md-6">
+                                <input type="text" name="WeiXin" class="form-control">
                                 <span class="help-block"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">官方QQ:</label>
+                            <div class="col-md-6">
+                                <input type="text" name="QQ" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">三要素Title:</label>
                             <div class="col-md-9">
-                                <input type="text" name="QQ" class="validate form-control" id="form-validation-field-2">
+                                <input type="text" name="Title" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">三要素Keywords:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Keywords" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">三要素Description:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Description" class="form-control">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">统计代码1:</label>
+                            <div class="col-md-9">
+                                <textarea name="CodeFirst" class="form-control" rows="5"></textarea>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">统计代码2:</label>
+                            <div class="col-md-9">
+                                <textarea name="CodeSecond" class="form-control" rows="5"></textarea>
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -106,7 +169,7 @@
     <script type="text/javascript" src="~/Scripts/plugins/umeditor/lang/zh_CN.js"></script>
     <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
     <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
-
+    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
     <script type="text/javascript">
 
         $('#validate').ajaxForm({
@@ -125,3 +188,4 @@
         });
     </script>
 }
+ 

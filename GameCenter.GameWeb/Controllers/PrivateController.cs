@@ -1,4 +1,5 @@
 ﻿using GameCenter.Core.Service;
+using GameCenter.Entity.Dto;
 using GameCenter.GameWeb.App_Start;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,23 @@ namespace GameCenter.GameWeb.Controllers
     public class PrivateController : BaseController
     {
         // GET: Private
-        public ActionResult Index()
+        public ActionResult Index(int id = 0)
         {
-            var info = PrivatePageService.GetInfoByGameId(GameInfo.Id);
+            DtoPrivatePage info = null;
+            if (id == 0)
+            {
+                info = PrivatePageService.GetInfoByGameId(GameInfo.Id);
+            }
+            else
+            {
+                var chaneel = ChannelService.GetOneById(id);
+                if (chaneel.Id == 0)
+                {
+                    return Redirect("~/404.html");
+                }
+
+                info = PrivatePageService.GetInfoByGameId(GameInfo.Id, id);
+            }
             ViewBag.GameName = this.GameInfo.Name;
             return View(info);
         }

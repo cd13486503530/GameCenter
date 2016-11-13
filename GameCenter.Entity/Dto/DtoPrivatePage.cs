@@ -27,5 +27,24 @@ namespace GameCenter.Entity.Dto
         public int PageSize { get; set; } = 20;
 
         public string GameName { get; set; }
+
+       
+        public string CodeFirst { get; set; }
+
+     
+        public string CodeSecond { get; set; }
+
+       
+        public string Title { get; set; }
+
+        
+        public string Keywords { get; set; }
+
+       
+        public string Description { get; set; }
+
+        public int Channel { get; set; }
+
+        public string ChannelName { get; set; }
     }
 }

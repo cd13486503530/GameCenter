@@ -35,6 +35,7 @@ namespace GameCenter.Web.Manage.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AddForm(DtoPrivatePage dPrivatePage)
         {
             string msg = string.Empty;
@@ -48,7 +49,9 @@ namespace GameCenter.Web.Manage.Controllers
             var info = PrivatePageService.GetInfo(id);
             return View(info);
         }
+
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditForm(DtoPrivatePage dPrivatePage)
         {
             string msg = string.Empty;

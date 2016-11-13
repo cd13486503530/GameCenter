@@ -49,6 +49,7 @@ namespace GameCenter.Data
 
         public virtual DbSet<SeoInfo> Seos { get; set; }
 
+        public virtual DbSet<Channel> Channels { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

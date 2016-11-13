@@ -12,13 +12,18 @@ namespace GameCenter.GameWeb
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                 name: "Private",
+                 url: "Private/{id}",
+                 defaults: new { controller = "Private", action = "Index", id = UrlParameter.Optional }
+             );
 
             routes.MapRoute(
                 name: "HomePage",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Default", action = "Index", id = UrlParameter.Optional }
             );
-
+           
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

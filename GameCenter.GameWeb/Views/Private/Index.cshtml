@@ -4,8 +4,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>匀腾</title>
+    @if (string.IsNullOrEmpty(Model.Title))
+    {
+        <title>匀腾</title>
+    }
+    else
+    {
+        <title>@Model.Title</title>
+    }
+
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="keywords" content="@Model.Keywords" />
+    <meta name="description" content="@Model.Description" />
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
     <meta content="yes" name="apple-mobile-web-app-capable">
@@ -122,7 +132,7 @@
 </head>
 <body id="Private">
     <div class="mobile-head"></div>
-    <img src="@ViewBag.Logo" class="ling-logo">   
+    @*<img src="@ViewBag.Logo" class="ling-logo">*@   
     <div class="mobile-download"> 
         <div>
             @if (string.IsNullOrEmpty(Model.AndroidUrl))
@@ -176,5 +186,9 @@
 
 
     </script>
+    <div style="display:none">
+        @Html.Raw(Model.CodeFirst)
+        @Html.Raw(Model.CodeSecond)
+    </div>
 </body>
 </html>

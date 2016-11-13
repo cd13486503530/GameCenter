@@ -4,6 +4,7 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var gamesList = GameService.GetGamesCache();
+    var chaneelList = ChannelService.GetListALL();
 }
 
 <div class="page-title">
@@ -18,6 +19,29 @@
                 <div class="panel-body">
                     <form id="validate" method="post" class="form-horizontal" action="/Private/EditForm" enctype="multipart/form-data">
                         <input type="hidden" name="Id" value="@Model.Id" />
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">渠道名称:</label>
+                            <div class="col-md-3">
+                                <select name="Channel" class="form-control select">
+                                    @foreach (var item in chaneelList)
+                                    {
+                                        if (item.Id == Model.Channel)
+                                        {
+                                            <option value="@item.Id" selected="selected"> @item.Name</option>
+                                        }
+                                        else if (item.Id == 0)
+                                        {
+                                            <option value="0">无渠道</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+                                    }
+                                </select> 
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏名称:</label>
@@ -53,7 +77,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Android链接:</label>
                             <div class="col-md-6">
-                                <input type="text" name="AndroidUrl" class="validate[required] form-control" value="@Model.AndroidUrl"/>
+                                <input type="text" name="AndroidUrl" class="form-control" value="@Model.AndroidUrl"/>
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -61,7 +85,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Ios链接:</label>
                             <div class="col-md-6">
-                                <input type="text" name="IosUrl" class="validate[required] form-control" value="@Model.IosUrl"/>
+                                <input type="text" name="IosUrl" class="form-control" value="@Model.IosUrl"/>
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -69,7 +93,7 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">官方微信:</label>
                             <div class="col-md-4">
-                                <input name="Weixin" id="Weixin" class="validate[required] form-control" value="@Model.Weixin" />
+                                <input name="Weixin" id="Weixin" class="form-control" value="@Model.Weixin" />
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -77,7 +101,43 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">官方QQ:</label>
                             <div class="col-md-4">
-                                <input name="QQ" id="QQ" class="validate[required] form-control" value="@Model.QQ" />
+                                <input name="QQ" id="QQ" class="form-control" value="@Model.QQ" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">三要素Title:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Title" class="form-control" value="@Model.Title">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">三要素Keywords:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Keywords" class="form-control" value="@Model.Keywords">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">三要素Description:</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Description" class="form-control" value="@Model.Description">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">统计代码1:</label>
+                            <div class="col-md-9">
+                                <textarea name="CodeFirst" class="form-control" rows="5">@Model.CodeFirst</textarea>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">统计代码2:</label>
+                            <div class="col-md-9">
+                                <textarea name="CodeSecond" class="form-control" rows="5">@Model.CodeSecond</textarea>
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -118,6 +178,7 @@
     <script type="text/javascript" src="~/Scripts/plugins/umeditor/lang/zh_CN.js"></script>
     <script type='text/javascript' src='/Scripts/plugins/jquery-validation/jquery.validate.js'></script>
     <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-file-input.js"></script>
+    <script type="text/javascript" src="~/Scripts/plugins/jqueryform/jquery.form.js"></script>
     <script type="text/javascript">
 
         $('#validate').ajaxForm({

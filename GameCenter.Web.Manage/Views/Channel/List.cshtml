@@ -1,4 +1,5 @@
-﻿@model  List<GameCenter.Entity.Dto.DtoPrivatePage>
+﻿
+@model  List<GameCenter.Entity.Dto.DtoChannel>
 @using GameCenter.Core.Service;
 @{
     ViewBag.Title = "List";
@@ -17,10 +18,7 @@
                     <thead>
                         <tr>
                             <th>#ID</th>
-                            <th>游戏名称</th>
-                            <th>官方微信</th>
-                            <th>官方QQ</th>
-                            <th>渠道</th>
+                            <th>渠道名称</th> 
                             <th>设置</th>
                         </tr>
                     </thead>
@@ -29,27 +27,19 @@
                         <tbody>
                             <tr>
                                 <td>@item.Id</td>
-                                <td>@item.GameName</td>
-                                <td>@item.Weixin</td>
-                                <td>@item.QQ</td>
-                                <td>@item.Channel</td>
+                                <td>@item.Name</td> 
                                 <td>
-                                    <a href="/Private/Edit?id=@item.Id" class="btn btn-rounded">修改</a>
-                                    <a href="/Private/Delete?id=@item.Id " class="btn btn-rounded">删除</a>
+                                    <a href="/Channel/Edit?id=@item.Id" class="btn btn-rounded">修改</a>
+                                    <a href="/Channel/Delete?id=@item.Id " class="btn btn-rounded">删除</a>
                                 </td>
                             </tr>
                         </tbody>
                     }
                 </table>
             </div>
-        </div>
-        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-            @Html.Raw(ViewBag.PageHtml)
-        </div>
-
+        </div> 
     </div>
 
 </div>
-@section scripts{
-    <script type="text/javascript" src="/Scripts/plugins/bootstrap/bootstrap-select.js"></script>
-}
+ 
+

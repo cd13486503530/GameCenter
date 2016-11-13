@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\AdminUser.cs" />
+    <Compile Include="Data\Channel.cs" />
     <Compile Include="Data\Game.cs" />
     <Compile Include="Data\GameImages.cs" />
     <Compile Include="Data\GameInfo.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Data\Partner.cs" />
     <Compile Include="Data\PrivatePage.cs" />
     <Compile Include="Data\SeoInfo.cs" />
+    <Compile Include="Dto\DtoChannel.cs" />
     <Compile Include="Dto\DtoAdminUser.cs" />
     <Compile Include="Dto\DtoGame.cs" />
     <Compile Include="Dto\DtoGameImages.cs" />

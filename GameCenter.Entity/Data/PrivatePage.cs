@@ -35,5 +35,27 @@ namespace GameCenter.Entity.Data
         [MaxLength(16)]
         [ Column(TypeName = "varchar")]
         public string Weixin { get; set; }
+
+        [MaxLength(1024)]
+        [Column(TypeName = "varchar")]
+        public string CodeFirst { get; set; }
+
+        [MaxLength(1024)]
+        [Column(TypeName = "varchar")]
+        public string CodeSecond { get; set; }
+
+        [MaxLength(256)]
+        [Column(TypeName = "varchar")]
+        public string Title { get; set; }
+
+        [MaxLength(512)]
+        [Column(TypeName = "varchar")]
+        public string Keywords { get; set; }
+
+        [MaxLength(1024)]
+        [Column(TypeName = "varchar")]
+        public string Description { get; set; }
+
+        public int Channel { get; set; }
     }
 }

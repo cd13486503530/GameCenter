@@ -20,7 +20,7 @@ namespace GameCenter.Core.Service
             using (var db = new PortalContext())
             {
                 var list = db.PrivatePages.OrderBy(a => a.Id).Skip((dPrivatePage.PageIndex - 1) * dPrivatePage.PageSize).Take(dPrivatePage.PageSize).ToList();
-                total = list.Count(); 
+                total = list.Count();
                 return Mapper.Map<List<DtoPrivatePage>>(list);
 
             }
@@ -53,27 +53,34 @@ namespace GameCenter.Core.Service
             }
         }
 
+        public static DtoPrivatePage GetInfoByGameId(int gameId, int channelId)
+        {
+            using (var db = new PortalContext())
+            {
+                var info = db.PrivatePages.FirstOrDefault(a => a.GameId == gameId && a.Channel == channelId);
+                if (info == null)
+                {
+                    return new DtoPrivatePage();
+                }
+                return Mapper.Map<DtoPrivatePage>(info);
+            }
+        }
 
         public static bool AddForm(DtoPrivatePage dPrivatePage, HttpPostedFileBase file, out string msg)
         {
             string tag = "Private";
             msg = string.Empty;
-            if (string.IsNullOrEmpty(dPrivatePage.AndroidUrl))
+            var imagePath = string.Empty;
+            if (file != null)
             {
-                msg = "安卓下载路径不能为空";
-                return false;
+                imagePath = UploadFile.SaveFile(file, tag);
+                if (string.IsNullOrEmpty(imagePath))
+                {
+                    msg = "上传失败";
+                    return false;
+                }
             }
-            if (string.IsNullOrEmpty(dPrivatePage.IosUrl))
-            {
-                msg = "IOS下载路径不能空";
-                return false;
-            }
-            var imagePath = UploadFile.SaveFile(file, tag);
-            if (string.IsNullOrEmpty(imagePath))
-            {
-                msg = "上传失败";
-                return false;
-            }
+
             if (string.IsNullOrEmpty(dPrivatePage.QQ))
             {
                 msg = "官方QQ不能空";
@@ -105,16 +112,7 @@ namespace GameCenter.Core.Service
         {
             string tag = "Private";
             msg = string.Empty;
-            if (string.IsNullOrEmpty(dPrivatePage.AndroidUrl))
-            {
-                msg = "安卓下载路径不能为空";
-                return false;
-            }
-            if (string.IsNullOrEmpty(dPrivatePage.IosUrl))
-            {
-                msg = "IOS下载路径不能空";
-                return false;
-            }
+            
             if (file != null)
             {
                 var imagePath = UploadFile.SaveFile(file, tag);

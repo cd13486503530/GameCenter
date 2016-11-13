@@ -563,3 +563,42 @@ Inherited from p.artInfo
 	line-height: 20px;
 	color: #666666;
 }
+
+/* map */
+ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		.map-wrap{
+			width: 1000px;
+			margin: 0 auto;
+			box-shadow: 0 6px 4px rgba(0,0,0, 0.23);
+			padding-top: 40px;
+			border: 1px solid #d2d2d2;
+		}
+		.map-type .map-type-name{
+			font-size: 23px;
+			color: #000;
+			border-left: 12px solid #0068d8;
+			line-height: 46px;
+			text-indent: 24px;
+		}
+		.map-type .map-type-lists{
+			clear: both;
+			overflow: hidden;
+		}
+		.map-type .map-type-lists .map-type-list{
+			list-style: none;
+			float: left;
+			margin-left: 46px;
+			font-size: 20px;
+			line-height: 20px;
+			padding: 46px 0;
+		}
+		.map-type .map-type-lists .map-type-list a{
+			color: #000000;
+			
+		}

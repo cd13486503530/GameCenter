@@ -73,6 +73,7 @@
     <Compile Include="Common\UploadFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\AdminUserService.cs" />
+    <Compile Include="Service\ChannelService.cs" />
     <Compile Include="Service\GameImagesService.cs" />
     <Compile Include="Service\GameInfoService.cs" />
     <Compile Include="Service\GameService.cs" />

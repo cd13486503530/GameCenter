@@ -39,7 +39,8 @@ namespace GameCenter.Core.Common
                 var privateMap = cfg.CreateMap<PrivatePage, DtoPrivatePage>();
                 privateMap.ConstructUsing(n => new DtoPrivatePage
                 {
-                    GameName = (GameService.GetGamesCache().FirstOrDefault(a => a.Id == n.GameId) ?? new DtoGame()).Name
+                    GameName = (GameService.GetGamesCache().FirstOrDefault(a => a.Id == n.GameId) ?? new DtoGame()).Name,
+                    ChannelName = (ChannelService.GetListALL().FirstOrDefault(a => a.Id == n.GameId) ?? new DtoChannel()).Name,
                 });
                 var map = cfg.CreateMap<GameImages, DtoGameImages>();
                 map.ConstructUsing(s => new DtoGameImages
@@ -55,8 +56,8 @@ namespace GameCenter.Core.Common
                     GameName = (GameService.GetGamesCache().FirstOrDefault(a => a.Id == s.GameId) ?? new DtoGame()).Name,
                 });
                 cfg.CreateMap<MenuForm, Menu>();
-
-
+                cfg.CreateMap<DtoChannel, Channel>();
+                cfg.CreateMap<Channel, DtoChannel>();
             });
         }
     }
