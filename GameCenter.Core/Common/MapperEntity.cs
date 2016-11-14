@@ -40,7 +40,7 @@ namespace GameCenter.Core.Common
                 privateMap.ConstructUsing(n => new DtoPrivatePage
                 {
                     GameName = (GameService.GetGamesCache().FirstOrDefault(a => a.Id == n.GameId) ?? new DtoGame()).Name,
-                    ChannelName = (ChannelService.GetListALL().FirstOrDefault(a => a.Id == n.GameId) ?? new DtoChannel()).Name,
+                    ChannelName = (ChannelService.GetListALL().FirstOrDefault(a => a.Id == n.Channel) ?? new DtoChannel()).Name,
                 });
                 var map = cfg.CreateMap<GameImages, DtoGameImages>();
                 map.ConstructUsing(s => new DtoGameImages

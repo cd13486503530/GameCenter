@@ -24,16 +24,13 @@
                             <label class="col-md-2 control-label">渠道名称:</label>
                             <div class="col-md-3">
                                 <select name="Channel" class="form-control select">
+                                    <option value="0" selected="selected">无渠道</option>
                                     @foreach (var item in chaneelList)
                                     {
                                         if (item.Id == Model.Channel)
                                         {
                                             <option value="@item.Id" selected="selected"> @item.Name</option>
-                                        }
-                                        else if (item.Id == 0)
-                                        {
-                                            <option value="0">无渠道</option>
-                                        }
+                                        } 
                                         else
                                         {
                                             <option value="@item.Id">@item.Name</option>
@@ -45,8 +42,8 @@
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">游戏名称:</label>
-                            <div class="col-md-9">
-                                <select name="GameId" class="validate[required]" id="form-validation-field-4">
+                            <div class="col-md-3">
+                                <select name="GameId" class="form-control select">
                                     @foreach (var item in gamesList)
                                     {
                                         if (item.Id == Model.GameId)
