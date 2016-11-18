@@ -26,7 +26,7 @@ namespace GameCenter.GameWeb.Controllers
             //新闻
             ViewBag.Type1 = NewsService.GetListByTypeId(NewsTypeService.GetOneByName("综合").Id, 7); // 综合
             //ViewBag.Type2 = NewsService.GetHotListByGameId(NewsTypeService.GetOneByName("新闻").Id, 7, false); // 新闻
-            ViewBag.Type2 = NewsService.GetListByTypeId(NewsTypeService.GetOneByName("玩家攻略").Id, 7);
+            ViewBag.Type2 = NewsService.GetListByTypeId(NewsTypeService.GetOneByName("新闻").Id, 7);
             ViewBag.Type3 = NewsService.GetListByTypeId(NewsTypeService.GetOneByName("公告").Id, 7); // 公告
             ViewBag.Type4 = NewsService.GetListByTypeId(NewsTypeService.GetOneByName("活动").Id, 7); // 活动
 
