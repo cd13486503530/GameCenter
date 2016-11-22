@@ -15,6 +15,8 @@ namespace GameCenter.Entity.Dto
 
         public string Logo { get; set; }
 
+        public string Icon { get; set; }
+
         public string QrCodeImage { get; set; }
 
         public string IosDl { get; set; }

@@ -66,6 +66,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-2 control-label">游戏Icon:</label>
+                            <div class="col-md-6">
+                                <input type="file" name="IconFileData" accept="image/*" />
+                                <input type="hidden" name="Icon" value="@Model.Icon" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-md-2 control-label">游戏二维码</label>
                             <div class="col-md-4">
                                 <input type="file" name="QrCodeImageFileData" accept="image/*" />
@@ -242,7 +250,7 @@
             showRemove: true,
             showCaption: true,
             uploadUrl: '/GameInfo/UploadFile',
-            uploadRightNow: true,
+            uploadRightNow: false,
             maxFilesCount: 1,
             previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
             showPreview: false,
@@ -274,6 +282,8 @@
             $('#AndriodDl').html( r.response.filename);*@
         });
 
+  
+
         $("input[name=VedioUrlFileData]").on('fileuploaded', function (data, r, a) {
             var _this = $(this);
             var hiddenInputName = _this.attr("name").replace("FileData", "");
@@ -298,5 +308,9 @@
                 };
             }
         });
+        $("input[name=AndriodDlFileData]").on('filedeleted', function (event, key) {
+            console.log('123 ' + key);
+        });
+        
     </script>
 }

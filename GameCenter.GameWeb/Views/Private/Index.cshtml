@@ -34,12 +34,12 @@
         }
 
         body {
-            background: #222c71 url(@(Domain.GetImage(Model.ImagePath))) no-repeat;
-            background-size: 100% 57.4rem;
+            background:url(@(Domain.GetImage(Model.ImagePath))) no-repeat;
+            background-size: cover;
             font-family: "Microsoft YaHei";
             font-size: 1.4rem;
             min-height: 40rem;
-            padding-bottom: 50rem;
+            padding-bottom: 170px;
         }
 
         .mobile-head {
@@ -50,7 +50,7 @@
         }
 
         .mobile-download {
-            padding-top: 35rem;
+            //padding-top: 35rem;
             text-align: center;
         }
 
@@ -82,8 +82,8 @@
             }
 
         .chat-type {
-            font-size: 2rem;
-            color: #6370c6;
+            font-size: 1.75rem;
+            color: #FFFFFF;
             float: left;
             line-height: 2.4rem;
         }
@@ -132,24 +132,24 @@
 </head>
 <body id="Private">
     <div class="mobile-head"></div>
-    <img src="@ViewBag.Logo" class="ling-logo">   
-    <div class="mobile-download"> 
+    <img src="@ViewBag.Icon" class="ling-logo">   
+    <div class="mobile-download" id="mobile-download"> 
         <div>
             @if (string.IsNullOrEmpty(Model.AndroidUrl))
             {
-                <img src="~/Content/img/android-no.png" alt="">
+                <img src="~/Content/img/private-android-no.png" alt="">
             }
             else
             {
-                <a href="@Model.AndroidUrl"><img src="~/Content/img/ios-yes.png" alt=""></a>
+                <a href="@Model.AndroidUrl"><img src="~/Content/img/private-ios-yes.png" alt=""></a>
             }
             @if (string.IsNullOrEmpty(Model.IosUrl))
             {
-                <img src="~/Content/img/android-no.png" alt="">
+                <img src="~/Content/img/private-ios-no.png" alt="">
             }
             else
             {
-                <a href="@Model.IosUrl"><img src="~/Content/img/android-yes.png" alt=""></a>
+                <a href="@Model.IosUrl"><img src="~/Content/img/private-android-yes.png" alt=""></a>
             }           
         </div>
     </div>
@@ -184,6 +184,12 @@
             dn.style.display = 'none';
         }
 
+        window.onload = function () {
+            var h = document.body.scrollHeight - 50;
+            console.log(h);
+            var div = document.getElementById("mobile-download");
+            div.style.paddingTop = h + "px";           
+        }; 
 
     </script>
     <div style="display:none">
@@ -191,4 +197,5 @@
         @Html.Raw(Model.CodeSecond)
     </div>
 </body>
+
 </html>

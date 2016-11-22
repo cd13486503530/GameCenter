@@ -17,7 +17,7 @@ namespace GameCenter.GameWeb.Controllers
             DtoPrivatePage info = null;
             if (id == 0)
             {
-                info = PrivatePageService.GetInfoByGameId(GameInfo.Id);
+                info = PrivatePageService.GetInfoByGameId(GameInfo.Id);                
             }
             else
             {
@@ -29,7 +29,8 @@ namespace GameCenter.GameWeb.Controllers
 
                 info = PrivatePageService.GetInfoByGameId(GameInfo.Id, id);
             }
-            ViewBag.GameName = this.GameInfo.Name;
+            //info = PrivatePageService.GetInfoByGameId(2);
+            ViewBag.GameName = this.GameInfo.Name; 
             return View(info);
         }
     }

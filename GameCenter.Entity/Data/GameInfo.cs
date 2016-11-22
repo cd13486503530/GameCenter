@@ -22,6 +22,10 @@ namespace GameCenter.Entity.Data
 
         [MaxLength(128)]
         [Column(TypeName = "varchar")]
+        public string Icon { get; set; }
+
+        [MaxLength(128)]
+        [Column(TypeName = "varchar")]
         public string QrCodeImage { get; set; }
 
         [MaxLength(128)]

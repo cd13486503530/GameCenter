@@ -24,7 +24,8 @@ namespace GameCenter.GameWeb.App_Start
             //GameInfo = GameService.GetOneByName(DoMain) ?? new DtoGame(); 
             GameInfo = LocalCache.Instance().Get<DtoGame>(DoMain);
             GameDesc = GameInfoService.GetGameInfo(GameInfo.Id) ?? new GameInfo();
-            ViewBag.Logo = GameCenter.Core.Common.Domain.GetImage(GameDesc.Logo);// /Content/img/ling-logo.png            
+            ViewBag.Logo = GameCenter.Core.Common.Domain.GetImage(GameDesc.Logo);// /Content/img/ling-logo.png          
+            ViewBag.Icon = GameCenter.Core.Common.Domain.GetImage(GameDesc.Icon);
         }
     }
 }

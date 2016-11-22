@@ -65,7 +65,7 @@ namespace GameCenter.Core.Service
                 if (!string.IsNullOrEmpty(dNews.Title))
                     list = list.Where(a => a.Title.Contains(dNews.Title));
 
-                if (dNews.NewsType > 0)
+                if (dNews.NewsType > 1) //综合类型 查所有
                     list = list.Where(a => a.NewsType == dNews.NewsType);
                 total = list.Count();
                 list = list.OrderByDescending(a => a.CreateTime).Skip((dNews.PageIndex - 1) * dNews.PageSize).Take(dNews.PageSize);
@@ -81,11 +81,14 @@ namespace GameCenter.Core.Service
         }
 
 
-        public static List<DtoNews> GetListByTypeId(int typeId,int top)
+        public static List<DtoNews> GetListByTypeId(int typeId, int top)
         {
             using (var db = new PortalContext())
             {
-                return Mapper.Map<List<DtoNews>>(db.News.OrderByDescending(a=>a.CreateTime).Where(a => a.NewsType == typeId && a.Status==0).Take(top));
+                if (typeId > 1)
+                    return Mapper.Map<List<DtoNews>>(db.News.OrderByDescending(a => a.CreateTime).Where(a => a.NewsType == typeId && a.Status == 0).Take(top));
+                else
+                    return Mapper.Map<List<DtoNews>>(db.News.OrderByDescending(a => a.CreateTime).Where(a => a.Status == 0).Take(top));
             }
         }
 
