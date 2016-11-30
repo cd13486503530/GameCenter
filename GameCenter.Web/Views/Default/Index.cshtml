@@ -77,12 +77,12 @@
     </div>
     <div class="middle">
         <div class="pos">
-            <div class="wrap clearfix">
+            <div class="wrap clearfix"> 
                 @foreach (var item in ViewBag.ImageNews)
                 {
                     <div class="fl">
-                        @*<img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="350">*@
-                        <a href="/News/Info?id=@item.Id"><img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath.Replace("small","big")))" alt="" width="390" height="320"></a>
+                        <img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="350">
+                        @*<a href="/News/Info?id=@item.Id"><img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath.Replace("small","big")))" alt="" width="390" height="320"></a>*@
                     </div>
                 }
                 <div class="news fl" style="width:480px;height:320px;">

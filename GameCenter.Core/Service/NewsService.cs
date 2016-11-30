@@ -102,6 +102,8 @@ namespace GameCenter.Core.Service
                 if (imgNews)
                     list = list.Where(a => !string.IsNullOrEmpty(a.ImagePath));
                 list = list.OrderByDescending(a => a.Hot).OrderByDescending(a => a.CreateTime).Take(top);
+                if (list == null)
+                    return new List<DtoNews>();
 
                 return Mapper.Map<List<DtoNews>>(list.ToList());
             }
