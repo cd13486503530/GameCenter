@@ -38,7 +38,7 @@
             background-size: cover;
             font-family: "Microsoft YaHei";
             font-size: 1.4rem;
-            min-height: 40rem;
+            //min-height: 40rem;
             padding-bottom: 170px;
         }
 
@@ -141,7 +141,7 @@
             }
             else
             {
-                <a href="@Model.AndroidUrl"><img src="~/Content/img/private-ios-yes.png" alt=""></a>
+                <a href="@Model.AndroidUrl"><img src="~/Content/img/private-android-yes.png" alt=""></a>
             }
             @if (string.IsNullOrEmpty(Model.IosUrl))
             {
@@ -149,7 +149,7 @@
             }
             else
             {
-                <a href="@Model.IosUrl"><img src="~/Content/img/private-android-yes.png" alt=""></a>
+                <a href="@Model.IosUrl"><img src="~/Content/img/private-ios-yes.png" alt=""></a>
             }           
         </div>
     </div>
