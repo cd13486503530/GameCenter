@@ -37,9 +37,8 @@
             background:url(@(Domain.GetImage(Model.ImagePath))) no-repeat;
             background-size: 100% 100%;
             font-family: "Microsoft YaHei";
-            font-size: 1.4rem;
-            //min-height: 40rem;
-            padding-bottom: 170px;
+            font-size: 1.4rem; 
+            height:64rem;             
         }
 
         .mobile-head {
@@ -50,7 +49,7 @@
         }
 
         .mobile-download {
-            //padding-top: 35rem;
+            padding-top: 42.5rem;
             text-align: center;
         }
 
@@ -58,11 +57,15 @@
                 display: inline-block;
                 width: 30%;
                 margin: 1rem 2%;
+                position: relative;
+                top: 8rem
             }
 
         .chat-wrap {
             text-align: center;
             padding-top: 1rem;
+            position: relative;
+            top: 6rem;
         }
 
         .wechat, .qq {
@@ -132,8 +135,8 @@
 </head>
 <body id="Private">
     <div class="mobile-head"></div>
-    <img src="@ViewBag.Icon" class="ling-logo">   
-    <div class="mobile-download" id="mobile-download"> 
+    <img src="@ViewBag.Icon" class="ling-logo">
+    <div class="mobile-download" id="mobile-download">
         <div>
             @if (string.IsNullOrEmpty(Model.AndroidUrl))
             {
@@ -150,10 +153,10 @@
             else
             {
                 <a href="@Model.IosUrl"><img src="~/Content/img/private-ios-yes.png" alt=""></a>
-            }           
+            }
         </div>
     </div>
-    <div class="chat-wrap">
+    @*<div class="chat-wrap">
         <div class="wechat">
             <img src="~/Content/img/wechat.png" alt="">
             <span class="chat-type">官方微信</span>
@@ -164,7 +167,7 @@
             <span class="chat-type">官方Q群</span>
             <span class="chat-number">@Model.QQ</span>
         </div>
-    </div>
+    </div>*@
 
     <div id="download-notes" style="display :none">
         <img src="~/Content/img/dn-notes.png" alt="">
@@ -184,12 +187,12 @@
             dn.style.display = 'none';
         }
 
-        window.onload = function () {
-            var h = document.body.scrollHeight - 50;
-            console.log(h);
-            var div = document.getElementById("mobile-download");
-            div.style.paddingTop = h + "px";           
-        }; 
+        //window.onload = function () {
+        //    var h = document.body.scrollHeight - 50;
+        //    console.log(h);
+        //    var div = document.getElementById("mobile-download");
+        //    div.style.paddingTop = h + "px";
+        //};
 
     </script>
     <div style="display:none">
