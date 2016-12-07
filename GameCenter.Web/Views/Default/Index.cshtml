@@ -81,7 +81,7 @@
                 @foreach (var item in ViewBag.ImageNews)
                 {
                     <div class="fl">
-                        <img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath))" alt="" width="350">
+                        <img src="@(GameCenter.Core.Common.Domain.ImageBig(item.ImagePath))" alt="" width="350">
                         @*<a href="/News/Info?id=@item.Id"><img src="@(GameCenter.Core.Common.Domain.GetImage(item.ImagePath.Replace("small","big")))" alt="" width="390" height="320"></a>*@
                     </div>
                 }
